@@ -12,6 +12,6 @@ else
     echo Could not add submodule $url
 fi
 cp formularyETH/formulary.tex .
-cp formularyETH/formularyMacros.tex .
+cp formularyETH/formularyMacros.sty .
 cp formularyETH/.gitignore .
 echo Finished
