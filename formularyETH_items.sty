@@ -1,0 +1,48 @@
+\NeedsTeXFormat{LaTeX2e}
+% Introduce Packages
+% \ProvidesPackage{<name>}[<version>]
+\ProvidesPackage{formularyETH}[2016/10/11 Items packages]
+
+% ======================================================================
+% Items, enum,... 
+% Notes:
+% \setlist[enumerate,levels]{format}
+% \setlist[itemize,levels]{format}
+% \setlist[description,levels]{format}
+% \setlist[levels]{format}
+% Lables: \alph, \Alph, \arabic, \roman and \Roman
+% ======================================================================
+\RequirePackage{enumitem}
+
+\setlist[enumerate]{font=\normalfont,
+					topsep=0pt,
+					itemsep=3pt,
+					%noitemsep,
+					label=\textcolor{item}{\textbf{\alph*}}),
+					ref=(\textnormal{\textcolor{item}{\textbf{\alph*}})}
+					}
+% \newlist{format}{Level} creates a new list type 
+% ======================================================================
+\newlist{romanlist}{enumerate}{1}
+\setlist[romanlist]{%
+  	label=\textcolor{item}{\textbf{\Roman*}}),    
+	ref=(\textnormal{\textcolor{item}{\textbf{\Roman*}})},
+	noitemsep,
+	nolistsep
+}
+
+\newlist{numberlist}{enumerate}{1}
+\setlist[numberlist]{%
+  	label=\textcolor{item}{\textbf{\arabic*}}.,    
+	ref=(\textnormal{\textcolor{item}{\textbf{\arabic*}})},
+	noitemsep,
+	nolistsep
+}
+
+\setlist[enumerate,2]{font=\normalfont,
+					topsep=0pt,
+					itemsep=3pt,
+					%noitemsep,
+					label=\textcolor{item}{\textbf{\arabic*}}),
+					ref=(\textnormal{\textcolor{item}{\textbf{\arabic*}})}
+					}

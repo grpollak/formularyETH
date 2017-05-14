@@ -1,0 +1,285 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{formularyETH_boxes}[2016/10/11 Macros for formularyETH]
+
+% ======================================================================
+% Packages
+% ======================================================================
+
+% package to make frames for exaples, definitions and theorems
+% Compmare to tcolorbox
+\RequirePackage[most]{tcolorbox}		
+\RequirePackage{formularyETH/formularyETH_colors} 		
+
+
+% ======================================================================
+% Boxstyles
+% \newtcbox[init Opt]{name}[number][default]{options}
+% ======================================================================
+
+% Basic box
+% ----------------------------------------------------------------------
+\newtcolorbox{sectionbox}[1][]{
+		fonttitle=\bfseries,
+		title =#1,
+		toptitle=1pt,
+		bottomtitle=2pt,
+		coltitle=black,
+		colbacktitle=sectionbox,
+		colback=sectionbox,
+		colframe=sectionboxFrame,
+		%beforeafter skip = 0.4pt,		% skip before and after box
+ 		before skip = 0.5pt,
+ 		after skip = 0.5pt,				
+		boxrule = 0.2mm,				% linewidth
+		arc = 0.2mm,					% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt,
+		breakable,
+}
+
+\newtcolorbox{emphbox}[1][]{
+		attach title to upper,
+		fonttitle=\bfseries,
+		title =#1,
+		coltitle=black,
+		colback=emphbox,
+		colframe=emphboxFrame,
+		after skip = 1pt,				% skip before and after box
+		before skip = 2pt,
+		boxrule = 0.3mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt,
+		breakable
+}
+
+\newtcolorbox{defnbox}[1][]{
+		attach title to upper,
+		fonttitle=\bfseries,
+		title =#1,
+		coltitle=black,
+		colback=defnbox,
+		colframe=defnboxFrame,
+		before skip = 0.5pt,				% skip before and after box
+		after skip = 0.5pt,
+		boxrule = 0.3mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt,
+		breakable
+}
+
+\newtcolorbox{lemmabox}[1][]{
+		title =#1,
+		attach title to upper,
+		fonttitle=\bfseries,
+		coltitle=black,
+		colback=lemmabox,
+		colframe=lemmaboxFrame,
+		after skip = 1pt,				% skip before and after box
+		before skip = 2pt,
+		boxrule = 0.3mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt,
+		breakable
+}
+
+\newtcolorbox{princpbox}[1][]{
+		title =#1,
+		attach title to upper,
+		fonttitle=\bfseries,
+		coltitle=black,
+		colback=lemmabox,
+		colframe=lemmaboxFrame,
+		after skip = 1pt,				% skip before and after box
+		before skip = 2pt,
+		boxrule = 0.3mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt,
+		breakable
+}
+
+\newtcolorbox{lawbox}[1][]{
+		title =#1,
+		attach title to upper,
+		fonttitle=\bfseries,
+		coltitle=black,
+		colback=lemmabox,
+		colframe=lemmaboxFrame,
+		after skip = 1pt,				% skip before and after box
+		before skip = 2pt,
+		boxrule = 0.3mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt,
+		breakable
+}
+
+\newtcolorbox{proofbox}[1][]{
+		title =#1,
+		attach title to upper,
+		fonttitle=\bfseries,
+		coltitle=black,
+		colback=proofbox,
+		colframe=proofboxFrame,
+		after skip = 1pt,				% skip before and after box
+		before skip = 2pt,
+		boxrule = 0.1mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt,
+		breakable
+}
+
+\newtcolorbox{notebox}[1][]{
+		title = #1,
+		fonttitle=\bfseries,
+		coltitle=black,
+		toptitle=1pt,
+		bottomtitle=2pt,
+		colbacktitle=noteboxBackTitle,
+		colback=notebox,
+		colframe=notebox,
+		after skip = 0.5pt,					% skip before and after box
+		before skip = 0.5pt,
+		boxrule = 0.1mm,					% linewidth
+		arc = 0.1mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt,
+		breakable
+}
+
+\newtcolorbox{theorembox}[1][]{
+		attach title to upper,
+		title = #1,
+		fonttitle=\bfseries,
+		coltitle=black,
+		colback=theorembox,
+		colframe=theoremboxFrame,
+		after skip = 0.5pt,				% skip before and after box
+		before skip = 0.5pt,
+		boxrule = 0.1mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt,
+		breakable
+}
+
+\newtcolorbox{corbox}[1][]{
+		attach title to upper,
+		fonttitle=\bfseries,
+		title = #1,
+		coltitle=black,
+		colback=corbox,
+		colframe=corboxFrame,
+		after skip = 1pt,				% skip before and after box
+		before skip = 1pt,
+		boxrule = 0.1mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt,
+		breakable
+}
+
+\newtcolorbox{codebox}[1][]{
+		title = #1,
+		fonttitle=\bfseries,
+		coltitle=codeboxTitle,
+		toptitle=1pt,
+		bottomtitle=1pt,
+		colbacktitle=codeboxBackTitle,
+		colback=codebox,
+		colframe=codeboxFrame,
+		%after skip = 1pt,					% skip before and after box
+		%before skip = 2pt,
+		boxrule = 0.3mm,					% linewidth
+		arc = 0.1mm,						% innder radius of frames (corners)
+		boxsep = 0mm,						% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt
+}
+
+\newtcolorbox{stylebox}[1][]{
+		attach title to upper,
+		fonttitle=\bfseries,
+		title = #1,
+		coltitle=black,
+		colback=emphbox,
+		colframe=styleboxFrame,
+		after skip = 0.5pt,				% skip before and after box
+		before skip = 0.5pt,
+		boxrule = 0.3mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt,
+		breakable
+}
+
+\newtcolorbox{hintbox}[1][]{
+		attach title to upper,
+		fonttitle=\bfseries,
+		title = #1,
+		coltitle=black,
+		colback=emphbox,
+		colframe=styleboxFrame,
+		after skip = 0.5pt,				% skip before and after box
+		before skip = 0.5pt,
+		boxrule = 0.3mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt,
+		breakable
+}

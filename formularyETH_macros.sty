@@ -1,0 +1,50 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{formularyETH_colors}[2016/10/11 Macros for formularyETH]
+
+% ======================================================================
+% Further Important Macros
+% ======================================================================
+
+% Underline text
+% ----------------------------------------------------------------------
+% Usage: \uline{color}{Text}
+\def\uline#1#2{\color{#1}\underline{{\color{black}#2}}\color{black}}
+% Get Roman Numbers I, II, III, IV,...
+\newcommand{\romanNumber}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+% Get forumlary fitting item headers 
+\newcommand{\itemHeader}[1]{{\bfseries\textcolor{section}{#1}})} 
+% Get forumlary fitting headers without numbering
+\newcommand{\sectionHeader}[1]{{\bfseries\textcolor{section}{#1}}} 
+% Colord red
+\newcommand{\rd}[1]{\textcolor{Red}{#1}}
+% Colord red and bold
+\newcommand{\rdb}[1]{\textbf{\textcolor{Red}{#1}}}
+% Abbriviated Color command
+\newcommand{\tc}[2]{\textcolor{#1}{#2}}
+% Important words
+\newcommand{\imp}[1]{\textnormal{\textbf{#1}}}
+% Create index
+\newcommand{\keyword}[1]{#1\index{#1}}
+% Easy centering
+\newcommand{\ctr}[1]{\makebox[\linewidth]{#1}}
+% Include Inkscape Pictures
+\newcommand{\inkscape}[2][100pt]{
+	\def\svgwidth{#1}
+	\resizebox{\linewidth}{!}{\input{figures/#2.pdf_tex}}
+}
+% Not sure what I ussed this for
+\newenvironment{wrapped}[1]
+ {\def\wrappedcurrent{#1}%
+  \setlength{\columnwidth}{\parshapelength\numexpr\prevgraf+2\relax}%
+  \csname #1\endcsname}
+ {\csname end\wrappedcurrent\endcsname}
+% Set align, equation spacing [before]{after}
+\newcommand{\setspacing}[2][2pt]{	
+ 	\setlength{\abovedisplayskip}{#2}
+	\setlength{\belowdisplayskip}{#1}
+}
+\newcommand{\nospacing}[1][2pt]{	
+ 	\setlength{\abovedisplayskip}{0pt}
+	\setlength{\belowdisplayskip}{#1}
+}
+\newcommand{\nalign}{\\[-1\jot]} 							% Shorter new line align spacing 			

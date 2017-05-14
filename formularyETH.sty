@@ -1,0 +1,78 @@
+% ==============================================================================
+% Copyright (c) 2017 [Georg R. Pollak]  
+% ==============================================================================
+% ------------------------------------------------------------------------------
+
+  % Permission is hereby granted, free of charge, to any person obtaining a copy
+  % of this software and associated documentation files (the "Software"), to deal
+  % in the Software without restriction, including without limitation the rights
+  % to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  % copies of the Software, and to permit persons to whom the Software is
+  % furnished to do so, subject to the following conditions:
+
+  % The above copyright notice, the creator of the formuary package G.R. Pollak
+  % and this permission notice shall be included in all copies or substantial portions of the Software.
+
+% ==============================================================================
+% End
+% ==============================================================================
+% ------------------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+% Introduce Packages
+% \ProvidesPackage{<name>}[<version>]
+\ProvidesPackage{formularyETH}[2016/10/11 Macros for formularyETH]
+
+% ======================================================================
+% Chapters, Titles, Sections,... 
+% Note: scrartcl can lead to complications with titlesec  
+% ======================================================================
+
+\RequirePackage{titlesec}
+	
+% \titleformat{ command }
+% 				[ shape ]
+% 				{ format }
+% 				{ Numberering/Label }{ sep to the left/from label }
+% 				{before-code }[ after-code ] 
+
+	%\titleformat{\chapter}{\huge \bfseries}{\thechapter}{0em}{\huge \bfseries}
+	\titleformat{\section}
+				{ \color{section} \LARGE \scshape\MakeUppercase\bfseries }
+				{ \color{attributes}\thesection .}{0em}
+				{ \color{section}}
+				%[{\titleline*[l]{\titlerule[3pt]}\vspace{2pt}]
+				[ \color{attributes} {\titleline[l]{ \titlerule[1pt]} } ]
+
+	\renewcommand{\thesubsection}{\arabic{subsection}}
+	\titleformat{\subsection}
+				{ \color{subsection} \large \bfseries }
+				{ \color{attributes}\thesubsection )}{0em}
+				{ \color{subsection}}
+				[ \color{attributes} {\titleline[l]{ \titlerule[0.7pt]} } ]
+
+	\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+	\titleformat{\subsubsection}
+				{ \color{subsubsection} \normalsize \bfseries }
+				{ \color{attributes} \thesubsubsection . }{0em}
+				{ \color{subsubsection}}
+				[]
+% \titlespacing*{ command }{ left }{ beforesep }{ aftersep }[ right ]
+
+	\titlespacing{\section}{\sectionSpacingLeft}{\sectionSpacingTop}{\sectionSpacingBottom}[\sectionSpacingRight]
+	\titlespacing{\subsection}{\subSectionSpacingLeft}{\subSectionSpacingTop}{\subSectionSpacingBottom}[\subSectionSpacingRight]
+	\titlespacing{\subsubsection}{\subSubSectionSpacingLeft}{\subSubSectionSpacingTop}{\subSubSectionSpacingBottom}[\subSubSectionSpacingRight]
+% ======================================================================
+% Basic LaTeX Settings
+% ======================================================================
+	\hyphenpenalty=10000			  % Almost no word breaks.
+	\pretolerance=60
+	\tolerance=2000
+	\doublehyphendemerits=10000       % No consecutive line hyphens.
+	\brokenpenalty=10000              % No broken words across columns/pages.
+	\widowpenalty=9999                % Almost no widows at bottom of page.
+	\clubpenalty=9999                 % Almost no orphans at top of page.
+	\interdisplaylinepenalty=100
+	\interfootnotelinepenalty=9999    % Almost never break footnotes.
+	\interlinepenalty=10000
+	%\binoppenalty=200
+	%\relpenalty=200

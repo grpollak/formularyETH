@@ -1,0 +1,134 @@
+\NeedsTeXFormat{LaTeX2e}
+% Introduce Packages
+% \ProvidesPackage{<name>}[<version>]
+\ProvidesPackage{formularyETH}[2016/10/11 Science packages]
+
+% ======================================================================
+% Packages
+% Note: Order matters!
+% ======================================================================
+
+% Basic Packages
+% ----------------------------------------------------------------------
+\RequirePackage{formularyETH/formularyETH_theorems} 
+\RequirePackage{amsmath}				% math symbols ...
+\RequirePackage{esint}					% more integral symbols
+\RequirePackage{trfsigns}				% Fourier Transformation signs
+\RequirePackage{amssymb}				% additional math symbols
+% Sup­port use of the Raph Smith’s For­mal Script font in math­e­mat­ics.
+\RequirePackage{mathrsfs}
+\RequirePackage{dsfont} 				% to get the unit vector \mathds{1}
+\RequirePackage{systeme}
+\RequirePackage{stmaryrd} 				% to get the lightning symbol and others
+\RequirePackage{xfrac}					% get procentual fractions with \sfrac{above}{below} 
+\RequirePackage{empheq}					% Cool package to get boxes in aligned enviroments
+\mathchardef\Re="023C
+\mathchardef\Im="023D
+\usepackage[makeroom]{cancel}			% To cancel out stuff
+% Baisc Settings and Command
+% ======================================================================                      				
+\numberwithin{equation}{section}                        
+\newcommand*\rfrac[2]{{}^{#1}\!/_{#2}}						% Different fraction style
+% Baisc Math Macros
+% ======================================================================
+	% abbreviations for important sets
+	\DeclareMathOperator{\N}{\mathbb N}						% Natürliche Zahlen
+	\DeclareMathOperator{\R}{\mathbb R}						% Reele Zahlen
+	\DeclareMathOperator{\Rp}{\mathbb R_+}					% Reele Zahlen	                                   					
+	\DeclareMathOperator{\C}{\mathbb C}						% Komplexe Zahlen
+	\DeclareMathOperator{\K}{\mathbb K}						% Reele oder komplexe Zahlen
+	\DeclareMathOperator{\Z}{\mathbb{Z}}
+	\DeclareMathOperator{\img}{i}							% Imaginary Unit
+	\DeclareMathOperator{\curvec}{\mathcal{C}}							% Curley Curve C 					
+	\newcommand{\ie}{\emph{i.e.} }
+	\newcommand{\cf}{\emph{cf.} }
+	\newcommand{\into}{\hookrightarrow}
+	\newcommand{\dirac}{\slashed{\partial}}
+	\DeclareMathOperator{\T}{\intercal}
+	
+% Linear Algebra
+% ======================================================================
+	\DeclareMathOperator{\linalgRank}{\mathfrak{rank}}
+	\DeclareMathOperator{\linalgRange}{\mathfrak{R}}
+	\DeclareMathOperator{\linalgNullspace}{\mathfrak{N}}
+	\DeclareMathOperator{\linalgSpan}{span}
+	\DeclareMathOperator{\linalgBasis}{\textcolor{Fuchsia}{\mathfrak{B}}}					
+
+% Vectors and Matrices
+% ======================================================================
+  \newcommand{\mat}[1]{\ensuremath{\arraycolsep=0.5em \begin{matrix} #1 \end{matrix}}}				% Matrix
+	\newcommand{\bmat}[1]{\ensuremath{\arraycolsep=0.5em \begin{bmatrix} #1 \end{bmatrix}}}				% []: b(racketed) matrix
+	\newcommand{\pmat}[1]{\ensuremath{\arraycolsep=0.5em \begin{pmatrix} #1 \end{pmatrix}}}				% (): p(arenthesized) matrix
+	\newcommand{\vmat}[1]{\ensuremath{\arraycolsep=0.5em \begin{vmatrix} #1 \end{vmatrix}}}				% ||: v(ertical bar) matrix
+	\newcommand{\tma}[3]{\ensuremath{{}_{#1} \ma #2_#3 }}												% Trafomatrix
+	\renewcommand{\vec}[1]{\ensuremath{\boldsymbol #1 }}												% Vector bold and underlined
+	\newcommand{\vect}[1]{\ensuremath{\arraycolsep=0.3em \begin{pmatrix} #1 \end{pmatrix}}}				% Vector
+	\newcommand{\unitVector}{\ensuremath{\mathds{1}}}													% Unit Vector
+	\newcommand{\mvect}[1]{\ensuremath{\left.\begin{matrix} #1 \end{matrix}\right]}}					% Matrixvector
+	\newcommand{\tensor}[1]{\ensuremath{\underline{\underline{\boldsymbol #1}}}}						% Tensor
+	\DeclareMathOperator{\diag}{diag}																	% diagonal matrix
+  \newcommand{\unitMatrix}{\ensuremath{\mathds{\ma{I}}}}		 % unitrary matrix
+
+	% vector operations
+	\newcommand{\norm}[1]{\ensuremath{\left\|#1\right\|}}												% Norm
+	\DeclareMathOperator{\Sp}{Sp}																		% Spur (german for trace \tr)
+	                             																		 
+% Analysis
+% ======================================================================						
+	\DeclareMathOperator{\grad}{grad}																	% grad
+	\DeclareMathOperator{\divg}{div}																	% divergence
+	\DeclareMathOperator{\rot}{rot}																		% curl
+	\DeclareMathOperator{\curl}{curl}																	% curl
+	\newcommand{\diff}{\mathop{}\!\mathrm{\vphantom( d}}												% differential delta
+% Complexity
+% ======================================================================	                             	
+ 	\newcommand{\bigO}[1]{\ensuremath{\mathcal{\rd{O}}(#1)}}												
+																	
+% Transformations
+% ======================================================================
+	\DeclareMathOperator{\LT}{\mathscr{\textcolor{Fuchsia}{L}}} % Laplace Transform		
+	\DeclareMathOperator{\FT}{\mathscr{F}} % Fourrier Transform		
+% Important Colors
+% ======================================================================
+% Math Coefficient colors
+\newcommand{\mc}[2][1]{
+	\IfEqCase{#1}{
+        {3}{\ensuremath{\textcolor{mc1}{#2}}}
+        {2}{\ensuremath{\textcolor{mc2}{#2}}}
+        {1}{\ensuremath{\textcolor{mc3}{#2}}}
+        {4}{\ensuremath{\textcolor{mc4}{#2}}}
+        {5}{\ensuremath{\textcolor{mc5}{#2}}}
+        {6}{\ensuremath{\textcolor{mc6}{#2}}}
+    }[\PackageError{mc}{Undefined option to mc: #1}{}]
+}
+% idx color
+\newcommand{\idxi}{\ensuremath{\textcolor{idxic}{i}}}
+\newcommand{\idxj}{\ensuremath{\textcolor{idxjc}{j}}}
+\newcommand{\idxk}{\ensuremath{\textcolor{idxkc}{k}}}
+\newcommand{\idxl}{\ensuremath{\textcolor{idxlc}{l}}}
+\newcommand{\idxm}{\ensuremath{\textcolor{idxmc}{m}}}
+\newcommand{\idxn}{\ensuremath{\textcolor{idxnc}{n}}}
+% Alternative
+\newcommand{\idx}[1]{
+	\IfEqCase{#1}{
+        {i}{\ensuremath{\textcolor{idxic}{i}}}
+        {j}{\ensuremath{\textcolor{idxjc}{j}}}
+        {k}{\ensuremath{\textcolor{idxkc}{k}}}
+        {l}{\ensuremath{\textcolor{idxlc}{l}}}
+        {m}{\ensuremath{\textcolor{idxmc}{m}}}
+        {n}{\ensuremath{\textcolor{idxnc}{n}}}
+    }[\PackageError{idx}{Undefined option to idx: #1}{}]
+}
+
+% Greek Letters Colored
+% ======================================================================
+\newcommand{\lambdac}[1][\lambda]{\ensuremath{\textcolor{lambdac}{#1}}}
+\newcommand{\alphac}[1][\alpha]{\ensuremath{\textcolor{alphac}{#1}}}
+\newcommand{\betac}[1][\beta]{\ensuremath{\textcolor{betac}{#1}}}
+\newcommand{\gammac}[1][\gamma]{\ensuremath{\textcolor{gammac}{#1}}}
+\newcommand{\phic}{\mc[2]{\vec{\phi}}}
+% Standard Coefficients Colored
+% ======================================================================
+\newcommand{\mca}{\mc[1]{a}}
+\newcommand{\mcb}{\mc[4]{b}}
+\newcommand{\mcc}{\mc[5]{c}}

@@ -1,0 +1,57 @@
+* FormularyETH
+	This is my LaTeX template for writing formularies
+** Requirements
+	 When writing a new e.g. myformulary.tex, myformulary.tex should be on the same level
+	 as the folder formularyETH.  
+	 Within myformulary.tex you always need to define the document class formularyETH
+	 #+BEGIN_SRC latex
+		\documentclass[fourColumns]{formularyETH/formularyETH}
+	 #+END_SRC
+	 Further packages that are highly recommended to be included are:
+	 #+BEGIN_SRC latex
+		\usepackage{formularyETH/extern/formularyETH_scientific}
+		\usepackage{formularyETH/extern/formularyETH_tikz}
+		\usepackage{formularyETH/formularyETH_underline}
+		\tcbuselibrary{minted}
+		\IfFileExists{formularyMacros}{\usepackage{formularyMacros}{}}
+	 #+END_SRC
+** Usage
+*** File Structure
+		- forumulary/
+      - formularyETH/
+			- myformulary.tex
+			- src/
+				- mych1.tex
+				- mych2.tex
+			
+*** Boxes
+		The idea of the formulary is to stack boxes of different kinds together e.g.
+		#+BEGIN_SRC latex
+		\begin{mybox}
+		  \begin{theorem}
+			  ...
+			\end{theorem}
+			\begin{defn}
+			  ...
+			\end{defn}
+		\end{mybox}
+		\begin{anotherBox}[Optional Tilte]  % Not for all boxes
+		   ...   
+	    \end{anotherbox}
+		#+END_SRC
+		The main box is usually the sectionbox.   
+    Inside the boxes usually theorems (theorem), definitions (defn), lemmas (lemma), proof (proof)
+		are used.
+			
+** Copyright
+		Copyright (c) 2017 [Georg R. Pollak]  
+
+		Permission is hereby granted, free of charge, to any person obtaining a copy
+		of this software and associated documentation files (the "Software"), to deal
+		in the Software without restriction, including without limitation the rights
+		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+		copies of the Software, and to permit persons to whom the Software is
+		furnished to do so, subject to the following conditions:
+
+		The above copyright notice, the creator of the formuary package G.R. Pollak
+		and this permission notice shall be included in all copies or substantial portions of the Software.
