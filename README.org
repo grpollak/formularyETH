@@ -1,5 +1,9 @@
 * FormularyETH
 	This is my LaTeX template for writing formularies
+** Creating a new formulary
+	1. git clone git@gitlab.vis.ethz.ch:pollakg/formularyETH.git
+	2. formularyETH/makeFormulary <Optional Name>
+  3. Finished
 ** Requirements
 	 When writing a new e.g. myformulary.tex, myformulary.tex should be on the same level
 	 as the folder formularyETH.  
