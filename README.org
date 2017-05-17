@@ -3,7 +3,8 @@
 ** Creating a new formulary
 	1. git clone git@gitlab.vis.ethz.ch:pollakg/formularyETH.git
 	2. formularyETH/makeFormulary <Optional Name>
-  3. Finished
+  3. Finished  
+
 ** Requirements
 	 When writing a new e.g. myformulary.tex, myformulary.tex should be on the same level
 	 as the folder formularyETH.  
@@ -41,7 +42,7 @@
 		\end{mybox}
 		\begin{anotherBox}[Optional Tilte]  % Not for all boxes
 		   ...   
-	    \end{anotherbox}
+	  \end{anotherbox}  
 		#+END_SRC
 		The main box is usually the sectionbox.   
     Inside the boxes usually theorems (theorem), definitions (defn), lemmas (lemma), proof (proof)
