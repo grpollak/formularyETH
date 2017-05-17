@@ -30,8 +30,10 @@
 % Include Inkscape Pictures
 \newcommand{\inkscape}[2][100pt]{
 	\def\svgwidth{#1}
-	\resizebox{\linewidth}{!}{\input{figures/#2.pdf_tex}}
+	\resizebox{\linewidth}{!}{\input{#2}}
 }
+% Equalsign with hat
+\newcommand{\corresponds}{\mathrel{\widehat=}}
 % Not sure what I ussed this for
 \newenvironment{wrapped}[1]
  {\def\wrappedcurrent{#1}%
