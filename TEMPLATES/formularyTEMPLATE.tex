@@ -31,12 +31,13 @@
 % Other very usefull packages
 % ------------------------------------------------------------------------------
 \usepackage{formularyETH/extern/formularyETH_todo}
-\usepackage{formularyMacros}
+\IfFileExists{formularyMacros}{\usepackage{formularyMacros}{}}
 \usepackage[colorinlistoftodos]{todonotes} 
 \usepackage{caption}
 \usepackage{wrapfig}
 \usepackage{subcaption}
 \usepackage{tabularx}
+%\tcbuselibrary{minted}
 % ==============================================================================
 % Documents Definitions title, date, ...
 % ==============================================================================
