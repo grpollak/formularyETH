@@ -79,7 +79,9 @@
 	\DeclareMathOperator{\divg}{div}																	% divergence
 	\DeclareMathOperator{\rot}{rot}																		% curl
 	\DeclareMathOperator{\curl}{curl}																	% curl
-	\newcommand{\diff}{\mathop{}\!\mathrm{\vphantom( d}}												% differential delta
+	\newcommand{\diff}{\mathop{}\!\mathrm{\vphantom( d}}							% differential delta
+	\newcommand{\difft}[1][]{\frac{\diff#1}{\diff t}}							    % Time derivative
+
 % Complexity
 % ======================================================================	                             	
  	\newcommand{\bigO}[1]{\ensuremath{\mathcal{\rd{O}}(#1)}}												
