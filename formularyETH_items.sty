@@ -25,7 +25,7 @@
 % ======================================================================
 \newlist{romanlist}{enumerate}{1}
 \setlist[romanlist]{%
-  	label=\textcolor{item}{\textbf{\Roman*}}),    
+  label=\textcolor{item}{\textbf{\Roman*}}),    
 	ref=(\textnormal{\textcolor{item}{\textbf{\Roman*}})},
 	noitemsep,
 	nolistsep
@@ -33,11 +33,22 @@
 
 \newlist{numberlist}{enumerate}{1}
 \setlist[numberlist]{%
-  	label=\textcolor{item}{\textbf{\arabic*}}.,    
+  label=\textcolor{item}{\textbf{\arabic*}}.,    
 	ref=(\textnormal{\textcolor{item}{\textbf{\arabic*}})},
 	noitemsep,
 	nolistsep
 }
+
+% Circle Items
+\newlist{circlelist}{enumerate}{1}
+\setlist[circlelist]{%
+  label=\protect\circledItem{\textcolor{attributes}{\arabic*}},    
+	ref=\protect\circledItem{\textcolor{attributes}{\arabic*}},
+	noitemsep,
+	nolistsep
+}
+\crefname{circl}{point}{Points}
+\Crefname{circl}{point}{Points}
 
 \setlist[enumerate,2]{font=\normalfont,
 					topsep=0pt,
