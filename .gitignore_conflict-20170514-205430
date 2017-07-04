@@ -1,5 +1,5 @@
+formulary.pdf
 ## Core latex/pdflatex auxiliary files:
-auto/
 *~
 .DS_Store
 *.aux
@@ -114,4 +114,8 @@ flycheck_*.el
 .projectile
 
 # directory configuration
+<<<<<<< HEAD
 .dir-locals.el
+=======
+.dir-locals.el
+>>>>>>> 2a32432bd741bdab245477a2f684dee3e8e780cb

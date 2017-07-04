@@ -31,12 +31,13 @@
 % Other very usefull packages
 % ------------------------------------------------------------------------------
 \usepackage{formularyETH/extern/formularyETH_todo}
-\usepackage{formularyMacros}
+\IfFileExists{formularyMacros}{\usepackage{formularyMacros}{}}
 \usepackage[colorinlistoftodos]{todonotes} 
 \usepackage{caption}
 \usepackage{wrapfig}
 \usepackage{subcaption}
 \usepackage{tabularx}
+%\tcbuselibrary{minted}
 % ==============================================================================
 % Documents Definitions title, date, ...
 % ==============================================================================
@@ -56,10 +57,8 @@
 
 % Chapter 1
 % ------------------------------------------------------------------------------ 
-  \section{Chapter 1}
-  \label{sec:chapter1}
-  %	\input{src/ch1.tex}
-
+	\input{src/ch1.tex}
+	\label{sec:ch1}
 % ======================================================================
 % Todo
 % ======================================================================

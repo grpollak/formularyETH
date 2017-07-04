@@ -67,6 +67,12 @@
       \draw[->] (0, 0) |- ++(3pt, -3pt) node[right]{\tiny \textit{#2}};
     \end{tikzpicture}}}{#1}	
 }
+\newcommand{\bdrla}[2]{
+	\underset{\mathrlap{  
+	\begin{tikzpicture}
+      \draw[->] (0, 0) |- ++(3pt, -7pt) node[right]{\tiny \textit{#2}};
+    \end{tikzpicture}}}{#1}	
+}
 \newcommand{\bdla}[2]{
 	\underset{\mathllap{  
 	\begin{tikzpicture}
@@ -74,6 +80,12 @@
     \end{tikzpicture}}}{#1}	
 }
 
+\newcommand{\bdlla}[2]{
+	\underset{\mathllap{  
+	\begin{tikzpicture}
+      \draw[->] (0, 0) |- ++(-3pt, -7pt) node[left]{\tiny \textit{#2}};
+    \end{tikzpicture}}}{#1}	
+}
 
 \newcommand{\tda}[2]{
 	\overset{\mathclap{  
@@ -91,6 +103,12 @@
 	\overset{\mathrlap{  
 	\begin{tikzpicture}
       \draw[<-] (0, 0) |- ++(3pt, +3pt) node[right]{\tiny \textit{#2}};
+    \end{tikzpicture}}}{#1}	
+}
+\newcommand{\turla}[2]{
+	\overset{\mathrlap{  
+	\begin{tikzpicture}
+      \draw[<-] (0, 0) |- ++(3pt, 7pt) node[right]{\tiny \textit{#2}};
     \end{tikzpicture}}}{#1}	
 }
 \newcommand{\tdla}[2]{
@@ -112,6 +130,10 @@
     \end{tikzpicture}}}{#1}	
 }
 
+% Circled Numbers
+% ======================================================================
+\newcommand*\circledItem[1]{\tikz[baseline=(char.base)]{%
+            \node[shape=circle,draw=section,inner sep=1pt,semithick] (char) {#1};}}
 % Underlining
 % ======================================================================
 \newcommand{\tul}[2][1]{%

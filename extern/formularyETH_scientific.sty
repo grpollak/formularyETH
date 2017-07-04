@@ -21,7 +21,6 @@
 \RequirePackage{stmaryrd} 				% to get the lightning symbol and others
 \RequirePackage{xfrac}					% get procentual fractions with \sfrac{above}{below} 
 \RequirePackage{empheq}					% Cool package to get boxes in aligned enviroments
-\RequirePackage{formularyETH/formularyETH_theorems} 
 \mathchardef\Re="023C
 \mathchardef\Im="023D
 \usepackage[makeroom]{cancel}			% To cancel out stuff
@@ -33,6 +32,7 @@
 % ======================================================================
 	% abbreviations for important sets
 	\DeclareMathOperator{\N}{\mathbb N}						% Natürliche Zahlen
+	\DeclareMathOperator{\Np}{\mathbb N_{>0}}						% Natürliche Zahlen
 	\DeclareMathOperator{\R}{\mathbb R}						% Reele Zahlen
 	\DeclareMathOperator{\Rp}{\mathbb R_+}					% Reele Zahlen	                                   					
 	\DeclareMathOperator{\C}{\mathbb C}						% Komplexe Zahlen
@@ -44,6 +44,8 @@
 	\newcommand{\cf}{\emph{cf.} }
 	\newcommand{\into}{\hookrightarrow}
 	\newcommand{\dirac}{\slashed{\partial}}
+	\newcommand{\eqs}[2][=]{\stackrel{#2}{#1}}
+  \DeclarePairedDelimiter\abs{\lvert}{\rvert} % abs val
 	\DeclareMathOperator{\T}{\intercal}
 	
 % Linear Algebra
@@ -70,7 +72,7 @@
   \newcommand{\unitMatrix}{\ensuremath{\mathds{\ma{I}}}}		 % unitrary matrix
 
 	% vector operations
-	\newcommand{\norm}[1]{\ensuremath{\left\|#1\right\|}}												% Norm
+  \DeclarePairedDelimiter\norm{\lVert}{\rVert}                    % Norm
 	\DeclareMathOperator{\Sp}{Sp}																		% Spur (german for trace \tr)
 	                             																		 
 % Analysis
@@ -79,7 +81,10 @@
 	\DeclareMathOperator{\divg}{div}																	% divergence
 	\DeclareMathOperator{\rot}{rot}																		% curl
 	\DeclareMathOperator{\curl}{curl}																	% curl
-	\newcommand{\diff}{\mathop{}\!\mathrm{\vphantom( d}}												% differential delta
+	\newcommand{\diff}{\mathop{}\!\mathrm{\vphantom( d}}							% differential delta
+	\newcommand{\difft}[1][]{\frac{\diff #1}{\diff t}}							    % Time derivative
+	\newcommand{\pfrac}[2]{\frac{\partial #1}{\partial #2}}							    % Time derivative
+	\newcommand{\difrac}[2]{\frac{\diff #1}{\diff #2}}							    % Time derivative
 % Complexity
 % ======================================================================	                             	
  	\newcommand{\bigO}[1]{\ensuremath{\mathcal{\rd{O}}(#1)}}												
@@ -105,9 +110,14 @@
 \newcommand{\idxi}{\ensuremath{\textcolor{idxic}{i}}}
 \newcommand{\idxj}{\ensuremath{\textcolor{idxjc}{j}}}
 \newcommand{\idxk}{\ensuremath{\textcolor{idxkc}{k}}}
+\newcommand{\idxK}{\ensuremath{\textcolor{idxkc}{K}}}
 \newcommand{\idxl}{\ensuremath{\textcolor{idxlc}{l}}}
 \newcommand{\idxm}{\ensuremath{\textcolor{idxmc}{m}}}
+\newcommand{\idxM}{\ensuremath{\textcolor{idxmc}{M}}}
 \newcommand{\idxn}{\ensuremath{\textcolor{idxnc}{n}}}
+\newcommand{\idxN}{\ensuremath{\textcolor{idxnc}{N}}}
+\newcommand{\idxr}{\ensuremath{\textcolor{idxrc}{r}}}
+\newcommand{\idxs}{\ensuremath{\textcolor{idxsc}{s}}}
 % Alternative
 \newcommand{\idx}[1]{
 	\IfEqCase{#1}{
@@ -117,6 +127,7 @@
         {l}{\ensuremath{\textcolor{idxlc}{l}}}
         {m}{\ensuremath{\textcolor{idxmc}{m}}}
         {n}{\ensuremath{\textcolor{idxnc}{n}}}
+        {r}{\ensuremath{\textcolor{idxrc}{r}}}
     }[\PackageError{idx}{Undefined option to idx: #1}{}]
 }
 
@@ -126,9 +137,11 @@
 \newcommand{\alphac}[1][\alpha]{\ensuremath{\textcolor{alphac}{#1}}}
 \newcommand{\betac}[1][\beta]{\ensuremath{\textcolor{betac}{#1}}}
 \newcommand{\gammac}[1][\gamma]{\ensuremath{\textcolor{gammac}{#1}}}
+\newcommand{\rhoc}[1][\rho]{\ensuremath{\textcolor{rhoc}{#1}}}
 \newcommand{\phic}{\mc[2]{\vec{\phi}}}
+\newcommand{\tauc}[1][\tau]{\ensuremath{\textcolor{tauc}{#1}}}
 % Standard Coefficients Colored
 % ======================================================================
-\newcommand{\mca}{\mc[1]{a}}
-\newcommand{\mcb}{\mc[4]{b}}
-\newcommand{\mcc}{\mc[5]{c}}
+\newcommand{\mca}[1][a]{\mc[1]{#1}}
+\newcommand{\mcb}[1][b]{\mc[4]{#1}}
+\newcommand{\mcc}[1][c]{\mc[5]{#1}}

@@ -1,17 +1,10 @@
 #!/bin/bash
 # Create Formulary Structure
-url="git@gitlab.vis.ethz.ch:pollakg/formularyETH.git"
-mkdir formulary
-cd formulary
+formularyName=${1:-formulary}
 mkdir src
-git init
-git submodule add $url formularyETH
-if [ $? -eq 0 ]; then
-    echo Added submoduel
-else
-    echo Could not add submodule $url
-fi
-cp formularyETH/formulary.tex .
-cp formularyETH/formularyMacros.sty .
+mkdir figures
+
+cp formularyETH/TEMPLATES/formularyTEMPLATE.tex ./$formularyName.tex
+cp formularyETH/TEMPLATES/formularyMacrosTEMPLATE.sty ./formularyMacros.sty
 cp formularyETH/.gitignore .
 echo Finished
