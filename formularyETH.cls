@@ -72,7 +72,6 @@
 	\RequirePackage{formularyETH/formularyETH_colors}	% Colors
 	\RequirePackage{formularyETH/formularyETH_macros}	% Further macros
 	\RequirePackage{formularyETH/formularyETH_boxes}	% section boxes
-	\RequirePackage{formularyETH/formularyETH_items}	% section boxes                                                	
 	\RequirePackage[utf8]{inputenc}	
 	\RequirePackage{makeidx}							% Create an index
 	\RequirePackage[super]{nth} 						% Allows to write \nth{1}, \nth{2},... for nicer formatting 
