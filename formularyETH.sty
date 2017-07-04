@@ -53,14 +53,25 @@
 	\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
 	\titleformat{\subsubsection}
 				{ \color{subsubsection} \normalsize \bfseries }
-				{ \color{attributes} \thesubsubsection . }{0em}
+				{ \color{attributes} \thesubsubsection .}{0em}
 				{ \color{subsubsection}}
 				[]
+
+  % Not working yet
+  % ------------------------------------------------------------------------------ 
+  % \newcommand{\thesubsubsubsection}{\Roman{subsubsection}}
+	% \titleformat{\subsubsubsection}
+	% 			{ \color{subsubsection} \normalsize \bfseries }
+	% 			{ \color{attributes} \thesubsubsubsection )}{0em}
+	% 			{ \color{subsubsection}}
+	% 			[]
+
 % \titlespacing*{ command }{ left }{ beforesep }{ aftersep }[ right ]
 
 	\titlespacing{\section}{\sectionSpacingLeft}{\sectionSpacingTop}{\sectionSpacingBottom}[\sectionSpacingRight]
 	\titlespacing{\subsection}{\subSectionSpacingLeft}{\subSectionSpacingTop}{\subSectionSpacingBottom}[\subSectionSpacingRight]
 	\titlespacing{\subsubsection}{\subSubSectionSpacingLeft}{\subSubSectionSpacingTop}{\subSubSectionSpacingBottom}[\subSubSectionSpacingRight]
+	\titlespacing{\subsubsubsection}{\subSubSectionSpacingLeft}{\subSubSectionSpacingTop}{\subSubSectionSpacingBottom}[\subSubSectionSpacingRight]
 % ======================================================================
 % Basic LaTeX Settings
 % ======================================================================
