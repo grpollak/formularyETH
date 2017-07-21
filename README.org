@@ -22,8 +22,9 @@
 		\usepackage{formularyETH/extern/formularyETH_tikz}
 		\usepackage{formularyETH/extern/formularyETH_algorithms}
 		\tcbuselibrary{minted}
-		\IfFileExists{formularyMacros}{\usepackage{formularyMacros}{}}
+		\usepackage{formularyMacros}
 	 #+END_SRC
+	 Your own Macros should be included into formularyMacros
 ** Usage
 *** File Structure
 		- forumulary/
