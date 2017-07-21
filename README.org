@@ -73,3 +73,4 @@
     # Print key
     cat ~/.ssh/id_rsa.pub
     #+END_SRC
+    Afterwards just past public key into SSH Keys under profile preferences.
