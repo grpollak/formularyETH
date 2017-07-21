@@ -4,7 +4,7 @@
 	1. mkdir formularyFolder
 	2. git init
 	3. git submodule add git@gitlab.vis.ethz.ch:pollakg/formularyETH.git
-  4. chmod 0700 formularyETH/makeFormulary.sh
+    4. chmod 0700 formularyETH/makeFormulary.sh
 	2. formularyETH/makeFormulary.sh <Optional Name>
 
 ** Requirements
@@ -16,9 +16,11 @@
 	 #+END_SRC
 	 Further packages that are highly recommended to be included are:
 	 #+BEGIN_SRC latex
+	    \usepackage{formularyETH/formularyETH_GeneralPackages}
+	    \usepackage{formularyETH/formularyETH_underline}
 		\usepackage{formularyETH/extern/formularyETH_scientific}
 		\usepackage{formularyETH/extern/formularyETH_tikz}
-		\usepackage{formularyETH/formularyETH_underline}
+		\usepackage{formularyETH/extern/formularyETH_algorithms}
 		\tcbuselibrary{minted}
 		\IfFileExists{formularyMacros}{\usepackage{formularyMacros}{}}
 	 #+END_SRC
