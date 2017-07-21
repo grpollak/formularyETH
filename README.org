@@ -65,3 +65,11 @@
 
 		The above copyright notice, the creator of the formuary package G.R. Pollak
 		and this permission notice shall be included in all copies or substantial portions of the Software.
+* Sidenote: SSH Keygen
+    #+BEGIN_SRC bash
+    cd ~/.ssh
+    # Create new key (will promt for filename)
+    ssh-keygen -t rsa -C "your_email@example.com"
+    # Print key
+    cat ~/.ssh/id_rsa.pub
+    #+END_SRC
