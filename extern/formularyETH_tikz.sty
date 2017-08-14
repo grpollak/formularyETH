@@ -49,6 +49,12 @@
       \draw[<-] (0, 0) -- ++(0, -3pt) node[below=-2pt]{\tiny \textit{#2}};
     \end{tikzpicture}}}{#1}	
 }
+\newcommand{\lbua}[2]{
+	\underset{\mathclap{  
+	\begin{tikzpicture}
+      \draw[<-] (0, 0) -- ++(0, -7pt) node[below=-2pt]{\tiny \textit{#2}};
+    \end{tikzpicture}}}{#1}	
+}
 \newcommand{\bula}[2]{
 	\underset{\mathrlap{  
 	\begin{tikzpicture}
@@ -93,10 +99,22 @@
       \draw[->] (0, 0) -- ++(0, -3pt) node[above=1pt]{\tiny \textit{#2}};
     \end{tikzpicture}}}{#1}	
 }
+\newcommand{\ltda}[2]{
+	\overset{\mathclap{  
+	\begin{tikzpicture}
+      \draw[->] (0, 0) -- ++(0, -7pt) node[above=3pt]{\tiny \textit{#2}};
+    \end{tikzpicture}}}{#1}	
+}
 \newcommand{\tua}[2]{
 	\overset{\mathclap{  
 	\begin{tikzpicture}
       \draw[<-] (0, 0) |- ++(0, -3pt) node[above=1pt]{\tiny \textit{#2}};
+    \end{tikzpicture}}}{#1}	
+}
+\newcommand{\ltua}[2]{
+	\overset{\mathclap{  
+	\begin{tikzpicture}
+      \draw[<-] (0, 0) |- ++(0, -7pt) node[above=1pt]{\tiny \textit{#2}};
     \end{tikzpicture}}}{#1}	
 }
 \newcommand{\tura}[2]{
