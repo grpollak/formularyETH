@@ -113,8 +113,25 @@
 				}
 % Note Proofs
 % need to be handeled differently because of the \qed
-
 	\renewenvironment{proof}{\imp{Proof}}{\qed}
+%   \makeatletter
+%     \renewenvironment{proof}[1][\proofname]{\par
+%       \pushQED{\qed}%
+%       \normalfont \topsep6\p@\@plus6\p@\relax
+%       \trivlist
+%       \item\relax
+%       {\bfseries
+%       #1}
+%       }{%
+%       \popQED\endtrivlist\@endpefalse
+%     }
+%   \makeatother
+% %Or without any package
+% \DeclareRobustCommand{\qed}{%
+%  \ifmmode % if math mode, assume display: omit penalty etc.
+%  \else \leavevmode\unskip\penalty9999 \hbox{}\nobreak%\hfill
+%  \fi
+%  \quad\hbox{\qedsymbol}}
 % ----------------------------------------------------------------------
 % ======================================================================
 % \newtheorem{name}{Printed output}[numberby]
