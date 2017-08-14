@@ -48,6 +48,7 @@
 				{\thmname{#1} \thmnumber{#2} \textcolor{Red}{\thmnote{#3}}:
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
 					}
+          
 \newtheoremstyle{theorem}
 				{}{}
 				{}{}
@@ -57,6 +58,15 @@
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
 				}
 
+\newtheoremstyle{axiom}
+				{}{}
+				{}{}
+				{\bfseries}{}
+				{\parindent}
+				{\textbf{\thmname{#1} \thmnumber{#2} }\textcolor{Red}{\thmnote{#3}}:
+					%\keywordbf{\thmnote}]\label{def:\thmnote}
+				}
+        
 \newtheoremstyle{lemma}
 				{}{}
 				{}{}
@@ -117,6 +127,11 @@
 % ----------------------------------------------------------------------
 	\theoremstyle{theorem}
 	\newtheorem{theorem}{Theorem}[section]
+%	Axiom
+% ----------------------------------------------------------------------
+	\theoremstyle{axiom}
+	\newtheorem{axiom}{Axiom}[section]
+	\crefname{axiom}{axiom}{axioms}
 %	Definition
 % ----------------------------------------------------------------------
 	\theoremstyle{definition}

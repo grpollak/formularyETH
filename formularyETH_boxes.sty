@@ -223,6 +223,26 @@
 		breakable
 }
 
+\newtcolorbox{axiombox}[1][]{
+		attach title to upper,
+		title = #1,
+		fonttitle=\bfseries,
+		coltitle=black,
+		colback=axiombox,
+		colframe=axiomboxFrame,
+		after skip = 0.5pt,				% skip before and after box
+		before skip = 0.5pt,
+		boxrule = 0.1mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt,
+		breakable
+}
+
 \newtcolorbox{corbox}[1][]{
 		attach title to upper,
 		fonttitle=\bfseries,
