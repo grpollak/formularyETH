@@ -11,3 +11,82 @@
 % Basic Packages
 % ----------------------------------------------------------------------
 \RequirePackage{minted}
+
+  \DeclareDocumentEnvironment{codeboxcomment}{s o g m m}{%
+%     % \DeclareDocumentEnvironment {〈environment〉} {〈arg spec〉} {〈start code〉} {〈end code〉}
+%     % Coding Box
+%     % s: star for small code snippet
+%     % o: optional [] for optional Title
+      % g: optional {} for optional width (default 0.5\columnwidth)
+%     % m: mandatory for minted programming language
+%     % m: mandatory for side comment 
+  \VerbatimEnvironment
+  \begin{codesidebox}[\IfNoValueTF{#2}{}{#2}]{#4}
+      \begin{minipage}[t]{\IfNoValueTF{#3}{0.5\columnwidth}{#3\columnwidth}}%
+          \begin{minted}[
+            numbersep=1pt,
+            autogobble,
+            framerule=0pt,
+            %bgcolor=olive!10,
+            linenos=true,
+            breaklines,
+            fontsize=\IfNoValueTF{#1}{\small}{\normalsize},
+            mathescape,
+            obeytabs=false,
+            obeytabs=false,
+            tabsize=1,
+            escapeinside=||,
+            mathescape=truem,
+            codetagify=true,         % Highlites special code tags TODO, NOTE, BUG, ...
+            highlightcolor=codeboxHighlight, % Can be used to highlight lines % with highlightlines={1, 3-5}
+            texcomments=true % Enables LaTeX code inside Comments
+          ]{#4}}%
+  {%
+        \end{minted}%
+      \end{minipage}%
+      \hspace{-4mm}  
+      \vline
+      \hspace{1mm}
+    \begin{minipage}[t]{\IfNoValueTF{#3}{0.5\columnwidth}{(\columnwidth-#3\columnwidth)}}
+      #5
+    \end{minipage}
+  \end{codesidebox}
+}
+
+% \DeclareDocumentEnvironment{testBox}{s o g m m}{%
+%     \IfNoValueTF{#5}{\begin{codebox}{cpp}}{\begin{codeboxSideBySide}[MyTitle]{0.7}{cpp}{isdfdsf}}}%
+%     {%
+%     \IfNoValueTF{#5}{\end{codebox}}{\end{codeboxSideBySide}}}%
+%     {%
+%     }
+
+
+% Minted enviroment for one line of code
+% ------------------------------------------------------------------------------ 
+  \DeclareDocumentEnvironment{mintline}{s o m}{%
+%     % \DeclareDocumentEnvironment {〈environment〉} {〈arg spec〉} {〈start code〉} {〈end code〉}
+%     % Coding Box
+%     % s: star for small code snippet
+%     % m: mandatory for minted programming language
+    \VerbatimEnvironment
+    \begin{minted}[
+      numbersep=1pt,
+      autogobble,
+      %framerule=0pt,
+      bgcolor=olive!10,
+      linenos=true,
+      breaklines,
+      fontsize=\IfNoValueTF{#1}{\small}{\normalsize},
+      mathescape,
+      obeytabs=false,
+      tabsize=1,
+      escapeinside=||,
+      mathescape=true,
+      codetagify=true,         % Highlites special code tags TODO, NOTE, BUG, ...
+      highlightcolor=codeboxHighlight, % Can be used to highlight lines % with highlightlines={1, 3-5}
+      texcomments=true % Enables LaTeX code inside Comments
+      \IfNoValueTF{#2}{}{,#2}
+    ]{#3}}%
+  {%
+        \end{minted}%
+}
