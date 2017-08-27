@@ -10,7 +10,7 @@
 
 % Basic Packages
 % ----------------------------------------------------------------------
-\RequirePackage{minted}
+\RequirePackage[cache=false]{minted}
 
   \DeclareDocumentEnvironment{codeboxcomment}{s o g m m}{%
 %     % \DeclareDocumentEnvironment {〈environment〉} {〈arg spec〉} {〈start code〉} {〈end code〉}
@@ -53,30 +53,43 @@
   \end{codesidebox}
 }
 
-% \DeclareDocumentEnvironment{testBox}{s o g m m}{%
-%     \IfNoValueTF{#5}{\begin{codebox}{cpp}}{\begin{codeboxSideBySide}[MyTitle]{0.7}{cpp}{isdfdsf}}}%
-%     {%
-%     \IfNoValueTF{#5}{\end{codebox}}{\end{codeboxSideBySide}}}%
-%     {%
-%     }
-
 
 % Minted enviroment for one line of code
 % ------------------------------------------------------------------------------ 
-  \DeclareDocumentEnvironment{mintline}{s o m}{%
-%     % \DeclareDocumentEnvironment {〈environment〉} {〈arg spec〉} {〈start code〉} {〈end code〉}
-%     % Coding Box
-%     % s: star for small code snippet
-%     % m: mandatory for minted programming language
-    \VerbatimEnvironment
-    \begin{minted}[
-      numbersep=1pt,
+%   \DeclareDocumentEnvironment{mintline}{s o m}{%
+% %     % \DeclareDocumentEnvironment {〈environment〉} {〈arg spec〉} {〈start code〉} {〈end code〉}
+% %     % Coding Box
+% %     % s: star for small code snippet
+% %     % m: mandatory for minted programming language
+%     \VerbatimEnvironment
+%   \begin{codesidebox}
+%     \begin{minted}[
+%       numbersep=1pt,
+%       autogobble,
+%       %framerule=0pt,
+%       bgcolor=olive!10,
+%       %linenos=true,
+%       breaklines,
+%       fontsize=\IfNoValueTF{#1}{\small}{\normalsize},
+%       mathescape,
+%       obeytabs=false,
+%       tabsize=1,
+%       escapeinside=||,
+%       mathescape=true,
+%       codetagify=true,         % Highlites special code tags TODO, NOTE, BUG, ...
+%       highlightcolor=codeboxHighlight, % Can be used to highlight lines % with highlightlines={1, 3-5}
+%       texcomments=true % Enables LaTeX code inside Comments
+%       \IfNoValueTF{#2}{}{,#2}
+%     ]{#3}}%
+%   {%
+%    \end{codesidebox}
+%         \end{minted}%
+% }
+
+
+\newmintinline{cpp}{numbersep=1pt,
       autogobble,
-      %framerule=0pt,
-      bgcolor=olive!10,
-      %linenos=true,
-      breaklines,
-      fontsize=\IfNoValueTF{#1}{\small}{\normalsize},
+      %bgcolor=olive!10,
       mathescape,
       obeytabs=false,
       tabsize=1,
@@ -85,8 +98,4 @@
       codetagify=true,         % Highlites special code tags TODO, NOTE, BUG, ...
       highlightcolor=codeboxHighlight, % Can be used to highlight lines % with highlightlines={1, 3-5}
       texcomments=true % Enables LaTeX code inside Comments
-      \IfNoValueTF{#2}{}{,#2}
-    ]{#3}}%
-  {%
-        \end{minted}%
-}
+      }
