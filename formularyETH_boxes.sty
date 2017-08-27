@@ -308,26 +308,29 @@
 % ==============================================================================
 % ------------------------------------------------------------------------------
 \newcounter{mcboxCounter}
-\newtcblisting[use counter=mcboxCounter, number within=section, number format=\arabic]{codebox}[2][]{
+\DeclareTCBListing[use counter=mcboxCounter, number within=section, number
+format=\arabic]{codebox}{s o o m}{
+    minted language=#4,
     listing engine=minted,
+    listing only,
     minted options={
       autogobble,
       linenos,
       breaklines,
       numbersep=1pt,
-      %fontsize=\small,
+      fontsize=\IfNoValueTF{#1}{\small}{\normalsize},
       mathescape,
       obeytabs=false,
       tabsize=1,
       escapeinside=||,
       mathescape=true
+      \IfNoValueTF{#3}{}{,#3}
     },
-    minted language=#2,
-    listing only,
+		%arc = 0mm,						              % innder radius of frames (corners)
     enhanced jigsaw,
 		%fonttitle=\bfseries,
-    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{\textit{#1}}{}}{}{ \textbf{:} \textit{#1}}\hfill
-    \textit{#2},
+    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{\textit{#2}}{}}{}{ \textbf{:} \textit{#2}}\hfill
+    \textit{#4},
     coltitle=codeboxTitle,
 		toptitle=1pt,
 		bottomtitle=1pt,
@@ -351,6 +354,54 @@
  		after skip = 0.5pt
     }
 
+% ------------------------------------------------------------------------------
+% Codebox Input File
+% ------------------------------------------------------------------------------ 
+\DeclareTCBInputListing[use counter=mcboxCounter, number within=section, number
+format=\arabic]{codeboxinput}{s o o m m}{
+    listing file = #5,
+    minted language=#4,
+    listing engine=minted,
+    minted options={
+      autogobble,
+      linenos,
+      breaklines,
+      numbersep=1pt,
+      %fontsize=\IfNoValueTF{#1}{\normalsize}{\small},
+      mathescape,
+      obeytabs=false,
+      tabsize=1,
+      escapeinside=||,
+      mathescape=true
+      \IfValueTF{#3}{,#3}{}
+    },
+    listing only,
+    enhanced jigsaw,
+		%fonttitle=\bfseries,
+    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{\textit{#2}}{}}{}{ \textbf{:} \textit{#2}}\hfill
+    \textit{#4},
+    coltitle=codeboxTitle,
+		toptitle=1pt,
+		bottomtitle=1pt,
+		colbacktitle=codeboxBackTitle,
+		colback=codebox,
+		colframe=codeboxFrame,
+    %size=title,
+		after skip = 0.5pt,				          % skip before and after box
+		before skip = 0.5pt,
+		boxrule = 0.3mm,				            % frameborder width
+		arc = 0mm,						              % innder radius of frames (corners)
+		boxsep = 0mm,					              % Space between text and frame: left, right, top, bottom, and middle
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=7pt,
+		right=3pt,
+		bottom=3pt,
+		breakable,
+		%beforeafter skip = 0.4pt,		% skip before and after box
+ 		before skip = 0.5pt,
+ 		after skip = 0.5pt
+    }
 % Side by Side
 % ------------------------------------------------------------------------------ 
 \newcounter{mcboxCounterSide}
@@ -378,4 +429,56 @@
  		before skip = 0.5pt,
  		after skip = 0.5pt
     }
- 
+
+% Mintlinebox
+% ------------------------------------------------------------------------------ 
+\newcounter{mintlineboxCounter}
+\DeclareTCBListing[use counter=mintlineboxCounter, number within=section, number
+format=\arabic]{mintlinebox}{s o m}{
+    listing engine=minted,
+    minted language=#3,
+    minted options={
+        %numbersep=1pt,
+        autogobble,
+        %framerule=0pt,
+        %bgcolor=olive!10,
+        %linenos=true,
+        %breaklines,
+        fontsize=\IfNoValueTF{#1}{\small}{\normalsize},
+        mathescape,
+        obeytabs=false,
+        tabsize=1,
+        escapeinside=||,
+        mathescape=true,
+        codetagify=true,         % Highlites special code tags TODO, NOTE, BUG, ...
+        highlightcolor=codeboxHighlight, % Can be used to highlight lines % with highlightlines={1, 3-5}
+        texcomments=true % Enables LaTeX code inside Comments
+        \IfNoValueTF{#2}{}{,#2}
+    },
+    listing only,
+    enhanced jigsaw,
+		%fonttitle=\bfseries,
+    %title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{\textit{#1}}{}}{}{ \textbf{:} \textit{#1}}\hfill \textit{#2},
+    %coltitle=codeboxTitle,
+		toptitle=1pt,
+		bottomtitle=1pt,
+		%colbacktitle=codeboxBackTitle,
+		colback=mintinlinebox,
+		%colframe=codeboxFrame,
+    size=title,
+		after skip = 0.0pt,				          % skip before and after box
+		before skip = 0.0pt,
+		boxrule = 0.8pt,				            % frameborder width
+    %frame hidden,
+		%arc = 0mm,						              % innder radius of frames (corners)
+		boxsep = 0mm,					              % Space between text and frame: left, right, top, bottom, and middle
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=2pt,						
+		bottom=2pt,
+		left=3pt,
+		right=3pt,
+		breakable,
+		%beforeafter skip = 0.4pt,		% skip before and after box
+ 		before skip = 0.3pt,
+ 		after skip = 0.3pt
+}
