@@ -317,10 +317,10 @@ format=\arabic]{codebox}{s o o m}{
       autogobble,
       linenos,
       breaklines,
-      numbersep=1pt,
+      numbersep=3pt,
       fontsize=\IfNoValueTF{#1}{\small}{\normalsize},
       mathescape,
-      obeytabs=false,
+      %obeytabs=false,
       tabsize=1,
       escapeinside=||,
       mathescape=true
@@ -345,15 +345,102 @@ format=\arabic]{codebox}{s o o m}{
 		boxsep = 0mm,					              % Space between text and frame: left, right, top, bottom, and middle
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=6pt,
+		left=10pt,
 		right=3pt,
 		bottom=3pt,
 		breakable,
 		%beforeafter skip = 0.4pt,		% skip before and after box
- 		before skip = 0.5pt,
- 		after skip = 0.5pt
     }
 
+
+\newcounter{mcboxExampleCounter}
+\DeclareTCBListing[use counter=mcboxExampleCounter, number within=section, number
+format=\arabic]{codeboxExample}{s o o m}{
+    minted language=#4,
+    listing engine=minted,
+    listing only,
+    minted options={
+      autogobble,
+      linenos,
+      breaklines,
+      numbersep=3pt,
+      fontsize=\IfNoValueTF{#1}{\small}{\normalsize},
+      mathescape,
+      %obeytabs=false,
+      tabsize=1,
+      escapeinside=||,
+      mathescape=true
+      \IfNoValueTF{#3}{}{,#3}
+    },
+		%arc = 0mm,						              % innder radius of frames (corners)
+    enhanced jigsaw,
+		%fonttitle=\bfseries,
+    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{\textit{#2}}{}}{}{ \textbf{:} \textit{#2}}\hfill
+    \textit{#4},
+    coltitle=codeboxExampleTitle,
+		toptitle=1pt,
+		bottomtitle=1pt,
+		colbacktitle=codeboxExampleBackTitle,
+		colback=codeboxExample,
+		colframe=codeboxExampleFrame,
+    size=title,
+		after skip = 0.5pt,				          % skip before and after box
+		before skip = 0.5pt,
+		boxrule = 0.3mm,				            % frameborder width
+		arc = 0mm,						              % innder radius of frames (corners)
+		boxsep = 0mm,					              % Space between text and frame: left, right, top, bottom, and middle
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=10pt,
+		right=3pt,
+		bottom=3pt,
+		breakable,
+		%beforeafter skip = 0.4pt,		% skip before and after box
+    }
+
+\DeclareTCBListing[use counter=mcboxCounter, number within=section, number
+format=\arabic]{codeboxNl}{s o g m}{
+    minted language=#4,
+    listing engine=minted,
+    listing only,
+    minted options={
+      autogobble,
+      linenos=false,
+      breaklines,
+      numbersep=3pt,
+      fontsize=\IfNoValueTF{#1}{\small}{\normalsize},
+      mathescape,
+      %obeytabs=false,
+      tabsize=1,
+      escapeinside=||,
+      mathescape=true
+      \IfNoValueTF{#3}{}{,#3}
+    },
+		%arc = 0mm,						              % innder radius of frames (corners)
+    enhanced jigsaw,
+		%fonttitle=\bfseries,
+    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{\textit{#2}}{}}{}{ \textbf{:} \textit{#2}}\hfill
+    \textit{#4},
+    coltitle=codeboxTitle,
+		toptitle=1pt,
+		bottomtitle=1pt,
+		colbacktitle=codeboxBackTitle,
+		colback=codebox,
+		colframe=codeboxFrame,
+    size=title,
+		after skip = 0.5pt,				          % skip before and after box
+		before skip = 0.5pt,
+		boxrule = 0.3mm,				            % frameborder width
+		arc = 0mm,						              % innder radius of frames (corners)
+		boxsep = 0mm,					              % Space between text and frame: left, right, top, bottom, and middle
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=10pt,
+		right=3pt,
+		bottom=3pt,
+		breakable,
+		%beforeafter skip = 0.4pt,		% skip before and after box
+    }
 % ------------------------------------------------------------------------------
 % Codebox Input File
 % ------------------------------------------------------------------------------ 
@@ -440,10 +527,11 @@ format=\arabic]{mintlinebox}{s o m}{
     minted options={
         %numbersep=1pt,
         autogobble,
+        funcnamehighlighting=true,
         %framerule=0pt,
         %bgcolor=olive!10,
         %linenos=true,
-        %breaklines,
+        breaklines,
         fontsize=\IfNoValueTF{#1}{\small}{\normalsize},
         mathescape,
         obeytabs=false,
@@ -466,19 +554,17 @@ format=\arabic]{mintlinebox}{s o m}{
 		colback=mintinlinebox,
 		%colframe=codeboxFrame,
     size=title,
-		after skip = 0.0pt,				          % skip before and after box
-		before skip = 0.0pt,
+		after skip = 0.3pt,				          % skip before and after box
+		before skip = 0.8pt,
 		boxrule = 0.8pt,				            % frameborder width
     %frame hidden,
 		%arc = 0mm,						              % innder radius of frames (corners)
 		boxsep = 0mm,					              % Space between text and frame: left, right, top, bottom, and middle
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
-		top=2pt,						
+		top=0pt,						
 		bottom=2pt,
 		left=3pt,
 		right=3pt,
 		breakable,
 		%beforeafter skip = 0.4pt,		% skip before and after box
- 		before skip = 0.3pt,
- 		after skip = 0.3pt
 }
