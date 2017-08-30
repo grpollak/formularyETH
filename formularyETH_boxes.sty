@@ -521,28 +521,9 @@ format=\arabic]{codeboxinput}{s o o m m}{
 % ------------------------------------------------------------------------------ 
 \newcounter{mintlineboxCounter}
 \DeclareTCBListing[use counter=mintlineboxCounter, number within=section, number
-format=\arabic]{mintlinebox}{s o m}{
+format=\arabic]{mintlinebox}{s O{} m}{
     listing engine=minted,
     minted language=#3,
-    minted options={
-        %numbersep=1pt,
-        autogobble,
-        funcnamehighlighting=true,
-        %framerule=0pt,
-        %bgcolor=olive!10,
-        %linenos=true,
-        breaklines,
-        fontsize=\IfNoValueTF{#1}{\small}{\normalsize},
-        mathescape,
-        obeytabs=false,
-        tabsize=1,
-        escapeinside=||,
-        mathescape=true,
-        codetagify=true,         % Highlites special code tags TODO, NOTE, BUG, ...
-        highlightcolor=codeboxHighlight, % Can be used to highlight lines % with highlightlines={1, 3-5}
-        texcomments=true % Enables LaTeX code inside Comments
-        \IfNoValueTF{#2}{}{,#2}
-    },
     listing only,
     enhanced jigsaw,
 		%fonttitle=\bfseries,
@@ -566,5 +547,23 @@ format=\arabic]{mintlinebox}{s o m}{
 		left=3pt,
 		right=3pt,
 		breakable,
+    minted options={
+        %numbersep=1pt,
+        autogobble,
+        funcnamehighlighting=true,
+        %framerule=0pt,
+        %bgcolor=olive!10,
+        %linenos=true,
+        breaklines,
+        fontsize=\IfNoValueTF{#1}{\small}{\normalsize},
+        mathescape,
+        obeytabs=false,
+        tabsize=1,
+        escapeinside=||,
+        mathescape=true,
+        codetagify=true,         % Highlites special code tags TODO, NOTE, BUG, ...
+        highlightcolor=codeboxHighlight, % Can be used to highlight lines % with highlightlines={1, 3-5}
+        texcomments=true % Enables LaTeX code inside Comments
+    }
 		%beforeafter skip = 0.4pt,		% skip before and after box
 }
