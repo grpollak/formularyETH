@@ -35,20 +35,22 @@
 	\DeclareMathOperator{\N}{\mathbb N}						% Natürliche Zahlen
 	\DeclareMathOperator{\Np}{\mathbb N_{>0}}						% Natürliche Zahlen
 	\DeclareMathOperator{\R}{\mathbb R}						% Reele Zahlen
+	\DeclareMathOperator{\Boolean}{\mathbb B}						% Boolean
 	\DeclareMathOperator{\Rp}{\mathbb R_+}					% Reele Zahlen	                                   					
 	\DeclareMathOperator{\C}{\mathbb C}						% Komplexe Zahlen
 	\DeclareMathOperator{\K}{\mathbb K}						% Reele oder komplexe Zahlen
 	\DeclareMathOperator{\Z}{\mathbb{Z}}
 	\DeclareMathOperator{\img}{i}							% Imaginary Unit
 	\DeclareMathOperator{\curvec}{\mathcal{C}}							% Curley Curve C 					
+  \DeclareMathOperator*{\argmax}{arg\,max}    % argmax
+  \DeclareMathOperator*{\argmin}{arg\,min}    % argmin
+	\DeclareMathOperator{\T}{\intercal}         % Transposed
 	\newcommand{\ie}{\emph{i.e.} }
 	\newcommand{\cf}{\emph{cf.} }
 	\newcommand{\into}{\hookrightarrow}
 	\newcommand{\dirac}{\slashed{\partial}}
 	\newcommand{\eqs}[2][=]{\stackrel{#2}{#1}}
   \DeclarePairedDelimiter\abs{\lvert}{\rvert} % abs val
-	\DeclareMathOperator{\T}{\intercal}
-	
 % Linear Algebra
 % ======================================================================
 	\DeclareMathOperator{\linalgRank}{\mathfrak{rank}}
@@ -75,25 +77,100 @@
 	% vector operations
   \DeclarePairedDelimiter\norm{\lVert}{\rVert}                    % Norm
 	\DeclareMathOperator{\Sp}{Sp}																		% Spur (german for trace \tr)
+  \DeclarePairedDelimiterX{\inprd}[2]{\langle}{\rangle}{#1, #2}    % *: uses \left...\right;
+                                                                  % manual scaling can be provided by \inp[\big], \inp[\Big], \inp[\bigg]
 	                             																		 
+% ======================================================================						
 % Analysis
 % ======================================================================						
-	\DeclareMathOperator{\grad}{grad}																	% grad
+  \DeclareMathOperator{\grad}{grad}																	% grad
 	\DeclareMathOperator{\divg}{div}																	% divergence
 	\DeclareMathOperator{\rot}{rot}																		% curl
 	\DeclareMathOperator{\curl}{curl}																	% curl
 	\newcommand{\diff}{\mathop{}\!\mathrm{\vphantom( d}}							% differential delta
-	\newcommand{\difft}[1][]{\frac{\diff #1}{\diff t}}							    % Time derivative
-	\newcommand{\pfrac}[2]{\frac{\partial #1}{\partial #2}}							    % Time derivative
+	\newcommand{\diffd}{\mathop{}\!\mathrm{\vphantom( d}}							% differential delta
+% Similar to the physics package
+  \DeclareDocumentCommand\derivative{ s o m g d() } {
+    % Total derivative
+    % s: star for \flatfrac flat derivative
+    % o: optional n for nth derivative
+    % m: mandatory (x in df/dx)
+    % g: optional (f in df/dx)
+    % d: long-form d/dx(...)
+    \IfBooleanTF{#1}
+    {\let\fractype\flatfrac}
+    {\let\fractype\frac}
+    \IfNoValueTF{#4}
+    {
+      \IfNoValueTF{#5}
+      {\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{}{^{#2}}}}
+      {\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{}{^{#2}}} \argopen(#5\argclose)}
+    }
+    {\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}} #3}{\diffd #4\IfNoValueTF{#2}{}{^{#2}}}}
+  }
+  \DeclareDocumentCommand\dv{}{\derivative} % Shorthand for \derivative
+  \DeclareDocumentCommand\partialderivative{ s o m g g d() } {
+    % Partial derivative
+    % s: star for \flatfrac flat derivative
+    % o: optional n for nth derivative
+    % m: mandatory (x in df/dx)
+    % g: optional (f in df/dx)
+    % g: optional (y in d^2f/dxdy)
+    % d: long-form d/dx(...)
+    \IfBooleanTF{#1}
+    {\let\fractype\flatfrac}
+    {\let\fractype\frac}
+    \IfNoValueTF{#4}
+    {
+      \IfNoValueTF{#6}
+      {\fractype{\partial \IfNoValueTF{#2}{}{^{#2}}}{\partial #3\IfNoValueTF{#2}{}{^{#2}}}}
+      {\fractype{\partial \IfNoValueTF{#2}{}{^{#2}}}{\partial #3\IfNoValueTF{#2}{}{^{#2}}} \argopen(#6\argclose)}
+    }
+    {
+      \IfNoValueTF{#5}
+      {\fractype{\partial \IfNoValueTF{#2}{}{^{#2}} #3}{\partial #4\IfNoValueTF{#2}{}{^{#2}}}}
+      {\fractype{\partial^2 #3}{\partial #4 \partial #5}}
+    }
+  }
+  \DeclareDocumentCommand\pfrac{}{\partialderivative} % Shorthand for \partialderivative
+  \DeclareDocumentCommand\pdv{}{\partialderivative} % Shorthand for \partialderivative
+	%\newcommand{\pfrac2}[2]{\frac{\partial^2 #1}{\partial #2^2}}							    % Time derivative
 	\newcommand{\difrac}[2]{\frac{\diff #1}{\diff #2}}							    % Time derivative
+
+% ======================================================================						
 % Complexity
 % ======================================================================	                             	
  	\newcommand{\bigO}[1]{\ensuremath{\mathcal{\rd{O}}(#1)}}												
 																	
+% ======================================================================						
 % Transformations
 % ======================================================================
 	\DeclareMathOperator{\LT}{\mathscr{\textcolor{Fuchsia}{L}}} % Laplace Transform		
 	\DeclareMathOperator{\FT}{\mathscr{F}} % Fourrier Transform		
+% ==============================================================================
+% Probability
+% ==============================================================================
+% ------------------------------------------------------------------------------
+\DeclareMathOperator{\Expct}{\mathbb{E}}% expected value
+\DeclareDocumentCommand{\Prob}{ g }{
+  \IfValueTF{#1}
+  {\textcolor{CarnationPink}{\mathbb{P}}\left[#1\right]}
+  {\textcolor{CarnationPink}{\mathbb{P}}}
+  }
+\DeclareDocumentCommand{\Expct}{ g }{
+  \IfValueTF{#1}
+  {\textcolor{Green}{\mathbb{E}}\left[#1\right]}
+  {\textcolor{Green}{\mathbb{E}}}
+  }
+\DeclareDocumentCommand{\distas}{ s g }{
+  \IfValueTF{#2}
+  {
+    \IfBooleanTF{#1}
+    {\mathbin{\stackrel{\mathclap{#2}}{\sim}}}
+    {\mathbin{\stackrel{#2}{\sim}}}
+  }
+  {\sim}
+}
 % Important Colors
 % ======================================================================
 % Math Coefficient colors
@@ -143,6 +220,7 @@
 \newcommand{\tauc}[1][\tau]{\ensuremath{\textcolor{tauc}{#1}}}
 \newcommand{\muc}[1][\mu]{\ensuremath{\textcolor{muc}{#1}}}
 \newcommand{\xic}[1][\xi]{\ensuremath{\textcolor{xic}{#1}}}
+\newcommand{\etac}[1][\eta]{\ensuremath{\textcolor{etac}{#1}}}
 % Standard Coefficients Colored
 % ======================================================================
 \newcommand{\mca}[1][a]{\mc[1]{#1}}
