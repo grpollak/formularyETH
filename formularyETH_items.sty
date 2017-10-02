@@ -22,17 +22,25 @@
 					ref=(\textnormal{\textcolor{item}{\textbf{\alph*}})}
 					}
 \setlist[itemize]{font=\normalfont,
-					topsep=0pt,
-          leftmargin=4.5pt,
-          labelindent=\parindent,
-					itemsep=0pt,
-          nosep,
 					%noitemsep,
 					label=\textcolor{item}{\textbullet},
 					ref=(\textnormal{\textcolor{item}{\textbullet}}
 					}
 % \newlist{format}{Level} creates a new list type 
 % ======================================================================
+\newlist{itemizenosep}{enumerate}{1}
+\setlist[itemizenosep]{
+					label=\textcolor{item}{\textbullet},
+					ref=(\textnormal{\textcolor{item}{\textbullet}}
+          font=\normalfont,
+					topsep=0pt,
+          leftmargin=4.5pt,
+          labelindent=\parindent,
+					itemsep=0pt,
+          nosep,
+					%noitemsep,
+					}
+
 \newlist{romanlist}{enumerate}{1}
 \setlist[romanlist]{%
   label=\textcolor{item}{\textbf{\Roman*}}),    
