@@ -6,5 +6,7 @@ mkdir figures
 
 cp formularyETH/TEMPLATES/formularyTEMPLATE.tex ./$formularyName.tex
 cp formularyETH/TEMPLATES/formularyMacrosTEMPLATE.sty ./formularyMacros.sty
+cp formularyETH/TEMPLATES/README.org ./README.org
+sed -i "s/formulary/$formularyName/" ./README.org
 cp formularyETH/.gitignore .
 echo Finished
