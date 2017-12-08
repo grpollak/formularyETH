@@ -5,7 +5,7 @@
 
 % ======================================================================
 % Packages
-% Note: Order matters!
+% 
 % ======================================================================
 
 % Basic Packages
@@ -14,7 +14,7 @@
 \RequirePackage{esint}					% more integral symbols
 \RequirePackage{trfsigns}				% Fourier Transformation signs
 \RequirePackage{amssymb}				% additional math symbols
-% Sup­port use of the Raph Smith’s For­mal Script font in math­e­mat­ics.
+% Support use of the Raph Smith’s For­mal Script font in math­e­mat­ics.
 \RequirePackage{mathrsfs}
 \RequirePackage{dsfont} 				% to get the unit vector \mathds{1}
 \RequirePackage{systeme}
@@ -51,6 +51,8 @@
 	\newcommand{\dirac}{\slashed{\partial}}
 	\newcommand{\eqs}[2][=]{\stackrel{#2}{#1}}
   \DeclarePairedDelimiter\abs{\lvert}{\rvert} % abs val
+  \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil} % abs val
+  \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 % Linear Algebra
 % ======================================================================
 	\DeclareMathOperator{\linalgRank}{\mathfrak{rank}}
@@ -140,8 +142,11 @@
 % ======================================================================						
 % Complexity
 % ======================================================================	                             	
- 	\newcommand{\bigO}[1]{\ensuremath{\mathcal{\rd{O}}(#1)}}												
-																	
+\DeclareDocumentCommand{\bigO}{ g }{
+  \IfValueTF{#1}
+  {\ensuremath{\mathcal{\rd{O}}(#1)}}
+  {\ensuremath{\mathcal{\rd{O}}}}
+  }
 % ======================================================================						
 % Transformations
 % ======================================================================
@@ -151,26 +156,37 @@
 % Probability
 % ==============================================================================
 % ------------------------------------------------------------------------------
-\DeclareMathOperator{\Expct}{\mathbb{E}}% expected value
+\DeclareMathOperator{\Expect}{\mathbb{E}}% expected value
 \DeclareDocumentCommand{\Prob}{ g }{
   \IfValueTF{#1}
   {\textcolor{CarnationPink}{\mathbb{P}}\left[#1\right]}
   {\textcolor{CarnationPink}{\mathbb{P}}}
   }
+\DeclareDocumentCommand{\prob}{ g }{
+  \IfValueTF{#1}
+  {\textcolor{CarnationPink}{p}\left[#1\right]}
+  {\textcolor{CarnationPink}{p}}
+  }
 \DeclareDocumentCommand{\Expct}{ g }{
   \IfValueTF{#1}
-  {\textcolor{Green}{\mathbb{E}}\left[#1\right]}
-  {\textcolor{Green}{\mathbb{E}}}
+  {\mathbb{\textcolor{Green}{E}}\left[#1\right]}
+  {\mathbb{\textcolor{Green}{E}}}
   }
-\DeclareDocumentCommand{\distas}{ s g }{
+\DeclareDocumentCommand{\distas}{ s o g }{
   \IfValueTF{#2}
   {
     \IfBooleanTF{#1}
-    {\mathbin{\stackrel{\mathclap{#2}}{\sim}}}
-    {\mathbin{\stackrel{#2}{\sim}}}
+    {\mathbin{\stackrel{\mathclap{#2}}{\sim}}\IfValueTF{#3}{\tc{CarnationPink}{#3}}{}}
+    {\mathbin{\stackrel{#2}{\sim}}\IfValueTF{#3}{\tc{CarnationPink}{#3}}{}}
   }
-  {\sim}
+  {\sim\IfValueTF{#3}{\tc{CarnationPink}{#3}}{}}
 }
+% Distibutions
+% ------------------------------------------------------------------------------ 
+
+\newcommand{\Normaldist}{\textcolor{Purple}{\mathcal{N}}}
+\newcommand{\Unidist}{\textcolor{Purple}{\mathcal{U}}}
+\newcommand{\Bernoulidist}{\textcolor{Purple}{\mathrm{Bern}}}
 % Important Colors
 % ======================================================================
 % Math Coefficient colors
@@ -216,11 +232,18 @@
 \newcommand{\betac}[1][\beta]{\ensuremath{\textcolor{betac}{#1}}}
 \newcommand{\gammac}[1][\gamma]{\ensuremath{\textcolor{gammac}{#1}}}
 \newcommand{\rhoc}[1][\rho]{\ensuremath{\textcolor{rhoc}{#1}}}
-\newcommand{\phic}{\mc[2]{\vec{\phi}}}
+\newcommand{\phic}[1][\phi]{\ensuremath{\textcolor{phic}{#1}}}
+\newcommand{\Phic}[1][\Phi]{\ensuremath{\textcolor{phic}{#1}}}
 \newcommand{\tauc}[1][\tau]{\ensuremath{\textcolor{tauc}{#1}}}
+\newcommand{\nuc}[1][\nu]{\ensuremath{\textcolor{nuc}{#1}}}
 \newcommand{\muc}[1][\mu]{\ensuremath{\textcolor{muc}{#1}}}
+\newcommand{\thetac}[1][\theta]{\ensuremath{\textcolor{thetac}{#1}}}
 \newcommand{\xic}[1][\xi]{\ensuremath{\textcolor{xic}{#1}}}
+\newcommand{\kappac}[1][\kappa]{\ensuremath{\textcolor{kappac}{#1}}}
 \newcommand{\etac}[1][\eta]{\ensuremath{\textcolor{etac}{#1}}}
+\newcommand{\sigmac}[1][\sigma]{\ensuremath{\textcolor{sigmac}{#1}}}
+\newcommand{\Sigmac}[1][\Sigma]{\ensuremath{\textcolor{sigmac}{#1}}}
+\newcommand{\epsilonc}[1][\epsilon]{\ensuremath{\textcolor{epsilonc}{#1}}}
 % Standard Coefficients Colored
 % ======================================================================
 \newcommand{\mca}[1][a]{\mc[1]{#1}}
