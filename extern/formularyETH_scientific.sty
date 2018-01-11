@@ -179,10 +179,20 @@
   {\mathrm{\textcolor{Green}{Var}}\left[#1\right]}
   {\mathrm{\textcolor{Green}{Var}}}
   }
+\DeclareDocumentCommand{\Cov}{ g }{
+  \IfValueTF{#1}
+  {\mathrm{\textcolor{Green}{Cov}}\left[#1\right]}
+  {\mathrm{\textcolor{Green}{Cov}}}
+  }
 \DeclareDocumentCommand{\Expect}{ g }{
   \IfValueTF{#1}
   {\mathbb{\textcolor{Green}{E}}\left[#1\right]}
   {\mathbb{\textcolor{Green}{E}}}
+  }
+\DeclareDocumentCommand{\Var}{ g }{
+  \IfValueTF{#1}
+  {\mathbb{\textcolor{Green}{V}}\left(#1\right)}
+  {\mathbb{\textcolor{Green}{V}}}
   }
 \DeclareDocumentCommand{\Prob}{ g }{
   \IfValueTF{#1}
@@ -194,6 +204,17 @@
   {\textcolor{CarnationPink}{\mathrm{p}}\left[#1\right]}
   {\textcolor{CarnationPink}{\mathrm{p}}}
   }
+\DeclareDocumentCommand{\CDF}{ o g }{
+  \IfValueTF{#2}
+  {
+    \IfValueTF{#1}{\textcolor{CarnationPink}{\mathbb{F}}_{#1}\left(#2\right)}
+    {\textcolor{CarnationPink}{\mathbb{F}}_{#1}}
+  }
+  {
+    \IfValueTF{#1}{\textcolor{CarnationPink}{\mathbb{F}}\left(#2\right)}
+    {\textcolor{CarnationPink}{\mathbb{F}}}
+  }
+}
 \DeclareDocumentCommand{\Expct}{ g }{
   \IfValueTF{#1}
   {\mathbb{\textcolor{Green}{E}}\left[#1\right]}
@@ -259,13 +280,17 @@
 % Greek Letters Colored
 % ======================================================================
 \newcommand{\lambdac}[1][\lambda]{\ensuremath{\textcolor{lambdac}{#1}}}
+\newcommand{\Lambdac}[1][\Lambda]{\ensuremath{\textcolor{Lambdac}{#1}}}
 \newcommand{\alphac}[1][\alpha]{\ensuremath{\textcolor{alphac}{#1}}}
 \newcommand{\betac}[1][\beta]{\ensuremath{\textcolor{betac}{#1}}}
+\newcommand{\deltac}[1][\delta]{\ensuremath{\textcolor{deltac}{#1}}}
 \newcommand{\gammac}[1][\gamma]{\ensuremath{\textcolor{gammac}{#1}}}
 \newcommand{\Gammac}[1][\Gamma]{\ensuremath{\textcolor{gammac}{#1}}}
 \newcommand{\rhoc}[1][\rho]{\ensuremath{\textcolor{rhoc}{#1}}}
 \newcommand{\phic}[1][\phi]{\ensuremath{\textcolor{phic}{#1}}}
 \newcommand{\Phic}[1][\Phi]{\ensuremath{\textcolor{phic}{#1}}}
+\newcommand{\psic}[1][\psi]{\ensuremath{\textcolor{psic}{#1}}}
+\newcommand{\Psic}[1][\Psi]{\ensuremath{\textcolor{psic}{#1}}}
 \newcommand{\tauc}[1][\tau]{\ensuremath{\textcolor{tauc}{#1}}}
 \newcommand{\nuc}[1][\nu]{\ensuremath{\textcolor{nuc}{#1}}}
 \newcommand{\muc}[1][\mu]{\ensuremath{\textcolor{muc}{#1}}}
