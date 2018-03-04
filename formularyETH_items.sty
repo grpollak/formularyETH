@@ -28,7 +28,7 @@
 					}
 % \newlist{format}{Level} creates a new list type 
 % ======================================================================
-\newlist{itemizenosep}{enumerate}{1}
+\newlist{itemizenosep}{enumerate}{4}
 \setlist[itemizenosep]{
 					label=\textcolor{item}{\textbullet},
 					ref=(\textnormal{\textcolor{item}{\textbullet}}
@@ -57,6 +57,17 @@
 	nolistsep
 }
 
+
+\newlist{numberlistnosep}{enumerate}{1}
+\setlist[numberlistnosep]{%
+  label=\textcolor{item}{\textbf{\arabic*}}.,    
+	ref=(\textnormal{\textcolor{item}{\textbf{\arabic*}})},
+  topsep=0pt,
+  leftmargin=8.5pt,
+  labelindent=\parindent,
+  itemsep=0pt,
+  nosep,
+}
 % Circle Items
 \newlist{circlelist}{enumerate}{1}
 \setlist[circlelist]{%
