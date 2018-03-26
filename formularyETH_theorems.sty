@@ -103,6 +103,16 @@
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
 				}
 
+
+\newtheoremstyle{rule}
+				{}{}
+				{}{}
+				{\bfseries}{}
+				{\parindent}
+				{\textbf{\thmname{#1} \thmnumber{#2} }\textcolor{Red}{\thmnote{#3}}:
+					%\keywordbf{\thmnote}]\label{def:\thmnote}
+				}
+
 \newtheoremstyle{cor}
 				{}{}
 				{}{}
@@ -170,11 +180,16 @@
 % ----------------------------------------------------------------------
 	\newtheorem{cor}{Corollary}[section]
 	\crefname{cor}{corollary}{corollaries}
+%	Law
+% ----------------------------------------------------------------------
+	\newtheorem{law}{Law}[section]
+	\crefname{law}{law}{laws}
+% ----------------------------------------------------------------------
 %	Rule
+% Note: rule as command not possible as already used by LaTex
 % ----------------------------------------------------------------------
-	\newtheorem{law}{Rule}[section]
-	\crefname{law}{rule}{rules}
-% ----------------------------------------------------------------------
+	\newtheorem{ruling}{Rule}[section]
+ 	\crefname{ruling}{rule}{rules}
 
 
 

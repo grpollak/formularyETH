@@ -126,7 +126,7 @@
 \newcommand{\turla}[2]{
 	\overset{\mathrlap{  
 	\begin{tikzpicture}
-      \draw[<-] (0, 0) |- ++(3pt, 7pt) node[right]{\tiny \textit{#2}};
+      \draw[<-] (0, 0) |- ++(3pt, 7.5pt) node[right]{\tiny \textit{#2}};
     \end{tikzpicture}}}{#1}	
 }
 \newcommand{\tdla}[2]{
@@ -145,6 +145,12 @@
 	\overset{\mathllap{  
 	\begin{tikzpicture}
       \draw[->] (0, 0) |- ++(-3pt, +3pt) node[left]{\tiny \textit{#2}};
+    \end{tikzpicture}}}{#1}	
+}
+\newcommand{\tulla}[2]{
+	\overset{\mathllap{  
+	\begin{tikzpicture}
+      \draw[->] (0, 0) |- ++(-3pt, +7pt) node[left]{\tiny \textit{#2}};
     \end{tikzpicture}}}{#1}	
 }
 
@@ -455,3 +461,15 @@
             (0.6ex,0.4ex) -- +(1.5em,0);
     }%
 }
+
+% Drawing a loop around a node
+% \drawloop[options]{node}{start angle}{end angle} ... ;
+% ------------------------------------------------------------------------------ 
+\tikzset{stretch/.initial=1}
+\newcommand\drawloop[4][]%
+   {\draw[shorten <=0pt, shorten >=0pt,#1]
+      ($(#2)!\pgfkeysvalueof{/tikz/stretch}!(#2.#3)$)
+      let \p1=($(#2.center)!\pgfkeysvalueof{/tikz/stretch}!(#2.north)-(#2)$),
+          \n1= {veclen(\x1,\y1)*sin(0.5*(#4-#3))/sin(0.5*(180-#4+#3))}
+      in arc [start angle={#3-90}, end angle={#4+90}, radius=\n1]%
+   }

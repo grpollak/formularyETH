@@ -5,7 +5,7 @@
 
 % ======================================================================
 % Packages
-% Note: Order matters!
+% 
 % ======================================================================
 
 % Basic Packages
@@ -14,7 +14,7 @@
 \RequirePackage{esint}					% more integral symbols
 \RequirePackage{trfsigns}				% Fourier Transformation signs
 \RequirePackage{amssymb}				% additional math symbols
-% Sup­port use of the Raph Smith’s For­mal Script font in math­e­mat­ics.
+% Support use of the Raph Smith’s For­mal Script font in math­e­mat­ics.
 \RequirePackage{mathrsfs}
 \RequirePackage{dsfont} 				% to get the unit vector \mathds{1}
 \RequirePackage{systeme}
@@ -33,6 +33,7 @@
 % ======================================================================
 	% abbreviations for important sets
 	\DeclareMathOperator{\N}{\mathbb N}						% Natürliche Zahlen
+	\DeclareMathOperator{\Nnull}{\mathbb N_{0}}						% Natürliche Zahlen
 	\DeclareMathOperator{\Np}{\mathbb N_{>0}}						% Natürliche Zahlen
 	\DeclareMathOperator{\R}{\mathbb R}						% Reele Zahlen
 	\DeclareMathOperator{\Boolean}{\mathbb B}						% Boolean
@@ -51,6 +52,8 @@
 	\newcommand{\dirac}{\slashed{\partial}}
 	\newcommand{\eqs}[2][=]{\stackrel{#2}{#1}}
   \DeclarePairedDelimiter\abs{\lvert}{\rvert} % abs val
+  \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil} % abs val
+  \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 % Linear Algebra
 % ======================================================================
 	\DeclareMathOperator{\linalgRank}{\mathfrak{rank}}
@@ -68,12 +71,29 @@
 	\newcommand{\tma}[3]{\ensuremath{{}_{#1} \ma #2_#3 }}												% Trafomatrix
 	\renewcommand{\vec}[1]{\ensuremath{\boldsymbol #1 }}												% Vector bold and underlined
 	\newcommand{\vect}[1]{\ensuremath{\arraycolsep=0.3em \begin{pmatrix} #1 \end{pmatrix}}}				% Vector
+	\newcommand{\bvect}[1]{\ensuremath{\arraycolsep=0.3em \begin{bmatrix} #1 \end{bmatrix}}}				% Vector
 	\newcommand{\unitVector}{\ensuremath{\mathds{1}}}													% Unit Vector
 	\newcommand{\mvect}[1]{\ensuremath{\left.\begin{matrix} #1 \end{matrix}\right]}}					% Matrixvector
 	\newcommand{\tensor}[1]{\ensuremath{\underline{\underline{\boldsymbol #1}}}}						% Tensor
 	\DeclareMathOperator{\diag}{diag}																	% diagonal matrix
-  \newcommand{\unitMatrix}{\ensuremath{\mathds{\ma{I}}}}		 % unitrary matrix
-
+  \newcommand{\unitMatrixI}{\ensuremath{\mathds{\ma{I}}}}		 % unitrary matrix
+  % \newcommand{\unitMatrix}{
+	% 				\begin{tikzpicture}[baseline=(current bounding box.center)]
+	% 				\matrix(m)[
+	% 						inner sep=0pt, nodes={inner sep=.1em}, 
+	% 						column sep=6pt, row sep=2pt,
+	% 						matrix of math nodes, nodes in empty cells,
+	% 						right delimiter={]},left delimiter={[}]
+	% 						{
+  %               1& & 	& \\
+	% 							&1 & 	& \\
+	% 							&  & 1& \\
+	% 							&  &  &1\\
+	%  						};
+	% 				\draw[loosely dotted] (m-1-1)-- (m-2-2);
+	% 				\draw[loosely dotted] (m-3-3)-- (m-4-4);
+	% 				\node[fit={ (m-2-3) (m-2-4) (m-1-3) (m-1-4)}, scale=2] {$0$};
+	% 				\node[fit={ (m-4-1) (m-4-2) (m-3-1) (m-3-2)}, scale=2] {$0$};}
 	% vector operations
   \DeclarePairedDelimiter\norm{\lVert}{\rVert}                    % Norm
 	\DeclareMathOperator{\Sp}{Sp}																		% Spur (german for trace \tr)
@@ -140,8 +160,11 @@
 % ======================================================================						
 % Complexity
 % ======================================================================	                             	
- 	\newcommand{\bigO}[1]{\ensuremath{\mathcal{\rd{O}}(#1)}}												
-																	
+\DeclareDocumentCommand{\bigO}{ g }{
+  \IfValueTF{#1}
+  {\ensuremath{\mathcal{\rd{O}}(#1)}}
+  {\ensuremath{\mathcal{\rd{O}}}}
+  }
 % ======================================================================						
 % Transformations
 % ======================================================================
@@ -151,26 +174,71 @@
 % Probability
 % ==============================================================================
 % ------------------------------------------------------------------------------
-\DeclareMathOperator{\Expct}{\mathbb{E}}% expected value
+\DeclareDocumentCommand{\Var}{ g }{
+  \IfValueTF{#1}
+  {\mathrm{\textcolor{Green}{Var}}\left[#1\right]}
+  {\mathrm{\textcolor{Green}{Var}}}
+  }
+\DeclareDocumentCommand{\Cov}{ g }{
+  \IfValueTF{#1}
+  {\mathrm{\textcolor{Green}{Cov}}\left[#1\right]}
+  {\mathrm{\textcolor{Green}{Cov}}}
+  }
+\DeclareDocumentCommand{\Expect}{ g }{
+  \IfValueTF{#1}
+  {\mathbb{\textcolor{Green}{E}}\left[#1\right]}
+  {\mathbb{\textcolor{Green}{E}}}
+  }
+\DeclareDocumentCommand{\Var}{ g }{
+  \IfValueTF{#1}
+  {\mathbb{\textcolor{Green}{V}}\left(#1\right)}
+  {\mathbb{\textcolor{Green}{V}}}
+  }
 \DeclareDocumentCommand{\Prob}{ g }{
   \IfValueTF{#1}
   {\textcolor{CarnationPink}{\mathbb{P}}\left[#1\right]}
   {\textcolor{CarnationPink}{\mathbb{P}}}
   }
+\DeclareDocumentCommand{\prob}{ g }{
+  \IfValueTF{#1}
+  {\textcolor{CarnationPink}{\mathrm{p}}\left[#1\right]}
+  {\textcolor{CarnationPink}{\mathrm{p}}}
+  }
+\DeclareDocumentCommand{\CDF}{ o g }{
+  \IfValueTF{#2}
+  {
+    \IfValueTF{#1}{\textcolor{CarnationPink}{\mathbb{F}}_{#1}\left(#2\right)}
+    {\textcolor{CarnationPink}{\mathbb{F}}_{#1}}
+  }
+  {
+    \IfValueTF{#1}{\textcolor{CarnationPink}{\mathbb{F}}\left(#2\right)}
+    {\textcolor{CarnationPink}{\mathbb{F}}}
+  }
+}
 \DeclareDocumentCommand{\Expct}{ g }{
   \IfValueTF{#1}
-  {\textcolor{Green}{\mathbb{E}}\left[#1\right]}
-  {\textcolor{Green}{\mathbb{E}}}
+  {\mathbb{\textcolor{Green}{E}}\left[#1\right]}
+  {\mathbb{\textcolor{Green}{E}}}
   }
-\DeclareDocumentCommand{\distas}{ s g }{
+\DeclareDocumentCommand{\distas}{ s o g }{
   \IfValueTF{#2}
   {
     \IfBooleanTF{#1}
-    {\mathbin{\stackrel{\mathclap{#2}}{\sim}}}
-    {\mathbin{\stackrel{#2}{\sim}}}
+    {\mathbin{\stackrel{\mathclap{#2}}{\sim}}\IfValueTF{#3}{\tc{CarnationPink}{#3}}{}}
+    {\mathbin{\stackrel{#2}{\sim}}\IfValueTF{#3}{\tc{CarnationPink}{#3}}{}}
   }
-  {\sim}
+  {\sim\IfValueTF{#3}{\tc{CarnationPink}{#3}}{}}
 }
+% Key figures
+% ------------------------------------------------------------------------------ 
+\newcommand{\mean}{\textcolor{Green}{\mu}}
+\newcommand{\std}{\textcolor{Green}{\sigma}}
+% Distibutions
+% ------------------------------------------------------------------------------ 
+
+\newcommand{\Normaldist}{\textcolor{Purple}{\mathcal{N}}}
+\newcommand{\Unidist}{\textcolor{Purple}{\mathcal{U}}}
+\newcommand{\Bernoulidist}{\textcolor{Purple}{\mathrm{Bern}}}
 % Important Colors
 % ======================================================================
 % Math Coefficient colors
@@ -212,17 +280,33 @@
 % Greek Letters Colored
 % ======================================================================
 \newcommand{\lambdac}[1][\lambda]{\ensuremath{\textcolor{lambdac}{#1}}}
+\newcommand{\Lambdac}[1][\Lambda]{\ensuremath{\textcolor{Lambdac}{#1}}}
 \newcommand{\alphac}[1][\alpha]{\ensuremath{\textcolor{alphac}{#1}}}
 \newcommand{\betac}[1][\beta]{\ensuremath{\textcolor{betac}{#1}}}
+\newcommand{\deltac}[1][\delta]{\ensuremath{\textcolor{deltac}{#1}}}
 \newcommand{\gammac}[1][\gamma]{\ensuremath{\textcolor{gammac}{#1}}}
+\newcommand{\Gammac}[1][\Gamma]{\ensuremath{\textcolor{gammac}{#1}}}
 \newcommand{\rhoc}[1][\rho]{\ensuremath{\textcolor{rhoc}{#1}}}
-\newcommand{\phic}{\mc[2]{\vec{\phi}}}
+\newcommand{\phic}[1][\phi]{\ensuremath{\textcolor{phic}{#1}}}
+\newcommand{\Phic}[1][\Phi]{\ensuremath{\textcolor{phic}{#1}}}
+\newcommand{\psic}[1][\psi]{\ensuremath{\textcolor{psic}{#1}}}
+\newcommand{\Psic}[1][\Psi]{\ensuremath{\textcolor{psic}{#1}}}
 \newcommand{\tauc}[1][\tau]{\ensuremath{\textcolor{tauc}{#1}}}
+\newcommand{\nuc}[1][\nu]{\ensuremath{\textcolor{nuc}{#1}}}
 \newcommand{\muc}[1][\mu]{\ensuremath{\textcolor{muc}{#1}}}
+\newcommand{\thetac}[1][\theta]{\ensuremath{\textcolor{thetac}{#1}}}
+\newcommand{\Thetac}[1][\Theta]{\ensuremath{\textcolor{thetac}{#1}}}
 \newcommand{\xic}[1][\xi]{\ensuremath{\textcolor{xic}{#1}}}
+\newcommand{\kappac}[1][\kappa]{\ensuremath{\textcolor{kappac}{#1}}}
 \newcommand{\etac}[1][\eta]{\ensuremath{\textcolor{etac}{#1}}}
+\newcommand{\epsilonc}[1][\epsilon]{\ensuremath{\textcolor{epsilonc}{#1}}}
+\newcommand{\sigmac}[1][\sigma]{\ensuremath{\textcolor{sigmac}{#1}}}
+\newcommand{\Sigmac}[1][\Sigma]{\ensuremath{\textcolor{sigmac}{#1}}}
 % Standard Coefficients Colored
 % ======================================================================
 \newcommand{\mca}[1][a]{\mc[1]{#1}}
 \newcommand{\mcb}[1][b]{\mc[4]{#1}}
 \newcommand{\mcc}[1][c]{\mc[5]{#1}}
+\newcommand{\mcA}[1][A]{\mc[1]{#1}}
+\newcommand{\mcB}[1][B]{\mc[4]{#1}}
+\newcommand{\mcC}[1][C]{\mc[5]{#1}}
