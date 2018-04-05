@@ -27,12 +27,13 @@
 	 Your own Macros should be included into formularyMacros
 ** Usage
 *** File Structure
-		- forumulary/
-      - formularyETH/
-			- myformulary.tex
-			- src/
-				- mych1.tex
-				- mych2.tex
+	- forumulary/
+    - formularyETH/
+    - myformulary.tex
+    - src/
+        - mych1.tex
+        - mych2.tex
+    - figures/
 			
 *** Boxes
 		The idea of the formulary is to stack boxes of different kinds together e.g.
