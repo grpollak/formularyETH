@@ -32,6 +32,8 @@
 	\def\svgwidth{#1}
 	\resizebox{\linewidth}{!}{\input{#2}}
 }
+% Scale INSIDE equations/align enviroment
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
 % Equalsign with hat
 \newcommand{\corresponds}{\mathrel{\widehat=}}
 % Not sure what I ussed this for
