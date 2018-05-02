@@ -38,7 +38,8 @@
 		left=3pt,
 		right=3pt,
 		bottom=3pt,
-		breakable,
+		%breakable,
+		%pad at break = 1mm
 }
 
 \newtcolorbox{emphbox}[1][]{
@@ -78,7 +79,6 @@
 		left=3pt,
 		right=3pt,
 		bottom=3pt,
-		breakable
 }
 
 \newtcolorbox{lemmabox}[1][]{
@@ -177,8 +177,7 @@
 		top=3pt,						
 		left=3pt,
 		right=3pt,
-		bottom=3pt,
-		breakable
+		bottom=3pt
 }
 
 \newtcolorbox{proofbox}[1][]{
@@ -220,7 +219,6 @@
 		left=3pt,
 		right=3pt,
 		bottom=3pt,
-		breakable
 }
 
 \newtcolorbox{theorembox}[1][]{
@@ -395,7 +393,7 @@ format=\arabic]{codeboxRaw}{o o}{
 		left=0pt,
 		right=0pt,
 		bottom=3pt,
-		breakable,
+		%breakable,
 		%beforeafter skip = 0.4pt,		% skip before and after box
     }
 
@@ -527,7 +525,7 @@ format=\arabic]{codeboxNl}{s o o m}{
 		left=0pt,
 		right=0pt,
 		bottom=3pt,
-		breakable,
+		%breakable,
 		%beforeafter skip = 0.4pt,		% skip before and after box
     }
 % ------------------------------------------------------------------------------
