@@ -5,35 +5,36 @@
 2. git init
 3. git submodule add git@gitlab.vis.ethz.ch:pollakg/formularyETH.git
 4. chmod 0700 formularyETH/makeFormulary.sh
-5. formularyETH/makeFormulary.sh <Optional Name>
+5. formularyETH/makeFormulary.sh [-p] <Optional Name>
+Note: option -p create a .projectile emacs project file
 
 ** Requirements
-	 When writing a new e.g. myformulary.tex, myformulary.tex should be on the same level
-	 as the folder formularyETH.  
-	 Within myformulary.tex you always need to define the document class formularyETH
-	 #+BEGIN_SRC latex
-		\documentclass[fourColumns]{formularyETH/formularyETH}
-	 #+END_SRC
-	 Further packages that are highly recommended to be included are:
-	 #+BEGIN_SRC latex
-	    \usepackage{formularyETH/formularyETH_GeneralPackages}
-	    \usepackage{formularyETH/formularyETH_underline}
-		\usepackage{formularyETH/extern/formularyETH_scientific}
-		\usepackage{formularyETH/extern/formularyETH_tikz}
-		\usepackage{formularyETH/extern/formularyETH_algorithms}
-		\tcbuselibrary{minted}
-		\usepackage{formularyMacros}
-	 #+END_SRC
-	 Your own Macros should be included into formularyMacros
+ When writing a new e.g. myformulary.tex, myformulary.tex should be on the same level
+ as the folder formularyETH.  
+ Within myformulary.tex you always need to define the document class formularyETH
+ #+BEGIN_SRC latex
+	\documentclass[fourColumns]{formularyETH/formularyETH}
+ #+END_SRC
+ Further packages that are highly recommended to be included are:
+ #+BEGIN_SRC latex
+    \usepackage{formularyETH/formularyETH_GeneralPackages}
+    \usepackage{formularyETH/formularyETH_underline}
+	\usepackage{formularyETH/extern/formularyETH_scientific}
+	\usepackage{formularyETH/extern/formularyETH_tikz}
+	\usepackage{formularyETH/extern/formularyETH_algorithms}
+	\tcbuselibrary{minted}
+	\usepackage{formularyMacros}
+ #+END_SRC
+ Your own Macros should be included into formularyMacros
 ** Usage
 *** File Structure
-	- forumulary/
-    - formularyETH/
-    - myformulary.tex
-    - src/
-        - mych1.tex
-        - mych2.tex
-    - figures/
+- forumulary/
+- formularyETH/
+- myformulary.tex
+- src/
+    - mych1.tex
+    - mych2.tex
+- figures/
 			
 *** Boxes
 		The idea of the formulary is to stack boxes of different kinds together e.g.
