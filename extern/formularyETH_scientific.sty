@@ -69,6 +69,8 @@
 	\newcommand{\pmat}[1]{\ensuremath{\arraycolsep=0.5em \begin{pmatrix} #1 \end{pmatrix}}}				% (): p(arenthesized) matrix
 	\newcommand{\vmat}[1]{\ensuremath{\arraycolsep=0.5em \begin{vmatrix} #1 \end{vmatrix}}}				% ||: v(ertical bar) matrix
 	\newcommand{\tma}[3]{\ensuremath{{}_{#1} \ma #2_#3 }}												% Trafomatrix
+  \newcommand\origvec{}                                                        % Save the original \vec command.
+  \let\origvec=\vec
 	\renewcommand{\vec}[1]{\ensuremath{\boldsymbol #1 }}												% Vector bold and underlined
 	\newcommand{\vect}[1]{\ensuremath{\arraycolsep=0.3em \begin{pmatrix} #1 \end{pmatrix}}}				% Vector
 	\newcommand{\bvect}[1]{\ensuremath{\arraycolsep=0.3em \begin{bmatrix} #1 \end{bmatrix}}}				% Vector
