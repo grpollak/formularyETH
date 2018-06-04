@@ -25,6 +25,17 @@
 					label=\textcolor{item}{\textbf{\alph*}}),
 					ref=(\textnormal{\textcolor{item}{\textbf{\alph*}})}
 					}
+\newlist{enumeratenosep}{enumerate}{4}
+\setlist[enumeratenosep]{
+					label=\textcolor{item}{\textbf{\alph*}}\textcolor{section}{)},
+          font=\normalfont,
+					topsep=0pt,
+          leftmargin=8.5pt,
+          labelindent=\parindent,
+					itemsep=0pt,
+          nosep,
+					%noitemsep,
+					}
 \setlist[itemize]{font=\normalfont,
 					%noitemsep,
 					label=\textcolor{item}{\textbullet},
