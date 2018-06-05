@@ -39,7 +39,9 @@
 \setlist[itemize]{font=\normalfont,
 					%noitemsep,
 					label=\textcolor{item}{\textbullet},
-					ref=(\textnormal{\textcolor{item}{\textbullet}}
+					ref=(\textnormal{\textcolor{item}{\textbullet}},
+					itemsep=0pt,
+          nosep,
 					}
 % \newlist{format}{Level} creates a new list type 
 % ======================================================================
@@ -136,5 +138,10 @@
 					ref=(\textnormal{\textcolor{item}{\textbf{\arabic*}})}
 					}
 
-\newcommand\advantage{\setlength\itemindent{25pt}\item[\imp{\tc{Green}{Advantage}}:]}
-\newcommand\drawback{\setlength\itemindent{22pt}\item[\imp{\tc{Red}{Drawback}}:]}
+\newcommand\advantage{\setlength\itemindent{25pt}\item[\imp{\tc{Green}{Advantage}}:]\leavevmode}
+\newcommand\drawback{\setlength\itemindent{22pt}\item[\imp{\tc{Red}{Drawback}}:]\leavevmode}
+% TODO: add own list with \item = advatage and cyciling trough
+% https://tex.stackexchange.com/questions/29850/something-like-enumerate-but-with-custom-numbers-at-each-item
+% http://mirror.ox.ac.uk/sites/ctan.org/macros/latex/contrib/moreenum/moreenum-doc.pdf
+% \newcommand*{\pro@con}[1]{%
+%   \ifcase#1\or\advantage\or\drawback \else\@ctrerr\fi}

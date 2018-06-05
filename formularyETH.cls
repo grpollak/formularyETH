@@ -67,7 +67,6 @@
 % Packages
 % ======================================================================
 	% load formularyETH packages
-	%\RequirePackage{formularyETH/scientific}  			% scientific macros for LaTeX4EI
 	\RequirePackage{formularyETH/formularyETH}			% Basic style definitions
 	\RequirePackage{formularyETH/formularyETH_colors}	% Colors
 	\RequirePackage{formularyETH/formularyETH_macros}	% Further macros
@@ -136,7 +135,6 @@
 	\else
 		% pdfLaTeX  
 	    \RequirePackage[utf8]{inputenc}		% UTF-8 input 
-	    %\RequirePackage{latex4ei/latex4ei_unicode}	% UTF-8 input of math symbols
 	    %\InputIfFileExists{glyphtounicode}{\pdfgentounicode=1}{}	% Glyph-to-Unicode Translation (needs PdfTex >=1.4)
 		%\RequirePackage{textcomp}				% get rid of font warnings
 		%\pdfminorversion=6						% for 3D Objects
