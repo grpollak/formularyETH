@@ -15,7 +15,8 @@
 
 % Definitions
 % ----------------------------------------------------------------------
-\newcommand{\ul}[2][ulc1]{{\color{#1}\uline{\textcolor{black}{#2}}}}
+% TODO improve within math mode: https://tex.stackexchange.com/questions/133243/controling-underline-depth-in-math-mode/133247#133247
+\newcommand{\ul}[2][ulc1]{{\color{#1}\renewcommand{\ULthickness}{0.6pt}\uline{\textcolor{black}{#2}}}}
 
 \newcommand{\uldotted}[1][ulc1]{\bgroup 
   \UL@setULdepth
