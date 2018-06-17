@@ -33,10 +33,12 @@
 % Other very usefull packages
 % ------------------------------------------------------------------------------
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
-\usepackage{caption}
+\usepackage[skip=0pt]{caption}
 \usepackage{wrapfig}
 \usepackage{subcaption}
 \usepackage{tabularx}
+% In order to use inkscape figures with transparent fillings using alpha
+\usepackage{transparent}
 % -----------------------------Minted------------------------------------------- 
 % minted uncomment next two lines
 % ------------------------------------------------------------------------------ 
@@ -51,19 +53,16 @@
 % Documents Definitions title, date, ...
 % ==============================================================================
 
-  \title{Titel}
-  % Graphicpaths important when including pdf_tikz pictures e.g. with inkscape
+  \title{Title}
+  % Graphic-paths important when including pdf_tikz pictures e.g. with inkscape
   % ------------------------------------------------------------------------------ 
-  \graphicspath{
-          {figures/}
-          %{figures/ch1/}
-          %{figures/ch2/}
+  \graphicspath{{figures/}
+                %{figures/ch1/}
           }
 % ==============================================================================
 % Document begin
 % ==============================================================================
 \begin{document}
-
 % Chapter 1
 % ------------------------------------------------------------------------------ 
 	\input{src/ch1.tex}
