@@ -72,6 +72,10 @@
 	\newcommand{\into}{\hookrightarrow}
 	\newcommand{\dirac}{\slashed{\partial}}
 	%\newcommand{\eqs}[2][=]{\stackrel{#2}{#1}}
+  \NewDocumentCommand{\inkscape}{ O{100pt} O{1\linewidth} m }{
+    \def\svgwidth{#1}\resizebox{#2}{!}{\input{#3}}
+  }
+
   \DeclareDocumentCommand{\eqs}{s o g}{
     \IfNoValueTF{#1}
     {
