@@ -12,7 +12,7 @@
 % Get Roman Numbers I, II, III, IV,...
 \newcommand{\romanNumber}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
 % Get forumlary fitting item headers 
-\newcommand{\itemHeader}[1]{{\bfseries\textcolor{section}{#1}})} 
+\newcommand{\itemHeader}[1]{{\bfseries\textcolor{section}{#1}}} 
 % Get forumlary fitting headers without numbering
 \newcommand{\sectionHeader}[1]{{\bfseries\textcolor{section}{#1}}} 
 % Colord red
@@ -30,11 +30,12 @@
 % Easy centering
 \newcommand{\ctr}[1]{\makebox[\linewidth]{#1}}
 % Include Inkscape Pictures
-\newcommand{\inkscape}[2][100pt]{
-	\def\svgwidth{#1}
-	\resizebox{\linewidth}{!}{\input{#2}}
-}
-% Scale INSIDE equations/align enviroment
+% new version moved to scientific package, does not work here
+% find out why?
+%\newcommand{\inkscape}[2][100pt]{
+%	\def\svgwidth{#1}\resizebox{\linewidth}{!}{\input{#2}}
+%}
+% scale INSIDE equations/align enviroment
 \newcommand\scalemath[2][0.82]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
 % Scale Outside equations/align enviroment
 \newcommand\scalematho[2][0.9]{\scalebox{#1}{\parbox{\linewidth}{#2}}}
