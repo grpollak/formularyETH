@@ -215,6 +215,17 @@
     {\textcolor{CarnationPink}{\mathbb{F}}}
   }
 }
+\DeclareDocumentCommand{\pdf}{ s o g }{
+  \IfValueTF{#3}
+  {
+    \IfValueTF{#2}{\textcolor{CarnationPink}{\mathbb{\IfValueTF{#1}{p}{f}}}_{#2}\left(#3\right)}
+    {\textcolor{CarnationPink}{\mathbb{\IfValueTF{#1}{p}{f}}}_{#2}}
+  }
+  {
+    \IfValueTF{#2}{\textcolor{CarnationPink}{\mathbb{\IfValueTF{#1}{p}{f}}}\left(#3\right)}
+    {\textcolor{CarnationPink}{\mathbb{\IfValueTF{#1}{p}{f}}}}
+  }
+}
 \DeclareDocumentCommand{\Expct}{ g }{
   \IfValueTF{#1}
   {\mathbb{\textcolor{Green}{E}}\left[#1\right]}
