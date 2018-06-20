@@ -7,6 +7,23 @@
 % Packages
 % 
 % ======================================================================
+% ==============================================================================
+% Note: Documents Commands
+%  \DeclareDocumentCommand\comand{ arg1 arg1 ... } { Command definition }
+% Mandatory arguments
+    % m: mandatory {} (can be multiple {}{})
+% Optional arguments
+    % s: star 
+    % o: optional [] (-NoValue- marker if none is given)
+    % O: As for o , but returns <default> if no value is given. Should be given as O{<default>}
+    % d: optional {}An optional argument which is delimited by <char1> and <char2>, given as follows: d<char1><char2>.
+    %    As with o , if no value is given the special marker -NoValue- is returned
+    %
+%   \IfBooleanTF{#1}{if True}{if False}
+%   \IfNoValueTF {<argument>} {<true code>} {<false code>}
+%   \IfNoValueT {<argument>} {<true code>}
+%   \IfNoValueF {<argument>} {<false code>}
+% ==============================================================================
 
 % Basic Packages
 % ----------------------------------------------------------------------
@@ -21,6 +38,10 @@
 \RequirePackage{stmaryrd} 				% to get the lightning symbol and others
 \RequirePackage{xfrac}					% get procentual fractions with \sfrac{above}{below} 
 \RequirePackage{empheq}					% Cool package to get boxes in aligned enviroments
+% to use stackrel with above and below used in \eqs
+\RequirePackage{stackrel}
+% to use make nice matrices with different dots using capital version e.g. \Vdots
+\RequirePackage{nicematrix}
 \mathchardef\Re="023C
 \mathchardef\Im="023D
 \usepackage[makeroom]{cancel}			% To cancel out stuff
@@ -50,7 +71,53 @@
 	\newcommand{\cf}{\emph{cf.} }
 	\newcommand{\into}{\hookrightarrow}
 	\newcommand{\dirac}{\slashed{\partial}}
-	\newcommand{\eqs}[2][=]{\stackrel{#2}{#1}}
+	%\newcommand{\eqs}[2][=]{\stackrel{#2}{#1}}
+  \NewDocumentCommand{\inkscape}{ O{100pt} O{1\linewidth} m }{
+    \def\svgwidth{#1}\resizebox{#2}{!}{\input{#3}}
+  }
+
+  \DeclareDocumentCommand{\eqs}{s o g}{
+    \IfNoValueTF{#1}
+    {
+      \IfNoValueTF{#2}
+      {
+        \IfNoValueTF{#3}
+        {
+          =
+        }
+        {
+          \stackrel{#3}{=}
+        }
+      }{
+        \IfNoValueTF{#3}
+        {
+          \stackrel[#2]{=}
+        }
+        {
+          \stackrel[#2]{#3}{=}
+        }
+      }
+    }{
+      \IfNoValueTF{#2}
+      {
+        \IfNoValueTF{#3}
+        {
+          =
+        }
+        {
+          \stackrel{\mathclap{#3}}{=}
+        }
+      }{
+        \IfNoValueTF{#3}
+        {
+          \stackrel[\mathclap{#2}]{=}
+        }
+        {
+          \stackrel[\mathclap{#2}]{\mathclap{#3}}{=}
+        }
+      }
+    }
+  }
   \DeclarePairedDelimiter\abs{\lvert}{\rvert} % abs val
   \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil} % abs val
   \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
@@ -69,11 +136,21 @@
 	\newcommand{\pmat}[1]{\ensuremath{\arraycolsep=0.5em \begin{pmatrix} #1 \end{pmatrix}}}				% (): p(arenthesized) matrix
 	\newcommand{\vmat}[1]{\ensuremath{\arraycolsep=0.5em \begin{vmatrix} #1 \end{vmatrix}}}				% ||: v(ertical bar) matrix
 	\newcommand{\tma}[3]{\ensuremath{{}_{#1} \ma #2_#3 }}												% Trafomatrix
+  \newcommand\origvec{}                                                        % Save the original \vec command.
+  \let\origvec=\vec
+  % allow optional array stretch command
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+  \edef\arraystretch{#1}%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{*\c@MaxMatrixCols c}}
+\makeatother
 	\renewcommand{\vec}[1]{\ensuremath{\boldsymbol #1 }}												% Vector bold and underlined
-	\newcommand{\vect}[1]{\ensuremath{\arraycolsep=0.3em \begin{pmatrix} #1 \end{pmatrix}}}				% Vector
-	\newcommand{\bvect}[1]{\ensuremath{\arraycolsep=0.3em \begin{bmatrix} #1 \end{bmatrix}}}				% Vector
+	\newcommand{\vect}[1]{\ensuremath{\arraycolsep=0.3em \begin{pNiceMatrix} #1 \end{pNiceMatrix}}}				% Vector
+	\newcommand{\bvect}[1]{\ensuremath{\begin{bNiceMatrix} #1 \end{bNiceMatrix}}}				% Vector
 	\newcommand{\unitVector}{\ensuremath{\mathds{1}}}													% Unit Vector
-	\newcommand{\mvect}[1]{\ensuremath{\left.\begin{matrix} #1 \end{matrix}\right]}}					% Matrixvector
+	\newcommand{\mvect}[1]{\ensuremath{\left.\begin{NiceMatrix} #1 \end{NiceMatrix}\right]}}					% Matrixvector
 	\newcommand{\tensor}[1]{\ensuremath{\underline{\underline{\boldsymbol #1}}}}						% Tensor
 	\DeclareMathOperator{\diag}{diag}																	% diagonal matrix
   \newcommand{\unitMatrixI}{\ensuremath{\mathds{\ma{I}}}}		 % unitrary matrix
@@ -184,6 +261,7 @@
   {\mathrm{\textcolor{Green}{Cov}}\left[#1\right]}
   {\mathrm{\textcolor{Green}{Cov}}}
   }
+%https://tex.stackexchange.com/questions/23432/how-to-create-my-own-math-operator-with-limits
 \DeclareDocumentCommand{\Expect}{ g }{
   \IfValueTF{#1}
   {\mathbb{\textcolor{Green}{E}}\left[#1\right]}
@@ -264,17 +342,20 @@
     }[\PackageError{mc}{Undefined option to mc: #1}{}]
 }
 % idx color
-\newcommand{\idxi}{\ensuremath{\textcolor{idxic}{i}}}
-\newcommand{\idxj}{\ensuremath{\textcolor{idxjc}{j}}}
-\newcommand{\idxk}{\ensuremath{\textcolor{idxkc}{k}}}
-\newcommand{\idxK}{\ensuremath{\textcolor{idxkc}{K}}}
-\newcommand{\idxl}{\ensuremath{\textcolor{idxlc}{l}}}
-\newcommand{\idxm}{\ensuremath{\textcolor{idxmc}{m}}}
-\newcommand{\idxM}{\ensuremath{\textcolor{idxmc}{M}}}
-\newcommand{\idxn}{\ensuremath{\textcolor{idxnc}{n}}}
-\newcommand{\idxN}{\ensuremath{\textcolor{idxnc}{N}}}
-\newcommand{\idxr}{\ensuremath{\textcolor{idxrc}{r}}}
-\newcommand{\idxs}{\ensuremath{\textcolor{idxsc}{s}}}
+\newcommand{\idxi}[1][i]{\ensuremath{\textcolor{idxic}{#1}}}
+\newcommand{\idxd}[1][d]{\ensuremath{\textcolor{idxdc}{#1}}}
+\newcommand{\idxI}[1][I]{\ensuremath{\textcolor{idxic}{#1}}}
+\newcommand{\idxj}[1][j]{\ensuremath{\textcolor{idxjc}{#1}}}
+\newcommand{\idxk}[1][k]{\ensuremath{\textcolor{idxkc}{#1}}}
+\newcommand{\idxK}[1][K]{\ensuremath{\textcolor{idxkc}{#1}}}
+\newcommand{\idxl}[1][l]{\ensuremath{\textcolor{idxlc}{#1}}}
+\newcommand{\idxL}[1][L]{\ensuremath{\textcolor{idxlc}{#1}}}
+\newcommand{\idxm}[1][m]{\ensuremath{\textcolor{idxmc}{#1}}}
+\newcommand{\idxM}[1][M]{\ensuremath{\textcolor{idxmc}{#1}}}
+\newcommand{\idxn}[1][n]{\ensuremath{\textcolor{idxnc}{#1}}}
+\newcommand{\idxN}[1][N]{\ensuremath{\textcolor{idxnc}{#1}}}
+\newcommand{\idxr}[1][r]{\ensuremath{\textcolor{idxrc}{#1}}}
+\newcommand{\idxs}[1][s]{\ensuremath{\textcolor{idxsc}{#1}}}
 % Alternative
 \newcommand{\idx}[1]{
 	\IfEqCase{#1}{
@@ -299,6 +380,7 @@
 \newcommand{\Gammac}[1][\Gamma]{\ensuremath{\textcolor{gammac}{#1}}}
 \newcommand{\rhoc}[1][\rho]{\ensuremath{\textcolor{rhoc}{#1}}}
 \newcommand{\phic}[1][\phi]{\ensuremath{\textcolor{phic}{#1}}}
+\newcommand{\varphic}[1][\varphi]{\ensuremath{\textcolor{phic}{#1}}}
 \newcommand{\Phic}[1][\Phi]{\ensuremath{\textcolor{phic}{#1}}}
 \newcommand{\psic}[1][\psi]{\ensuremath{\textcolor{psic}{#1}}}
 \newcommand{\Psic}[1][\Psi]{\ensuremath{\textcolor{psic}{#1}}}
