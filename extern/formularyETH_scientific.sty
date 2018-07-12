@@ -1,4 +1,4 @@
-\NeedsTeXFormat{LaTeX2e}
+% \needsTeXFormat{LaTeX2e}
 % Introduce Packages
 % \ProvidesPackage{<name>}[<version>]
 \ProvidesPackage{formularyETH}[2016/10/11 Science packages]
@@ -8,7 +8,7 @@
 % 
 % ======================================================================
 % ==============================================================================
-% Note: Documents Commands
+% Note: Documents Cmacroommands with xparse
 %  \DeclareDocumentCommand\comand{ arg1 arg1 ... } { Command definition }
 % Mandatory arguments
     % m: mandatory {} (can be multiple {}{})
@@ -38,6 +38,7 @@
 \RequirePackage{stmaryrd} 				% to get the lightning symbol and others
 \RequirePackage{xfrac}					% get procentual fractions with \sfrac{above}{below} 
 \RequirePackage{empheq}					% Cool package to get boxes in aligned enviroments
+\RequirePackage{mathabx}					% Cool package to get boxes in aligned enviroments
 % to use stackrel with above and below used in \eqs
 \RequirePackage{stackrel}
 % to use make nice matrices with different dots using capital version e.g. \Vdots
@@ -63,6 +64,7 @@
 	\DeclareMathOperator{\K}{\mathbb K}						% Reele oder komplexe Zahlen
 	\DeclareMathOperator{\Z}{\mathbb{Z}}
 	\DeclareMathOperator{\img}{i}							% Imaginary Unit
+	\newcommand{\sign}[1]{\text{sign}(#1)}							% Sign function
 	\DeclareMathOperator{\curvec}{\mathcal{C}}							% Curley Curve C 					
   \DeclareMathOperator*{\argmax}{arg\,max}    % argmax
   \DeclareMathOperator*{\argmin}{arg\,min}    % argmin
@@ -73,27 +75,8 @@
 	\newcommand{\dirac}{\slashed{\partial}}
 	%\newcommand{\eqs}[2][=]{\stackrel{#2}{#1}}
   \DeclareDocumentCommand{\eqs}{s o g}{
-    \IfNoValueTF{#1}
+    \IfBooleanTF{#1}
     {
-      \IfNoValueTF{#2}
-      {
-        \IfNoValueTF{#3}
-        {
-          =
-        }
-        {
-          \stackrel{#3}{=}
-        }
-      }{
-        \IfNoValueTF{#3}
-        {
-          \stackrel[#2]{=}
-        }
-        {
-          \stackrel[#2]{#3}{=}
-        }
-      }
-    }{
       \IfNoValueTF{#2}
       {
         \IfNoValueTF{#3}
@@ -112,6 +95,25 @@
           \stackrel[\mathclap{#2}]{\mathclap{#3}}{=}
         }
       }
+    }{
+      \IfNoValueTF{#2}
+      {
+        \IfNoValueTF{#3}
+        {
+          =
+        }
+        {
+          \stackrel{#3}{=}
+        }
+      }{
+        \IfNoValueTF{#3}
+        {
+          \stackrel[#2]{=}
+        }
+        {
+          \stackrel[#2]{#3}{=}
+        }
+      }
     }
   }
   \DeclarePairedDelimiter\abs{\lvert}{\rvert} % abs val
@@ -127,14 +129,6 @@
 
 % Vectors and Matrices
 % ======================================================================
-  \newcommand{\mat}[1]{\ensuremath{\arraycolsep=0.5em \begin{matrix} #1 \end{matrix}}}				% Matrix
-	\newcommand{\bmat}[1]{\ensuremath{\arraycolsep=0.5em \begin{bmatrix} #1 \end{bmatrix}}}				% []: b(racketed) matrix
-	\newcommand{\pmat}[1]{\ensuremath{\arraycolsep=0.5em \begin{pmatrix} #1 \end{pmatrix}}}				% (): p(arenthesized) matrix
-	\newcommand{\vmat}[1]{\ensuremath{\arraycolsep=0.5em \begin{vmatrix} #1 \end{vmatrix}}}				% ||: v(ertical bar) matrix
-	\newcommand{\tma}[3]{\ensuremath{{}_{#1} \ma #2_#3 }}												% Trafomatrix
-  \newcommand\origvec{}                                                        % Save the original \vec command.
-  \let\origvec=\vec
-  % allow optional array stretch command
 \makeatletter
 \renewcommand*\env@matrix[1][\arraystretch]{%
   \edef\arraystretch{#1}%
@@ -142,6 +136,14 @@
   \let\@ifnextchar\new@ifnextchar
   \array{*\c@MaxMatrixCols c}}
 \makeatother
+  \newcommand{\mat}[1]{\ensuremath{\arraycolsep=0.5em \begin{NiceMatrix} #1 \end{NiceMatrix}}}				% Matrix
+	\newcommand{\bmat}[1]{\ensuremath{\arraycolsep=0.5em \begin{bNiceMatrix} #1 \end{bNiceMatrix}}}				% []: b(racketed) matrix
+	\newcommand{\pmat}[1]{\ensuremath{\arraycolsep=0.5em \begin{pNiceMatrix} #1 \end{pNiceMatrix}}}				% (): p(arenthesized) matrix
+	\newcommand{\vmat}[1]{\ensuremath{\arraycolsep=0.5em \begin{vNiceMatrix} #1 \end{vNiceMatrix}}}				% ||: v(ertical bar) matrix
+	\newcommand{\tma}[3]{\ensuremath{{}_{#1} \ma #2_#3 }}												% Trafomatrix
+  \newcommand\origvec{}                                                        % Save the original \vec command.
+  \let\origvec=\vec
+  % allow optional array stretch command
 	\renewcommand{\vec}[1]{\ensuremath{\boldsymbol #1 }}												% Vector bold and underlined
 	\newcommand{\vect}[1]{\ensuremath{\arraycolsep=0.3em \begin{pNiceMatrix} #1 \end{pNiceMatrix}}}				% Vector
 	\newcommand{\bvect}[1]{\ensuremath{\begin{bNiceMatrix} #1 \end{bNiceMatrix}}}				% Vector
@@ -252,6 +254,11 @@
   {\mathrm{\textcolor{Green}{Var}}\left[#1\right]}
   {\mathrm{\textcolor{Green}{Var}}}
   }
+\DeclareDocumentCommand{\Corr}{ g }{
+  \IfValueTF{#1}
+  {\mathrm{\textcolor{Green}{Corr}}\left[#1\right]}
+  {\mathrm{\textcolor{Green}{Corr}}}
+  }
 \DeclareDocumentCommand{\Cov}{ g }{
   \IfValueTF{#1}
   {\mathrm{\textcolor{Green}{Cov}}\left[#1\right]}
@@ -269,15 +276,90 @@
   {\mathbb{\textcolor{Green}{V}}}
   }
 \DeclareDocumentCommand{\Prob}{ g }{
-  \IfValueTF{#1}
-  {\textcolor{CarnationPink}{\mathbb{P}}\left[#1\right]}
-  {\textcolor{CarnationPink}{\mathbb{P}}}
+    \IfValueTF{#1}
+    {\textcolor{CarnationPink}{\mathbb{P}}\left[#1\right]}
+    {\textcolor{CarnationPink}{\mathbb{P}}
   }
-\DeclareDocumentCommand{\prob}{ g }{
-  \IfValueTF{#1}
-  {\textcolor{CarnationPink}{\mathrm{p}}\left[#1\right]}
-  {\textcolor{CarnationPink}{\mathrm{p}}}
+}
+
+\DeclareDocumentCommand{\probf}{ s g g }{
+  \IfNoValueTF{#2}
+  {
+    \IfNoValueTF{#3}{
+      \textcolor{CarnationPink}{\mathrm{f}}
+    }{}
+  }{
+    \IfBooleanTF{#1}
+    {
+      \IfValueTF{#3}
+      {
+        \textcolor{CarnationPink}{\mathrm{f}}_{#2#3}\left(\widebar{#2},\widebar{#3}\right)
+      }{
+        \textcolor{CarnationPink}{\mathrm{f}}_{#2}\left(\widebar{#2}\right)
+      }
+    }{
+      \IfValueTF{#3}
+      {
+        \textcolor{CarnationPink}{\mathrm{f}}\left(#2,#3\right)
+      }{
+        \textcolor{CarnationPink}{\mathrm{f}}\left(#2\right)
+      }
+    }
   }
+}
+
+\DeclareDocumentCommand{\prob}{ s D<>{,} o o g g }{
+  \IfNoValueTF{#5}
+  {
+    % If no value 5 return just p
+    \IfNoValueTF{#6}{
+      \textcolor{CarnationPink}{\mathrm{p}}
+    }{}
+  }{
+    \IfBooleanTF{#1}
+    {% show full pdf
+      \IfValueTF{#6}
+      { % Second argument given
+        \IfValueTF{#3}
+        {% First ^ given
+          \IfValueTF{#4}
+          {% Second ^ given
+            \textcolor{CarnationPink}{\mathrm{p}}_{\scaleto{{#5}^{#3}#2{#6}^{#4}\mathstrut}{6pt}}\left(\widebar{#5}^{#3}#2\widebar{#6}^{#4}\right)
+          }{
+            \textcolor{CarnationPink}{\mathrm{p}}_{\scaleto{{#5}^{#3}#2{#6}\mathstrut}{6pt}}\left(\widebar{#5}^{#3}#2\widebar{#6}\right)
+          }
+        }{
+          \IfValueTF{#4}
+          {
+            \textcolor{CarnationPink}{\mathrm{p}}_{\scaleto{#5#2{#6}^{#4}\mathstrut}{6pt}}\left(\widebar{#5}#2\widebar{#6}^{#4}\right)
+          }{
+            \textcolor{CarnationPink}{\mathrm{p}}_{\scaleto{#5#2#6\mathstrut}{6pt}}\left(\widebar{#5}#2\widebar{#6}\right)
+          }
+        }
+      }{
+        \textcolor{CarnationPink}{\mathrm{p}}_{\scaleto{#5\mathstrut}{6pt}}\left(\widebar{#5}\right)
+      }
+    }{
+      \IfValueTF{#6}
+      {
+        \textcolor{CarnationPink}{\mathrm{p}}\left(#5#2#6\right)
+      }{
+        \textcolor{CarnationPink}{\mathrm{p}}\left(#5\right)
+      }
+    }
+  }
+}
+
+
+\DeclareDocumentCommand{\probc}{ s m m }{
+  \IfBooleanTF{#1}
+  {
+    \textcolor{CarnationPink}{\mathrm{p}}_{#2|#3}\left(\widebar{#2}|\widebar{#3}\right)
+  }{
+    \textcolor{CarnationPink}{\mathrm{p}}\left(#2|#3\right)
+  }
+}
+
 \DeclareDocumentCommand{\CDF}{ o g }{
   \IfValueTF{#2}
   {
@@ -307,6 +389,7 @@
 % ------------------------------------------------------------------------------ 
 \newcommand{\mean}{\textcolor{Green}{\mu}}
 \newcommand{\std}{\textcolor{Green}{\sigma}}
+\newcommand{\covMatrix}{\textcolor{Green}{\Sigma}}
 % Distibutions
 % ------------------------------------------------------------------------------ 
 
@@ -363,6 +446,7 @@
 \newcommand{\deltac}[1][\delta]{\ensuremath{\textcolor{deltac}{#1}}}
 \newcommand{\gammac}[1][\gamma]{\ensuremath{\textcolor{gammac}{#1}}}
 \newcommand{\Gammac}[1][\Gamma]{\ensuremath{\textcolor{gammac}{#1}}}
+\newcommand{\zetac}[1][\zeta]{\ensuremath{\textcolor{zetac}{#1}}}
 \newcommand{\rhoc}[1][\rho]{\ensuremath{\textcolor{rhoc}{#1}}}
 \newcommand{\phic}[1][\phi]{\ensuremath{\textcolor{phic}{#1}}}
 \newcommand{\varphic}[1][\varphi]{\ensuremath{\textcolor{phic}{#1}}}
@@ -385,6 +469,8 @@
 \newcommand{\mca}[1][a]{\mc[1]{#1}}
 \newcommand{\mcb}[1][b]{\mc[4]{#1}}
 \newcommand{\mcc}[1][c]{\mc[5]{#1}}
+\newcommand{\mcd}[1][c]{\mc[6]{#1}}
 \newcommand{\mcA}[1][A]{\mc[1]{#1}}
 \newcommand{\mcB}[1][B]{\mc[4]{#1}}
 \newcommand{\mcC}[1][C]{\mc[5]{#1}}
+
