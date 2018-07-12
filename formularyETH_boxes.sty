@@ -101,6 +101,26 @@
 		%breakable
 }
 
+\newtcolorbox{formulabox}[1][]{
+		title =#1,
+		attach title to upper,
+		fonttitle=\bfseries,
+		coltitle=black,
+		colback=formulabox,
+		colframe=formulaboxFrame,
+		after skip = 1pt,				% skip before and after box
+		before skip = 2pt,
+		boxrule = 0.3mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt,
+		%breakable
+}
+
 \newtcolorbox{princpbox}[1][]{
 		title =#1,
 		attach title to upper,
@@ -168,6 +188,25 @@
 		coltitle=black,
 		colback=lawbox,
 		colframe=lawboxFrame,
+		after skip = 1pt,				% skip before and after box
+		before skip = 2pt,
+		boxrule = 0.3mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt
+}
+
+\newtcolorbox{propertybox}[1][]{
+		title =#1,
+		attach title to upper,
+		fonttitle=\bfseries,
+		coltitle=black,
+		colback=propertybox,
+		colframe=propertyboxFrame,
 		after skip = 1pt,				% skip before and after box
 		before skip = 2pt,
 		boxrule = 0.3mm,				% linewidth
@@ -419,7 +458,7 @@ format=\arabic]{codeboxExample}{s o o m}{
 		%arc = 0mm,						              % innder radius of frames (corners)
     enhanced jigsaw,
 		%fonttitle=\bfseries,
-    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{\textit{#2}}{}}{}{ \textbf{:} \textit{#2}}\hfill
+    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{#2}{}}{}{ \textbf{:} \textit{#2}}\hfill
     \textit{#4},
     coltitle=codeboxExampleTitle,
 		toptitle=1pt,
@@ -463,7 +502,7 @@ format=\arabic]{codeboxExampleNl}{s o o m}{
 		%arc = 0mm,						              % innder radius of frames (corners)
     enhanced jigsaw,
 		%fonttitle=\bfseries,
-    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{\textit{#2}}{}}{}{ \textbf{:} \textit{#2}}\hfill
+    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{#2}{}}{}{ \textbf{:} #2}\hfill
     \textit{#4},
     coltitle=codeboxExampleTitle,
 		toptitle=1pt,

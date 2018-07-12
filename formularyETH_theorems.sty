@@ -40,7 +40,7 @@
 % 				\alph,\Alph,\arabic,\romanand \Roman
 % Note: use \leavevmode if we use enumerate/item without a text in the first line
 
-\newtheoremstyle{definition}
+\newtheoremstyle{defn}
 				{}{}
 				{}{}
 				{\bfseries}{}
@@ -76,6 +76,15 @@
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
 				}
 
+\newtheoremstyle{formula}
+				{}{}
+				{}{}
+				{\bfseries}{}
+				{\parindent}
+				{\textbf{\thmname{#1} \thmnumber{#2} }\textcolor{Red}{\thmnote{#3}}:
+					%\keywordbf{\thmnote}]\label{def:\thmnote}
+				}
+
 \newtheoremstyle{princip}
 				{}{}
 				{}{}
@@ -103,6 +112,14 @@
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
 				}
 
+\newtheoremstyle{property}
+				{}{}
+				{}{}
+				{\bfseries}{}
+				{\parindent}
+				{\textbf{\thmname{#1} \thmnumber{#2} }\textcolor{Red}{\thmnote{#3}}:
+					%\keywordbf{\thmnote}]\label{def:\thmnote}
+				}
 
 \newtheoremstyle{rule}
 				{}{}
@@ -161,13 +178,17 @@
 	\crefname{axiom}{axiom}{axioms}
 %	Definition
 % ----------------------------------------------------------------------
-	\theoremstyle{definition}
+	%\theoremstyle{definition}
 	\newtheorem{defn}{Definition}[section]
 	\crefname{defn}{definition}{definitions}
 %	Lemma
 % ----------------------------------------------------------------------
 	\newtheorem{lemma}{Lemma}[section]
 	\crefname{lem}{lemma}{lemmata}
+%	Formula
+% ----------------------------------------------------------------------
+	\newtheorem{formula}{Formula}[section]
+	\crefname{formula}{formula}{formulas}
 %	Principle
 % ----------------------------------------------------------------------
 	\newtheorem{princip}{Principle}[section]
@@ -184,6 +205,10 @@
 % ----------------------------------------------------------------------
 	\newtheorem{law}{Law}[section]
 	\crefname{law}{law}{laws}
+%	Law
+% ----------------------------------------------------------------------
+	\newtheorem{property}{Property}[subsubsection]
+	\crefname{property}{Property}{properties}
 % ----------------------------------------------------------------------
 %	Rule
 % Note: rule as command not possible as already used by LaTex

@@ -21,6 +21,7 @@
 \newcommand{\rdb}[1]{\textbf{\textcolor{Red}{#1}}}
 % Abbriviated Color command
 \newcommand{\tc}[2]{\textcolor{#1}{#2}}
+\newcommand{\tcblack}[1]{\textcolor{black}{#1}}
 \newcommand{\tcat}[2][attributes]{\textcolor{#1}{#2}}
 % Important words
 \newcommand{\imp}[1]{\textnormal{\textbf{#1}}}
@@ -40,7 +41,7 @@
 % Scale Outside equations/align enviroment
 \newcommand\scalematho[2][0.9]{\scalebox{#1}{\parbox{\linewidth}{#2}}}
 % Equalsign with hat
-\newcommand{\corresponds}{\mathrel{\widehat=}}
+%\newcommand{\corresponds}{\mathrel{\widehat=}} now defined via mathabx package in scientific
 % Not sure what I ussed this for
 \newenvironment{wrapped}[1]
  {\def\wrappedcurrent{#1}%
