@@ -74,6 +74,10 @@
 	\newcommand{\into}{\hookrightarrow}
 	\newcommand{\dirac}{\slashed{\partial}}
 	%\newcommand{\eqs}[2][=]{\stackrel{#2}{#1}}
+  \NewDocumentCommand{\inkscape}{ O{100pt} O{1\linewidth} m }{
+    \def\svgwidth{#1}\resizebox{#2}{!}{\input{#3}}
+  }
+
   \DeclareDocumentCommand{\eqs}{s o g}{
     \IfBooleanTF{#1}
     {
@@ -369,6 +373,17 @@
   {
     \IfValueTF{#1}{\textcolor{CarnationPink}{\mathbb{F}}\left(#2\right)}
     {\textcolor{CarnationPink}{\mathbb{F}}}
+  }
+}
+\DeclareDocumentCommand{\pdf}{ s o g }{
+  \IfValueTF{#3}
+  {
+    \IfValueTF{#2}{\textcolor{CarnationPink}{\mathbb{\IfValueTF{#1}{p}{f}}}_{#2}\left(#3\right)}
+    {\textcolor{CarnationPink}{\mathbb{\IfValueTF{#1}{p}{f}}}_{#2}}
+  }
+  {
+    \IfValueTF{#2}{\textcolor{CarnationPink}{\mathbb{\IfValueTF{#1}{p}{f}}}\left(#3\right)}
+    {\textcolor{CarnationPink}{\mathbb{\IfValueTF{#1}{p}{f}}}}
   }
 }
 \DeclareDocumentCommand{\Expct}{ g }{

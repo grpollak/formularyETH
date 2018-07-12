@@ -458,7 +458,7 @@ format=\arabic]{codeboxExample}{s o o m}{
 		%arc = 0mm,						              % innder radius of frames (corners)
     enhanced jigsaw,
 		%fonttitle=\bfseries,
-    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{\textit{#2}}{}}{}{ \textbf{:} \textit{#2}}\hfill
+    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{#2}{}}{}{ \textbf{:} \textit{#2}}\hfill
     \textit{#4},
     coltitle=codeboxExampleTitle,
 		toptitle=1pt,
@@ -502,7 +502,7 @@ format=\arabic]{codeboxExampleNl}{s o o m}{
 		%arc = 0mm,						              % innder radius of frames (corners)
     enhanced jigsaw,
 		%fonttitle=\bfseries,
-    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{\textit{#2}}{}}{}{ \textbf{:} \textit{#2}}\hfill
+    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{#2}{}}{}{ \textbf{:} #2}\hfill
     \textit{#4},
     coltitle=codeboxExampleTitle,
 		toptitle=1pt,
