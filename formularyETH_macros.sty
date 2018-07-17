@@ -37,6 +37,16 @@
 %	\def\svgwidth{#1}\resizebox{\linewidth}{!}{\input{#2}}
 %}
 % scale INSIDE equations/align enviroment
+\ExplSyntaxOn
+\NewDocumentCommand{\svginput}{m}
+ {
+  \tl_map_inline:cn { Ginput@path }
+   {
+    %\InputIfFileExists{<file>}{<true>}{<false>}
+    \InputIfFileExists{##1#1}{\input{##1#1}\tl_map_break: } { }
+   }
+ }
+ \ExplSyntaxOff
 \newcommand\scalemath[2][0.82]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
 % Scale Outside equations/align enviroment
 \newcommand\scalematho[2][0.9]{\scalebox{#1}{\parbox{\linewidth}{#2}}}

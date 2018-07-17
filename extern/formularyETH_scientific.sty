@@ -68,6 +68,7 @@
 	\DeclareMathOperator{\Z}{\mathbb{Z}}
 	\DeclareMathOperator{\img}{i}							% Imaginary Unit
 	\newcommand{\sign}[1]{\text{sign}(#1)}							% Sign function
+	\newcommand{\domain}[1]{\texttt{dom}(#1)}
 	\DeclareMathOperator{\curvec}{\mathcal{C}}							% Curley Curve C 					
   \DeclareMathOperator*{\argmax}{arg\,max}    % argmax
   \DeclareMathOperator*{\argmin}{arg\,min}    % argmin
@@ -373,7 +374,10 @@
     {\textcolor{CarnationPink}{\mathbb{F}}_{#1}}
   }
   {
-    \IfValueTF{#1}{\textcolor{CarnationPink}{\mathbb{F}}\left(#2\right)}
+    \IfValueTF{#1}
+    {
+      \textcolor{CarnationPink}{\mathbb{F}}_{#1}
+    }
     {\textcolor{CarnationPink}{\mathbb{F}}}
   }
 }
@@ -491,3 +495,9 @@
 \newcommand{\mcB}[1][B]{\mc[4]{#1}}
 \newcommand{\mcC}[1][C]{\mc[5]{#1}}
 
+
+% ==============================================================================
+% Variables
+% ==============================================================================
+% ------------------------------------------------------------------------------
+\newcommand{\psd}{\rdb{p}.\rdb{s}.\rdb{d}.}

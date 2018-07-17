@@ -113,7 +113,10 @@
 % ======================================================================
 % Basic Settings
 % ======================================================================
-
+% allows to append to graphicspath variable
+\newcommand\appendtographicspath[1]{%
+  \g@addto@macro\Ginput@path{#1}%
+}
 % Identify Compiler
 % ----------------------------------------------------------------------
 	\RequirePackage{ifxetex}
