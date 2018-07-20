@@ -67,8 +67,12 @@
 	\DeclareMathOperator{\K}{\mathbb K}						% Reele oder komplexe Zahlen
 	\DeclareMathOperator{\Z}{\mathbb{Z}}
 	\DeclareMathOperator{\img}{i}							% Imaginary Unit
+	\newcommand{\error}{\textcolor{Red}{\epsilon}}							% Sign function
 	\newcommand{\sign}[1]{\text{sign}(#1)}							% Sign function
 	\newcommand{\domain}[1]{\texttt{dom}(#1)}
+	\newcommand{\codomain}[1]{\texttt{codom}(#1)}
+	\newcommand{\support}[1]{\texttt{supp}(#1)}
+  \newcommand{\functionClass}{\mathcal{C}}							% Quadrature rule sign
 	\DeclareMathOperator{\curvec}{\mathcal{C}}							% Curley Curve C 					
   \DeclareMathOperator*{\argmax}{arg\,max}    % argmax
   \DeclareMathOperator*{\argmin}{arg\,min}    % argmin
@@ -242,10 +246,16 @@
 % ======================================================================						
 % Complexity
 % ======================================================================	                             	
-\DeclareDocumentCommand{\bigO}{ g }{
-  \IfValueTF{#1}
-  {\ensuremath{\mathcal{\rd{O}}(#1)}}
-  {\ensuremath{\mathcal{\rd{O}}}}
+\DeclareDocumentCommand{\bigO}{ s g }{
+  \IfValueTF{#2}{
+    \IfBooleanTF{#1}{
+      {\ensuremath{\mathcal{\rd{O}}\left(#2\right)}}
+    }{
+      {\ensuremath{\mathcal{\rd{O}}(#2)}}
+    }
+  }{
+    \ensuremath{\mathcal{\rd{O}}}
+   }
   }
 % ======================================================================						
 % Transformations
