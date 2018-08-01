@@ -13,6 +13,8 @@ do
     -p) cp formularyETH/TEMPLATES/.projectile ./.projectile;;
     # -m option: add math formulary: git@gitlab.vis.ethz.ch:formularies/math.git
     -m) git submodule add git@gitlab.vis.ethz.ch:formularies/math.git;;
+    # -c option: add c++ formulary: git@gitlab.vis.ethz.ch:formularies/cpp.git
+    -c) git submodule add git@gitlab.vis.ethz.ch:formularies/cpp.git;;
     # unrecognized optioni
     *) echo "Option $1 not recognized" ;;
     esac # Stop program
