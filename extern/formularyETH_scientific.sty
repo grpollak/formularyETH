@@ -69,7 +69,15 @@
 	\DeclareMathOperator{\img}{i}							% Imaginary Unit
 	\newcommand{\error}{\textcolor{Red}{\epsilon}}							% Sign function
 	\newcommand{\sign}[1]{\text{sign}(#1)}							% Sign function
-	\newcommand{\domain}[1]{\texttt{dom}(#1)}
+  \DeclareDocumentCommand{\domain}{g}{
+    \IfValueTF{#1}
+    {
+      \texttt{dom}(#1)
+    }
+    {
+      \texttt{dom}
+    }
+  }
 	\newcommand{\codomain}[1]{\texttt{codom}(#1)}
 	\newcommand{\support}[1]{\texttt{supp}(#1)}
   \newcommand{\functionClass}{\mathcal{C}}							% Quadrature rule sign
@@ -196,6 +204,8 @@
 	\newcommand{\diff}{\mathop{}\!\mathrm{\vphantom( d}}							% differential delta
 	\newcommand{\diffd}{\mathop{}\!\mathrm{\vphantom( d}}							% differential delta
 % Similar to the physics package
+  \DeclareDocumentCommand\argopen{s}{\IfBooleanTF{#1}{\mathopen{}\mathclose\bgroup}{\mathopen{}\mathclose\bgroup\left}} % Special open grouping for argument of a function
+  \DeclareDocumentCommand\argclose{s}{\IfBooleanTF{#1}{\egroup}{\aftergroup\egroup\right}} % Special close grouping for argument of a function
   \DeclareDocumentCommand\derivative{ s o m g d() } {
     % Total derivative
     % s: star for \flatfrac flat derivative
@@ -419,6 +429,7 @@
 % Key figures
 % ------------------------------------------------------------------------------ 
 \newcommand{\mean}{\textcolor{Green}{\mu}}
+\newcommand{\meanvec}{\textcolor{Green}{\vec{\mu}}}
 \newcommand{\std}{\textcolor{Green}{\sigma}}
 \newcommand{\covMatrix}{\textcolor{Green}{\Sigma}}
 % Distibutions
@@ -500,7 +511,7 @@
 \newcommand{\mca}[1][a]{\mc[1]{#1}}
 \newcommand{\mcb}[1][b]{\mc[4]{#1}}
 \newcommand{\mcc}[1][c]{\mc[5]{#1}}
-\newcommand{\mcd}[1][c]{\mc[6]{#1}}
+\newcommand{\mcd}[1][d]{\mc[6]{#1}}
 \newcommand{\mcA}[1][A]{\mc[1]{#1}}
 \newcommand{\mcB}[1][B]{\mc[4]{#1}}
 \newcommand{\mcC}[1][C]{\mc[5]{#1}}
