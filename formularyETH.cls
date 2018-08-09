@@ -67,6 +67,7 @@
 % Packages
 % ======================================================================
 	% load formularyETH packages
+	\RequirePackage{xparse}								% Allow multiple default arguments
 	\RequirePackage{formularyETH/formularyETH}			% Basic style definitions
 	\RequirePackage{formularyETH/formularyETH_colors}	% Colors
 	\RequirePackage{formularyETH/formularyETH_macros}	% Further macros
@@ -74,7 +75,6 @@
 	\RequirePackage[utf8]{inputenc}	
 	\RequirePackage{makeidx}							% Create an index
 	\RequirePackage[super]{nth} 						% Allows to write \nth{1}, \nth{2},... for nicer formatting 
-	\RequirePackage{xparse}								% Allow multiple default arguments
 	%\DeclareDocumentCommand{\foocmd}{ O{default1} O{default2} m }{#1~#2~#3}
 	%\foocmd[nondefault1]{foo}
 	%\foocmd[nondefault2][nondefault1]{foo}
@@ -113,7 +113,10 @@
 % ======================================================================
 % Basic Settings
 % ======================================================================
-
+% allows to append to graphicspath variable
+\newcommand\appendtographicspath[1]{%
+  \g@addto@macro\Ginput@path{#1}%
+}
 % Identify Compiler
 % ----------------------------------------------------------------------
 	\RequirePackage{ifxetex}

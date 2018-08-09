@@ -4,16 +4,21 @@ formularyName=${1:-formulary}
 mkdir src
 mkdir figures
 
+# -n checks if argument is $1 non-empty
 while [ -n "$1" ]
 # while loop starts
 do
-case "$1" in
-# -p option
--p) cp formularyETH/TEMPLATES/.projectile ./.projectile;;
-# unrecognized optioni
-*) echo "Option $1 not recognized" ;;
-esac
-shift
+    case "$1" in
+    # -p option: add projectile project file ./projectile
+    -p) cp formularyETH/TEMPLATES/.projectile ./.projectile;;
+    # -m option: add math formulary: git@gitlab.vis.ethz.ch:formularies/math.git
+    -m) git submodule add git@gitlab.vis.ethz.ch:formularies/math.git;;
+    # -c option: add c++ formulary: git@gitlab.vis.ethz.ch:formularies/cpp.git
+    -c) git submodule add git@gitlab.vis.ethz.ch:formularies/cpp.git;;
+    # unrecognized optioni
+    *) echo "Option $1 not recognized" ;;
+    esac # Stop program
+    shift # Shift $1 to the next input argument
 done
 
 cp formularyETH/TEMPLATES/formularyTEMPLATE.tex ./formulary.tex
