@@ -130,13 +130,21 @@
   \DeclarePairedDelimiter\abs{\lvert}{\rvert} % abs val
   \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil} % abs val
   \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+% ==============================================================================
+% Analysis
+% ==============================================================================
+% ------------------------------------------------------------------------------
+	\DeclareMathOperator{\mathimg}{\mathfrak{img}}
+% ==============================================================================
 % Linear Algebra
-% ======================================================================
-	\DeclareMathOperator{\linalgRank}{\mathfrak{rank}}
-	\DeclareMathOperator{\linalgRange}{\mathfrak{R}}
-	\DeclareMathOperator{\linalgNullspace}{\mathfrak{N}}
-	\DeclareMathOperator{\linalgSpan}{span}
-	\DeclareMathOperator{\linalgBasis}{\textcolor{Fuchsia}{\mathfrak{B}}}					
+% ==============================================================================
+% ------------------------------------------------------------------------------
+	\DeclareMathOperator{\linalgrank}{\mathfrak{rank}}
+	\DeclareMathOperator{\linalgimg}{\mathfrak{img}}
+	\DeclareMathOperator{\linalgrange}{\mathfrak{R}}
+	\DeclareMathOperator{\linalgnullspace}{\texttt{N}}
+	\DeclareMathOperator{\linalgspan}{span}
+	\DeclareMathOperator{\linalgbasis}{\textcolor{Fuchsia}{\mathfrak{B}}}					
 
 % Vectors and Matrices
 % ======================================================================
@@ -426,6 +434,7 @@
 
 \newcommand{\Normaldist}{\textcolor{Purple}{\mathcal{N}}}
 \newcommand{\Unidist}{\textcolor{Purple}{\mathcal{U}}}
+\newcommand{\Expdist}{\textcolor{Purple}{\exp}}
 \newcommand{\Bernoulidist}{\textcolor{Purple}{\mathrm{Bern}}}
 % Important Colors
 % ======================================================================
