@@ -20,27 +20,57 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{formularyETH/formularyETH}[2016/10/11]
 
-\RequirePackage{formularyETH/formularyETH_variables}
 % ======================================================================
 % More Controll statements, optional arguments
 \RequirePackage{xargs} 
-\usepackage{xstring}
-% ======================================================================
+%  toolbox of programming tools geared primarily towards LaTeX class and package author
+\RequirePackage{etoolbox} 
+\RequirePackage{xstring}
+
+
+\IfFileExists{formulary_settings.sty}{
+% File that can be modified by user in order to change default settings
+  \RequirePackage{formulary_settings}
+}{}
+% Fallback file that provides basic default settings
+  \RequirePackage{formularyETH/formularyETH_settings}
+
+% ==============================================================================
 % Options
-% ======================================================================
+% ==============================================================================
+% ------------------------------------------------------------------------------
 
 % Number of columns per page 
 % ----------------------------------------------------------------------
-	\DeclareOption{twoColumns}{\setcounter{numberOfColumns}{2}}
-	\DeclareOption{threeColumns}{\setcounter{numberOfColumns}{3}}
-	\DeclareOption{fourColumns}{\setcounter{numberOfColumns}{4}}
-	\DeclareOption{fiveColumns}{\setcounter{numberOfColumns}{5}}
+  % Define default number of columns 
+  \newcounter{numberOfColumns}
+  \setcounter{numberOfColumns}{4}
+  \newif\ifmulticols
+  \multicolsfalse
+
+	\DeclareOption{oneColumn}{\setcounter{numberOfColumns}{1}}
+	\DeclareOption{twoColumns}{\setcounter{numberOfColumns}{2} \multicolstrue}
+	\DeclareOption{threeColumns}{\setcounter{numberOfColumns}{3} \multicolstrue}
+	\DeclareOption{fourColumns}{\setcounter{numberOfColumns}{4} \multicolstrue}
+	\DeclareOption{fiveColumns}{\setcounter{numberOfColumns}{5} \multicolstrue}
+% Paper Orientation
+% ----------------------------------------------------------------------
+	\DeclareOption{landscape}{\def\paperOrientation{landscape}}
+	\DeclareOption{portrait}{\def\paperOrientation{portrait}}
 % Defaults
 % 	\PassOptionsToClass{<options-list>} {<class-name>}:
 %  	used to automatically invoke the corresponding options when the 
 %	class is loaded.
 %	\DeclareOption{<option>}{<code>}
-% ----------------------------------------------------------------------
+
+  
+% ==============================================================================
+% Font Options
+% ==============================================================================
+  %% 'sans serif' option
+  \DeclareOption{sans}{\renewcommand{\familydefault}{\sfdefault}}
+  %% 'roman' option
+  \DeclareOption{roman}{\renewcommand{\familydefault}{\rmdefault}} 
 	
 	\PassOptionsToClass{fontsize=\mainFontSize,\DIN,\paperOrientation}{\baseClass}
 
@@ -52,7 +82,7 @@
 % Default fallback option, gets called in case of not defined options  
 % ----------------------------------------------------------------------
 	\DeclareOption*{%
-		\PassOptionsToClass{\CurrentOption}{\baseclass}%
+		\PassOptionsToClass{\CurrentOption}{\baseClass}%
 	}
 
 % Terminate/Process options process
@@ -66,7 +96,7 @@
 % ======================================================================
 % Packages
 % ======================================================================
-	% load formularyETH packages
+	% Basic packages formularyETH packages
 	\RequirePackage{formularyETH/formularyETH}			% Basic style definitions
 	\RequirePackage{formularyETH/formularyETH_colors}	% Colors
 	\RequirePackage{formularyETH/formularyETH_macros}	% Further macros
@@ -97,8 +127,8 @@
 
 % Multicolumn
 % ----------------------------------------------------------------------
-	\RequirePackage{multicol}			% for columns
-
+\RequirePackage{multicol}			% for columns
+\ifmulticols
 	% start multicolumn
 	\AtBeginDocument{
 	    \begin{multicols*}{\value{numberOfColumns}}
@@ -110,6 +140,7 @@
 		\end{multicols*}
 	}
 	\setlength\columnsep{\columnsepperation}
+\fi
 % ======================================================================
 % Basic Settings
 % ======================================================================
@@ -128,8 +159,8 @@
 		
 		% for unicode decalarations
 		%\let\DeclareUnicodeCharacter\newunicodechar
-		\setmainfont{Times New Roman}
-		\setromanfont{Times New Roman}
+		%\setmainfont{Times New Roman}
+		%\setromanfont{Times New Roman}
 		\setsansfont{Helvetica}
 		
 	\else
