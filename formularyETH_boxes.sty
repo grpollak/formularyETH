@@ -38,6 +38,9 @@
 		left=3pt,
 		right=3pt,
 		bottom=3pt,
+    \ifsinglecolumn
+       leftright skip=0.05\textwidth,
+    \fi
 		%breakable,
 		%pad at break = 1mm
 }
@@ -496,7 +499,7 @@ format=\arabic]{codeboxNl}{s o o m}{
       linenos=false,
       breaklines,
       numbersep=3pt,
-      fontsize=\IfNoValueTF{#1}{\small}{\normalsize},
+      fontsize=\codeboxNlfontsize,
       mathescape,
       %obeytabs=false,
       tabsize=1,
@@ -505,7 +508,6 @@ format=\arabic]{codeboxNl}{s o o m}{
       \IfNoValueTF{#3}{}{,#3}
     },
 		%arc = 0mm,						              % innder radius of frames (corners)
-    enhanced jigsaw,
 		%fonttitle=\bfseries,
     title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{\textit{#2}}{}}{}{ \textbf{:} \textit{#2}},
     coltitle=codeboxTitle,
