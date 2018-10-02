@@ -46,6 +46,7 @@
   \newcounter{numberOfColumns}
   \setcounter{numberOfColumns}{4}
   \newif\ifmulticols
+  \newif\ifsinglecolumn
   \multicolsfalse
 
 	\DeclareOption{oneColumn}{\setcounter{numberOfColumns}{1}}
@@ -57,6 +58,7 @@
 % ----------------------------------------------------------------------
 	\DeclareOption{landscape}{\def\paperOrientation{landscape}}
 	\DeclareOption{portrait}{\def\paperOrientation{portrait}}
+  \ifmulticols\singlecolumnfalse\else\singlecolumntrue\fi
 % Defaults
 % 	\PassOptionsToClass{<options-list>} {<class-name>}:
 %  	used to automatically invoke the corresponding options when the 
