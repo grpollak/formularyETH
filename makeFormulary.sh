@@ -16,6 +16,7 @@ esac
 shift
 done
 
+cp formularyETH/TEMPLATES/formulary_settingsTEMPLATE.tex ./formulary_settings.tex
 cp formularyETH/TEMPLATES/formularyTEMPLATE.tex ./formulary.tex
 cp formularyETH/TEMPLATES/formularyMacrosTEMPLATE.sty ./formularyMacros.sty
 cp formularyETH/TEMPLATES/README.org ./README.org
