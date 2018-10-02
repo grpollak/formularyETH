@@ -99,6 +99,8 @@
 % Packages
 % ======================================================================
 	% Basic packages formularyETH packages
+	% load formularyETH packages
+	\RequirePackage{xparse}								% Allow multiple default arguments
 	\RequirePackage{formularyETH/formularyETH}			% Basic style definitions
 	\RequirePackage{formularyETH/formularyETH_colors}	% Colors
 	\RequirePackage{formularyETH/formularyETH_macros}	% Further macros
@@ -106,7 +108,6 @@
 	\RequirePackage[utf8]{inputenc}	
 	\RequirePackage{makeidx}							% Create an index
 	\RequirePackage[super]{nth} 						% Allows to write \nth{1}, \nth{2},... for nicer formatting 
-	\RequirePackage{xparse}								% Allow multiple default arguments
 	%\DeclareDocumentCommand{\foocmd}{ O{default1} O{default2} m }{#1~#2~#3}
 	%\foocmd[nondefault1]{foo}
 	%\foocmd[nondefault2][nondefault1]{foo}
@@ -146,14 +147,16 @@
 % ======================================================================
 % Basic Settings
 % ======================================================================
-
+% allows to append to graphicspath variable
+\newcommand\appendtographicspath[1]{%
+  \g@addto@macro\Ginput@path{#1}%
+}
 % Identify Compiler
 % ----------------------------------------------------------------------
 	\RequirePackage{ifxetex}
 
 	% Check if document is being processed/compiled with XeTex
 	\ifxetex%
-		
 		%XeLaTeX
 		\PassOptionsToPackage{no-math}{fontspec}
 	    \RequirePackage{xltxtra}
@@ -164,7 +167,6 @@
 		%\setmainfont{Times New Roman}
 		%\setromanfont{Times New Roman}
 		\setsansfont{Helvetica}
-		
 	\else
 		% pdfLaTeX  
 	    \RequirePackage[utf8]{inputenc}		% UTF-8 input 
@@ -173,4 +175,3 @@
 		%\pdfminorversion=6						% for 3D Objects
 		%\RequirePackage[osf]{mathpazo}			% old style numbering
 	\fi
-
