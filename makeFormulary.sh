@@ -21,7 +21,7 @@ do
     shift # Shift $1 to the next input argument
 done
 
-cp formularyETH/TEMPLATES/formulary_settingsTEMPLATE.tex ./formulary_settings.tex
+cp formularyETH/TEMPLATES/formulary_settingsTEMPLATE.sty ./formulary_settings.sty
 cp formularyETH/TEMPLATES/formularyTEMPLATE.tex ./formulary.tex
 cp formularyETH/TEMPLATES/formularyMacrosTEMPLATE.sty ./formularyMacros.sty
 cp formularyETH/TEMPLATES/README.org ./README.org

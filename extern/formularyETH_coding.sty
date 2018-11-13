@@ -12,6 +12,27 @@
 % ----------------------------------------------------------------------
 \RequirePackage{minted}
 
+% Macros that can be used in escape mode
+% ------------------------------------------------------------------------------ 
+\newcommand{\optbar}{\textcolor{optional}{\boldsymbol{\mid}}}
+\newcommand{\optc}[1]{\textcolor{optional}{#1}}
+\newcommand{\optab}[1]{\textcolor{optional}{[#1]}}
+\newcommand{\opta}[1]{\textcolor{optional}{[}#1\textcolor{optional}{]}}
+\newcommand{\optra}{\textcolor{optional}{]}}
+\newcommand{\optla}{\textcolor{optional}{[}}
+\newcommand{\optrl}{\textcolor{optional}{(}}
+\newcommand{\optrr}{\textcolor{optional}{)}}
+\newcommand{\optcb}[1]{\textcolor{optional}{\{#1\}}}
+\newcommand{\optlc}{\textcolor{optional}{\{}}
+\newcommand{\optrc}{\textcolor{optional}{\}}}
+\newcommand{\optcll}{\textcolor{optional}{\{}}
+\newcommand{\optclr}{\textcolor{optional}{\}}}
+\newcommand{\optldots}{\textcolor{optional}{\ldots}}
+\newcommand{\optal}{\textcolor{optional}{[}}
+\newcommand{\optar}{\textcolor{optional}{]}}
+% ==============================================================================
+% Environments
+% ==============================================================================
   \DeclareDocumentEnvironment{codeboxcomment}{s o g m m}{%
 %     % \DeclareDocumentEnvironment {〈environment〉} {〈arg spec〉} {〈start code〉} {〈end code〉}
 %     % Coding Box
@@ -100,6 +121,20 @@
       texcomments=true % Enables LaTeX code inside Comments
 		}
 
+\newminted{java}{
+      numbersep=1pt,
+      autogobble,
+      %bgcolor=olive!10,
+      mathescape,
+      breaklines,
+      obeytabs=false,
+      tabsize=1,
+      escapeinside=||,
+      mathescape=true,
+      codetagify=true,         % Highlites special code tags TODO, NOTE, BUG, ...
+      highlightcolor=codeboxHighlight, % Can be used to highlight lines % with highlightlines={1, 3-5}
+      texcomments=true % Enables LaTeX code inside Comments
+		}
 
 \newminted{cuda}{
       numbersep=1pt,
@@ -160,6 +195,18 @@
       texcomments=true % Enables LaTeX code inside Comments
       }
 		
+\newmintinline{java}{numbersep=1pt,
+      autogobble,
+      %bgcolor=olive!10,
+      mathescape,
+      obeytabs=false,
+      tabsize=1,
+      escapeinside=||,
+      mathescape=true,
+      codetagify=true,         % Highlites special code tags TODO, NOTE, BUG, ...
+      highlightcolor=codeboxHighlight, % Can be used to highlight lines % with highlightlines={1, 3-5}
+      texcomments=true % Enables LaTeX code inside Comments
+      }
 
 \newmintinline{cuda}{numbersep=1pt,
       autogobble,
