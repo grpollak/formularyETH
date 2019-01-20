@@ -33,7 +33,10 @@
 % ==============================================================================
 % Environments
 % ==============================================================================
-  \DeclareDocumentEnvironment{codeboxcomment}{s o g m m}{%
+
+
+
+\DeclareDocumentEnvironment{codeboxcomment}{s o g m m}{%
 %     % \DeclareDocumentEnvironment {〈environment〉} {〈arg spec〉} {〈start code〉} {〈end code〉}
 %     % Coding Box
 %     % s: star for small code snippet
@@ -41,6 +44,7 @@
       % g: optional {} for optional width (default 0.5\columnwidth)
 %     % m: mandatory for minted programming language
 %     % m: mandatory for side comment 
+
   \VerbatimEnvironment
   \begin{codesidebox}[\IfNoValueTF{#2}{}{#2}]{#4}
       \begin{minipage}[t]{\IfNoValueTF{#3}{0.5\columnwidth}{#3\columnwidth}}%
@@ -106,6 +110,25 @@
 %         \end{minted}%
 % }
 
+\ifsinglecolumn
+\newminted{cpp}{
+      frame=lines,
+      numbersep=1pt,
+      autogobble,
+      linenos=false,
+      %bgcolor=olive!10,
+      mathescape,
+      breaklines=true,
+      obeytabs=false,
+      tabsize=1,
+      escapeinside=||,
+      mathescape=true,
+      codetagify=true,         % Highlites special code tags TODO, NOTE, BUG, ...
+      highlightcolor=codeboxHighlight, % Can be used to highlight lines % with highlightlines={1, 3-5}
+      texcomments=true, % Enables LaTeX code inside Comments
+      fontsize=\small
+		}
+\else
 \newminted{cpp}{
       numbersep=1pt,
       autogobble,
@@ -120,7 +143,28 @@
       highlightcolor=codeboxHighlight, % Can be used to highlight lines % with highlightlines={1, 3-5}
       texcomments=true % Enables LaTeX code inside Comments
 		}
+\fi
 
+
+\ifsinglecolumn
+\newminted{java}{
+      frame=lines,
+      numbersep=1pt,
+      autogobble,
+      linenos=true,
+      %bgcolor=olive!10,
+      mathescape,
+      breaklines=true,
+      obeytabs=false,
+      tabsize=1,
+      escapeinside=||,
+      mathescape=true,
+      codetagify=true,         % Highlites special code tags TODO, NOTE, BUG, ...
+      highlightcolor=codeboxHighlight, % Can be used to highlight lines % with highlightlines={1, 3-5}
+      texcomments=true, % Enables LaTeX code inside Comments
+      fontsize=\small
+		}
+\else
 \newminted{java}{
       numbersep=1pt,
       autogobble,
@@ -135,6 +179,8 @@
       highlightcolor=codeboxHighlight, % Can be used to highlight lines % with highlightlines={1, 3-5}
       texcomments=true % Enables LaTeX code inside Comments
 		}
+\fi
+
 
 \newminted{cuda}{
       numbersep=1pt,
