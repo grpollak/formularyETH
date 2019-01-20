@@ -17,7 +17,24 @@
 \RequirePackage{pifont}
 \let\oldding\ding% Store old \ding in \oldding
 \renewcommand{\ding}[2][1]{\scalebox{#1}{\oldding{#2}}}% Scale \oldding via optional argument
+\newlist{alphalist}{enumerate}{1}
+\setlist[alphalist]{%
+  label=\textcolor{item}{\textbf{\alph*}}\textcolor{section}{)},    
+	ref=(\textnormal{\textcolor{item}{\textbf{\alph*}})},
+	noitemsep,
+	nolistsep
+}
 
+\newlist{alphalistnosep}{enumerate}{2}
+\setlist[alphalistnosep]{%
+  label=\textcolor{item}{\textbf{\alph*}}\textcolor{section}{)},    
+	ref=(\textnormal{\textcolor{item}{\textbf{\alph*}})},
+  topsep=0pt,
+  leftmargin=17pt,
+  labelindent=\parindent,
+  itemsep=0pt,
+  nosep,
+}
 \setlist[enumerate]{font=\normalfont,
 					topsep=0pt,
 					itemsep=3pt,
