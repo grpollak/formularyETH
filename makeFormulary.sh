@@ -25,7 +25,7 @@ cp formularyETH/TEMPLATES/formulary_settingsTEMPLATE.sty ./formulary_settings.st
 cp formularyETH/TEMPLATES/formularyTEMPLATE.tex ./formulary.tex
 cp formularyETH/TEMPLATES/formularyMacrosTEMPLATE.sty ./formularyMacros.sty
 cp formularyETH/TEMPLATES/README.org ./README.org
+cp formularyETH/.gitignore ./.gitignore
 # Stream EDitor: in OSX -i expect some argument => empty ''
-sed -i '' -e 's/placeholder/'"$formularyName"'/' README.org
-cp formularyETH/.gitignore .
+# sed -i '' -e 's/placeholder/'"$formularyName"'/' README.org
 echo Finished
