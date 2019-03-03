@@ -3,7 +3,7 @@
 ** Creating a new formulary
 1. mkdir formularyFolder
 2. git init
-3. git submodule add git@gitlab.vis.ethz.ch:pollakg/formularyETH.git
+3. git submodule add git@gitlab.ethz.ch:pollakg/others/formularyETH.git
 4. chmod 0700 formularyETH/makeFormulary.sh
 5. formularyETH/makeFormulary.sh [-p -m -c] <Optional Name>
 Note: option -p creates a .projectile emacs project file
