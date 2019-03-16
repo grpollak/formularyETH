@@ -12,9 +12,9 @@ do
     # -p option: add projectile project file ./projectile
     -p) cp formularyETH/TEMPLATES/.projectile ./.projectile;;
     # -m option: add math formulary: git@gitlab.vis.ethz.ch:formularies/math.git
-    -m) git submodule add git@gitlab.vis.ethz.ch:formularies/math.git;;
+    -m) git submodule add git@gitlab.ethz.ch:formularies/math_submodule.git;;
     # -c option: add c++ formulary: git@gitlab.vis.ethz.ch:formularies/cpp.git
-    -c) git submodule add git@gitlab.vis.ethz.ch:formularies/cpp.git;;
+    -c) git submodule git@gitlab.ethz.ch:formularies/cpp_submodule.git;;
     # unrecognized optioni
     *) echo "Option $1 not recognized" ;;
     esac # Stop program
