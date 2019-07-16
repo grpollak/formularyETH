@@ -74,7 +74,7 @@ cd ~/.ssh
 ssh-keygen -t rsa -C "your_email@example.com"
 # Print key
 cat ~/.ssh/id_rsa.pub
-# Copy key to remote server (into .ssh/authorized_keys)
-ssh -i ~/.ssh/private_key username@host
+# Copy key to remote server if necessary (into .ssh/authorized_keys)
+ssh-copy-id -i ~/.ssh/private_key username@host
 #+END_SRC
 Afterwards just past public key into SSH Keys under profile preferences.
