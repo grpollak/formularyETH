@@ -287,6 +287,30 @@
     %\fi
 }
 
+\newtcolorbox{questionbox}[1][]{
+		title = #1,
+		fonttitle=\bfseries,
+		coltitle=white,
+		toptitle=1pt,
+		bottomtitle=2pt,
+		colbacktitle=questionboxBackTitle,
+		colback=questionbox,
+		colframe=questionboxFrame,
+		after skip = 0.5pt,					% skip before and after box
+		before skip = 0.5pt,
+		boxrule = 0.1mm,					% linewidth
+		arc = 0.1mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt,
+    %\ifsinglecolumn
+    %   leftright skip=0.02\textwidth,
+    %\fi
+}
+
 \newtcolorbox{theorembox}[1][]{
 		attach title to upper,
 		title = #1,
@@ -347,6 +371,26 @@
 		%breakable
 }
 
+\newtcolorbox{propbox}[1][]{
+		attach title to upper,
+		fonttitle=\bfseries,
+		title = #1,
+		coltitle=black,
+		colback=propbox,
+		colframe=propboxFrame,
+		after skip = 1pt,				% skip before and after box
+		before skip = 1pt,
+		boxrule = 0.1mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=3pt,
+		right=3pt,
+		bottom=3pt,
+		%breakable
+}
+
 \newtcolorbox{stylebox}[1][]{
 		attach title to upper,
 		fonttitle=\bfseries,
@@ -386,6 +430,7 @@
 		bottom=3pt,
 		%breakable
 }
+
 
 % ==============================================================================
 % Minted/Coding Boxes

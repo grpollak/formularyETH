@@ -94,6 +94,16 @@
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
 				}
 
+        
+\newtheoremstyle{proposition}
+				{}{}
+				{}{}
+				{\bfseries}{}
+				{\parindent}
+				{\textbf{\thmname{#1} \thmnumber{#2}}\textcolor{Red}{\thmnote{#3}}:
+					%\keywordbf{\thmnote}]\label{def:\thmnote}
+				}
+
 \newtheoremstyle{example}
 				{}{}
 				{}{}
@@ -202,6 +212,10 @@
 % ----------------------------------------------------------------------
 	\newtheorem{princip}{Principle}[section]
 	\crefname{princip}{principle}{principles}
+%	Proposition
+% ----------------------------------------------------------------------
+	\newtheorem{proposition}{Proposition}[section]
+	\crefname{proposition}{proposition}{propositions}
 %	Example
 % ----------------------------------------------------------------------
 	\newtheorem{example}{Example}[section]
