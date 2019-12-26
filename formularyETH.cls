@@ -1,98 +1,157 @@
-% ==============================================================================
-% Copyright (c) 2017 [Georg R. Pollak]  
-% ==============================================================================
-% ------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Authors:
+% Georg R. Pollak 2016
+%
+% License:
+% The MIT License (see included LICENSE file)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  % Permission is hereby granted, free of charge, to any person obtaining a copy
-  % of this software and associated documentation files (the "Software"), to deal
-  % in the Software without restriction, including without limitation the rights
-  % to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  % copies of the Software, and to permit persons to whom the Software is
-  % furnished to do so, subject to the following conditions:
-
-  % The above copyright notice, the creator of the formuary package G.R. Pollak
-  % and this permission notice shall be included in all copies or substantial portions of the Software.
-
-% ==============================================================================
-% End
-% ==============================================================================
-% ------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{formularyETH/formularyETH}[2016/10/11]
+\ProvidesClass{formularyETH/formularyETH}[2016/10/11 cheat sheet/formulary class v2.0]
+%========================================================================================
+%	CLASS CONFIGURATION
+%========================================================================================
 
-% ======================================================================
-% More Controll statements, optional arguments
-\RequirePackage{xargs} 
-%  toolbox of programming tools geared primarily towards LaTeX class and package author
-\RequirePackage{etoolbox} 
 \RequirePackage{xstring}
-
-
-\IfFileExists{formulary_settings.sty}{
-% File that can be modified by user in order to change default settings
-  \RequirePackage{formulary_settings}
-}{}
-% Fallback file that provides basic default settings
-  \RequirePackage{formularyETH/formularyETH_settings}
-
+% More generic control statements for class authors
+\RequirePackage{etoolbox}
+% ifthen conditionals TODO maybe we do not need this because of etoolbox
+\RequirePackage{xifthen} 
+% Key value options for class options
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions {
+  family = formulary,
+  prefix = formulary@,
+  setkeys = \setkeys
+}
+% More Controll/Macro statements, optional arguments
+%----------------------------------------------------------------------------------------
+% Defining more generic commands with xpars	
+%----------------------------------------------------------------------------------------
+\RequirePackage{xparse} 
+% \DeclareDocumentCommand\comand{ arg1 arg1 ... } { Command definition }
+% Mandatory arguments
+    % m: mandatory {} (can be multiple {}{})
+% Optional arguments
+    % s: star 
+    % o: optional [] (-NoValue- marker if none is given)
+    % O: As for o , but returns <default> if no value is given. Should be given as O{<default>}
+    % d: optional {}An optional argument which is delimited by <char1> and <char2>, given as follows: d<char1><char2>.
+    %    As with o , if no value is given the special marker -NoValue- is returned
+    %
+%   \IfBooleanTF{#1}{if True}{if False}
+%   \IfNoValueTF {<argument>} {<true code>} {<false code>}
+%   \IfNoValueT {<argument>} {<true code>}
+%   \IfNoValueF {<argument>} {<false code>}
 % ==============================================================================
-% Options
-% ==============================================================================
+% Similar to xparse but not as flexible (in order to be compatible with commands that still rely on it) 
+\RequirePackage{xargs} 
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT OPTIONS
+%----------------------------------------------------------------------------------------
+\DeclareStringOption[scrartcl]{baseClass}[scrartcl]
+% Paper Orientation - DEFAULT: portrait 
+\DeclareBoolOption{landscape}
+\DeclareBoolOption{debug}
+\DeclareComplementaryOption{portrait}{landscape}
+\DeclareStringOption[a4paper]{DIN}[a4paper]
 % ------------------------------------------------------------------------------
+% INCLUDE CONFIG FILE IF IT EXISTS  
+% ------------------------------------------------------------------------------
+% Margins	
+%----------------------------------------------------------------------------------------
+\InputIfFileExists{formularyETH/margins.cfg}{}{\PackageError{formulary}{"formularyETH/margins.cfg" does not exist}{}} 
+\DeclareStringOption[\paperMarginTop]{top}[\paperMarginTop]
+\DeclareStringOption[\paperMarginLeft]{left}[\paperMarginLeft]
+\DeclareStringOption[\paperMarginRight]{right}[\paperMarginRight]
+\DeclareStringOption[\paperMarginBottom]{bottom}[\paperMarginBottom]
+\DeclareStringOption[\marginparwidth]{marginparwidth}[\marginparwidth]
+\DeclareStringOption[\marginparsep]{marginparsep}[\marginparsep]
+\DeclareStringOption[\headheight]{headheight}[\headheight]
+\DeclareStringOption[\footskip]{footskip}[\footskip]
+\DeclareStringOption[\headsep]{headsep}[\headsep]
 
 % Number of columns per page 
 % ----------------------------------------------------------------------
-  % Define default number of columns 
-  \newcounter{numberOfColumns}
-  \setcounter{numberOfColumns}{4}
-  \newif\ifmulticols
-  \newif\ifsinglecolumn
-  \multicolsfalse
+% Define default number of columns 
+\newcounter{numberOfColumns}
+\setcounter{numberOfColumns}{1}
+\newbool{multicols}
+\newbool{singlecolumn}
 
-	\DeclareOption{oneColumn}{\setcounter{numberOfColumns}{1}}
-	\DeclareOption{twoColumns}{\setcounter{numberOfColumns}{2} \multicolstrue}
-	\DeclareOption{threeColumns}{\setcounter{numberOfColumns}{3} \multicolstrue}
-	\DeclareOption{fourColumns}{\setcounter{numberOfColumns}{4} \multicolstrue}
-	\DeclareOption{fiveColumns}{\setcounter{numberOfColumns}{5} \multicolstrue}
+\DeclareVoidOption{oneColumn}{\setcounter{numberOfColumns}{1}}
+\DeclareVoidOption{twoColumns}{\setcounter{numberOfColumns}{2} \multicolstrue}
+\DeclareVoidOption{threeColumns}{\setcounter{numberOfColumns}{3} \multicolstrue}
+\DeclareVoidOption{fourColumns}{\setcounter{numberOfColumns}{4} \multicolstrue}
+\DeclareVoidOption{fiveColumns}{\setcounter{numberOfColumns}{5} \multicolstrue}
 % Paper Orientation
 % ----------------------------------------------------------------------
-	\DeclareOption{landscape}{\def\paperOrientation{landscape}}
-	\DeclareOption{portrait}{\def\paperOrientation{portrait}}
-  \ifmulticols\singlecolumnfalse\else\singlecolumntrue\fi
+\ifmulticols\singlecolumnfalse\else\singlecolumntrue\fi
 % Defaults
 % 	\PassOptionsToClass{<options-list>} {<class-name>}:
 %  	used to automatically invoke the corresponding options when the 
 %	class is loaded.
 %	\DeclareOption{<option>}{<code>}
 
-  
+% Colors	
+%----------------------------------------------------------------------------------------
+\RequirePackage[dvipsnames,table]{xcolor}
+\InputIfFileExists{formularyETH/colors.cfg}{}{\PackageError{formulary}{"formularyETH/colors.cfg" does not exist}{}} 
+
 % ==============================================================================
 % Font Options
 % ==============================================================================
-  %% 'sans serif' option
-  \DeclareOption{sans}{\renewcommand{\familydefault}{\sfdefault}}
-  %% 'roman' option
-  \DeclareOption{roman}{\renewcommand{\familydefault}{\rmdefault}} 
+\DeclareStringOption[6pt]{fontsize}[6pt]
+%% 'sans serif' option
+\DeclareVoidOption{sans}{\renewcommand{\familydefault}{\sfdefault}}
+%% 'roman' option
+\DeclareVoidOption{roman}{\renewcommand{\familydefault}{\rmdefault}} 
+% Define the \theLanguage variable according to the chose option
+% ----------------------------------------------------------------------
+	\DeclareVoidOption{german}{\def\theLanguage{ngerman}}
+	\DeclareVoidOption{english}{\def\theLanguage{english}}
+
+% Code to be executed for unknown class option with name \CurrentOption
+% ------------------------------------------------------------------------------ 
+%----------------------------------------------------------------------------------------
+% Packages	
+%----------------------------------------------------------------------------------------
+\PassOptionsToClass{fontsize=\formulary@fontsize}{\formulary@baseClass}
+\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{\formulary@baseClass}}
+% Process given options 
+% ------------------------------------------------------------------------------ 
+\ProcessKeyvalOptions* 
+
+% Loads article class that allows extra font sizes
+\LoadClass{\formulary@baseClass} % Load the base class
+
+%----------------------------------------------------------------------------------------
+% PAPER GEOMETRY	
+%----------------------------------------------------------------------------------------
+\RequirePackage{geometry}
+\geometry{
+  \formulary@DIN,
+  landscape=\boolean{formulary@landscape}, 
+  top=\formulary@top, % Top margin
+	bottom=\formulary@bottom, % Bottom margin
+	left=\formulary@left, % Left margin
+	right=\formulary@right, % Right margin
+	headheight=\formulary@headheight, % Header height
+	footskip=\formulary@footskip, % Space from the bottom margin to the baseline of the footer
+	headsep=\formulary@headsep, % Space from the top margin to the baseline of the header
+  marginparwidth=\formulary@marginparwidth,
+  marginparsep=\formulary@marginparsep,
+ 	%showframe, % Uncomment to show how the type block is set on the page
+}
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
 	
-	\PassOptionsToClass{fontsize=\mainFontSize,\DIN,\paperOrientation}{\baseClass}
 
-%  Define the \theLanguage variable according to the chose option
-% ----------------------------------------------------------------------
-	\DeclareOption{german}{\def\theLanguage{ngerman}}
-	\DeclareOption{english}{\def\theLanguage{english}}
-
-% Default fallback option, gets called in case of not defined options  
-% ----------------------------------------------------------------------
-	\DeclareOption*{%
-		\PassOptionsToClass{\CurrentOption}{\baseClass}%
-	}
-
-% Terminate/Process options process
-% ----------------------------------------------------------------------
-	\ProcessOptions\relax
-
-	% Load baseclass
-	\LoadClass{\baseClass}
 
 
 % ======================================================================
@@ -100,7 +159,6 @@
 % ======================================================================
 	% Basic packages formularyETH packages
 	% load formularyETH packages
-	\RequirePackage{xparse}								% Allow multiple default arguments
 	\RequirePackage{formularyETH/formularyETH}			% Basic style definitions
 	\RequirePackage{formularyETH/formularyETH_colors}	% Colors
 	\RequirePackage{formularyETH/formularyETH_macros}	% Further macros
@@ -114,22 +172,8 @@
 	\RequirePackage{import}								% Allows to specify import paths
 	   	                    								% 
 % ======================================================================
-% Layout
+% Multicolumn Layout
 % ======================================================================
-
-% Geometry
-% ----------------------------------------------------------------------
-	\RequirePackage{geometry}
-	\geometry{\DIN,
-			  \paperOrientation, 
-			  top=\TPaperMargin, 
-			  left=\leftPaperMargin,
-			  right=\rigthPaperMargin,
-			  bottom=\bottomPaperMargin
-	}%,includefoot, footskip=1.7em}
-
-% Multicolumn
-% ----------------------------------------------------------------------
 \RequirePackage{multicol}			% for columns
 \ifmulticols
 	% start multicolumn
@@ -144,6 +188,7 @@
 	}
 	\setlength\columnsep{\columnsepperation}
 \fi
+
 % ======================================================================
 % Basic Settings
 % ======================================================================
@@ -151,27 +196,20 @@
 \newcommand\appendtographicspath[1]{%
   \g@addto@macro\Ginput@path{#1}%
 }
-% Identify Compiler
-% ----------------------------------------------------------------------
-	\RequirePackage{ifxetex}
 
-	% Check if document is being processed/compiled with XeTex
-	\ifxetex%
-		%XeLaTeX
-		\PassOptionsToPackage{no-math}{fontspec}
-	    \RequirePackage{xltxtra}
-	    \defaultfontfeatures{Scale=MatchLowercase,Mapping=tex-text}
-		
-		% for unicode decalarations
-		%\let\DeclareUnicodeCharacter\newunicodechar
-		%\setmainfont{Times New Roman}
-		%\setromanfont{Times New Roman}
-		\setsansfont{Helvetica}
-	\else
-		% pdfLaTeX  
-	    \RequirePackage[utf8]{inputenc}		% UTF-8 input 
-	    %\InputIfFileExists{glyphtounicode}{\pdfgentounicode=1}{}	% Glyph-to-Unicode Translation (needs PdfTex >=1.4)
-		%\RequirePackage{textcomp}				% get rid of font warnings
-		%\pdfminorversion=6						% for 3D Objects
-		%\RequirePackage[osf]{mathpazo}			% old style numbering
-	\fi
+% ======================================================================
+% Basic LaTeX Settings
+% ======================================================================
+  \setlength{\parindent}{0mm} % Suppress paragraph indentation
+	\hyphenpenalty=10000			  % Almost no word breaks.
+	\pretolerance=60
+	\tolerance=2000
+	\doublehyphendemerits=10000       % No consecutive line hyphens.
+	\brokenpenalty=10000              % No broken words across columns/pages.
+	\widowpenalty=9999                % Almost no widows at bottom of page.
+	\clubpenalty=9999                 % Almost no orphans at top of page.
+	\interdisplaylinepenalty=100
+	\interfootnotelinepenalty=9999    % Almost never break footnotes.
+	\interlinepenalty=10000
+	%\binoppenalty=200
+	%\relpenalty=200

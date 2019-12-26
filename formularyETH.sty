@@ -20,7 +20,7 @@
 \NeedsTeXFormat{LaTeX2e}
 % Introduce Packages
 % \ProvidesPackage{<name>}[<version>]
-\ProvidesPackage{formularyETH}[2016/10/11 Macros for formularyETH]
+\ProvidesPackage{formulary/formularyETH}[2016/10/11 Macros for formularyETH]
 
 % ======================================================================
 % Chapters, Titles, Sections,... 
@@ -28,7 +28,6 @@
 % ======================================================================
 
 \RequirePackage{titlesec}
-	
 % \titleformat{ command }
 % 				[ shape ]
 % 				{ format }
@@ -38,15 +37,17 @@
 
 	%\titleformat{\chapter}{\huge \bfseries}{\thechapter}{0em}{\huge \bfseries}
 
+% \titlespacing*{ command }{ left }{ beforesep }{ aftersep }[ right ]
+\titlespacing{\section}{\sectionSpacingLeft}{\sectionSpacingTop}{\sectionSpacingBottom}[\sectionSpacingRight]
 \ifsinglecolumn 
     \titleformat{\section}
     {
-      \color{section} \LARGE \scshape\MakeUppercase\bfseries
+      \color{section} \LARGE 
     }
-    { \color{attributes}\thesection .}{0em}
+    { \color{attributes}\thesection }{0em}
     { \color{section}}
     %[{\titleline*[l]{\titlerule[3pt]}\vspace{2pt}]
-    [ \color{attributes}{\titleline[l]{ \titlerule[1pt]} } ]
+    %[ \color{attributes}{\titleline[l]{ \titlerule[1pt]} } ]
 \else
     \titleformat{\section}
     {
@@ -65,6 +66,7 @@
       }
     ]
 \fi
+\titlespacing{\subsection}{\subSectionSpacingLeft}{\subSectionSpacingTop}{\subSectionSpacingBottom}[\subSectionSpacingRight]
 
 \renewcommand{\thesubsection}{\arabic{subsection}}
 \ifsinglecolumn 
@@ -79,9 +81,9 @@
     \color{subsection}
   }
   [
-    \color{attributes}{
-      \titleline[l]{ \titlerule[0.7pt]}
-    }
+    % \color{attributes}{
+    %   \titleline[l]{ \titlerule[0.7pt]}
+    % }
   ]
 \else
   \titleformat{\subsection}
@@ -101,6 +103,7 @@
     % }
   ]
 \fi
+\titlespacing{\subsubsection}{\subSubSectionSpacingLeft}{\subSubSectionSpacingTop}{\subSubSectionSpacingBottom}[\subSubSectionSpacingRight]
 
   
 
@@ -132,8 +135,29 @@
   [
   ]
 \fi
+\titlespacing{\subsubsubsection}{\subSubSectionSpacingLeft}{\subSubSectionSpacingTop}{\subSubSectionSpacingBottom}[\subSubSectionSpacingRight]
 
 
+% ------------------------------------------------------------------------------
+% maketitle command
+% ------------------------------------------------------------------------------
+\def\@maketitle{%
+  \color{section}
+  \vskip 1em%
+  \begin{center}%
+  \let \footnote \thanks
+    {\Huge\scshape\bfseries \@title \par}%
+    \vskip 1.5em%
+    {\Large
+      \lineskip .5em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+    \vskip 1em%
+    %{\large \@date}%
+  \end{center}%
+  \par
+  \vskip 1.5em}
 
   % Not working yet
   % ------------------------------------------------------------------------------ 
@@ -143,25 +167,3 @@
 	% 			{ \color{attributes} \thesubsubsubsection )}{0em}
 	% 			{ \color{subsubsection}}
 	% 			[]
-
-% \titlespacing*{ command }{ left }{ beforesep }{ aftersep }[ right ]
-
-	\titlespacing{\section}{\sectionSpacingLeft}{\sectionSpacingTop}{\sectionSpacingBottom}[\sectionSpacingRight]
-	\titlespacing{\subsection}{\subSectionSpacingLeft}{\subSectionSpacingTop}{\subSectionSpacingBottom}[\subSectionSpacingRight]
-	\titlespacing{\subsubsection}{\subSubSectionSpacingLeft}{\subSubSectionSpacingTop}{\subSubSectionSpacingBottom}[\subSubSectionSpacingRight]
-	\titlespacing{\subsubsubsection}{\subSubSectionSpacingLeft}{\subSubSectionSpacingTop}{\subSubSectionSpacingBottom}[\subSubSectionSpacingRight]
-% ======================================================================
-% Basic LaTeX Settings
-% ======================================================================
-	\hyphenpenalty=10000			  % Almost no word breaks.
-	\pretolerance=60
-	\tolerance=2000
-	\doublehyphendemerits=10000       % No consecutive line hyphens.
-	\brokenpenalty=10000              % No broken words across columns/pages.
-	\widowpenalty=9999                % Almost no widows at bottom of page.
-	\clubpenalty=9999                 % Almost no orphans at top of page.
-	\interdisplaylinepenalty=100
-	\interfootnotelinepenalty=9999    % Almost never break footnotes.
-	\interlinepenalty=10000
-	%\binoppenalty=200
-	%\relpenalty=200
