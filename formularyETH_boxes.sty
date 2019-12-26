@@ -18,6 +18,7 @@
 
 % Basic box
 % ----------------------------------------------------------------------
+\newif\iftest\testfalse
 \newtcolorbox{sectionbox}[1][]{
 		fonttitle=\bfseries,
 		title =#1,
@@ -35,12 +36,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
-		bottom=3pt,
-    %\ifsinglecolumn
-    %   leftright skip=0.02\textwidth,
-    %\fi
+    bottom=3pt,
+    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 		%breakable,
 		%pad at break = 1mm
 }
@@ -59,9 +56,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt,
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 		%breakable
 }
 
@@ -79,9 +75,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt,
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 }
 
 \newtcolorbox{lemmabox}[1][]{
@@ -98,9 +93,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt,
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 		%breakable
 }
 
@@ -118,9 +112,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt,
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 		%breakable
 }
 
@@ -139,9 +132,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt,
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 		%breakable
 }
 
@@ -159,9 +151,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt,
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 		%breakable
 }
 
@@ -179,9 +170,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt,
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 		%breakable
 }
 
@@ -199,9 +189,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt,
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 		%breakable
 }
 
@@ -219,9 +208,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 }
 
 \newtcolorbox{propertybox}[1][]{
@@ -238,9 +226,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 }
 
 \newtcolorbox{proofbox}[1][]{
@@ -257,9 +244,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt,
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 		%breakable
 }
 
@@ -279,9 +265,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt,
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
     %\ifsinglecolumn
     %   leftright skip=0.02\textwidth,
     %\fi
@@ -303,9 +288,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt,
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
     %\ifsinglecolumn
     %   leftright skip=0.02\textwidth,
     %\fi
@@ -325,9 +309,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt,
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 		%breakable
 }
 
@@ -345,9 +328,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt,
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 		%breakable
 }
 
@@ -365,9 +347,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
-		bottom=3pt,
+    bottom=3pt,
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 		%breakable
 }
 
@@ -385,9 +366,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt,
+    \left\rightright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 		%breakable
 }
 
@@ -405,9 +385,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt,
+    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 		%breakable
 }
 
@@ -425,9 +404,8 @@
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=3pt,
-		right=3pt,
 		bottom=3pt,
+    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
 		%breakable
 }
 
@@ -474,10 +452,8 @@ format=\arabic]{codebox}{s o o m}{
 		boxsep = 0mm,					              % Space between text and frame: left, right, top, bottom, and middle
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=10pt,
-		right=3pt,
-		bottom=3pt,
-		%breakable,
+    bottom=3pt,
+    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax		%breakable,
 		%beforeafter skip = 0.4pt,		% skip before and after box
     }
 
@@ -546,10 +522,8 @@ format=\arabic]{codeboxExample}{s o o m}{
 		boxsep = 0mm,					              % Space between text and frame: left, right, top, bottom, and middle
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
-		left=10pt,
-		right=3pt,
-		bottom=3pt,
-		%breakable,
+    bottom=3pt,
+    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax		%breakable,
 		%beforeafter skip = 0.4pt,		% skip before and after box
     }
 
@@ -739,9 +713,7 @@ format=\arabic]{mintlinebox}{s O{} m}{
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=0pt,						
 		bottom=2pt,
-		left=3pt,
-		right=3pt,
-		%breakable,
+    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax		%breakable,
     minted options={
         %numbersep=1pt,
         autogobble,
