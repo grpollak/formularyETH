@@ -42,18 +42,9 @@
 \ifsinglecolumn 
     \titleformat{\section}
     {
-      \color{section} \LARGE 
-    }
-    { \color{attributes}\thesection }{0em}
-    { \color{section}}
-    %[{\titleline*[l]{\titlerule[3pt]}\vspace{2pt}]
-    %[ \color{attributes}{\titleline[l]{ \titlerule[1pt]} } ]
-\else
-    \titleformat{\section}
-    {
-      \centering \color{section} \LARGE \scshape\MakeUppercase\bfseries
+      \centering \color{section} \Huge \scshape\MakeUppercase\bfseries
     }{
-      \color{attributes}\thesection.
+      \color{attributes}
     }{
       0em
     }{
@@ -65,6 +56,15 @@
         \rule{0.8\linewidth}{2pt}
       }
     ]
+\else
+    \titleformat{\section}
+    {
+      \color{section} \LARGE 
+    }
+    { \color{attributes} }{0em}
+    { \color{section}}
+    %[ \color{attributes}{\titleline[l]{ \titlerule[1pt]} } ]
+    % [\color{attributes}{\vskip-\topskip\rule{0.4\linewidth}{2pt}}]
 \fi
 \titlespacing{\subsection}{\subSectionSpacingLeft}{\subSectionSpacingTop}{\subSectionSpacingBottom}[\subSectionSpacingRight]
 
@@ -74,7 +74,7 @@
   {
     \color{subsection} \large \bfseries
   }{
-    \color{attributes}\thesubsection )
+    \color{attributes}\thesubsection. 
   }{
     0em
   }{
@@ -90,13 +90,16 @@
   {
     \color{subsection} \large \bfseries
   }{
-    \color{attributes}\thesubsection )
+    \color{attributes}\thesubsection.
   }{
     0em
   }{
     \color{subsection}
   }
   [
+    % \color{attributes}{
+    %   \titleline[l]{ \titlerule[0.7pt]}
+    % }
     % \color{attributes}{
     %   \vskip-\topskip
     %   \rule{0.4\linewidth}{2pt}

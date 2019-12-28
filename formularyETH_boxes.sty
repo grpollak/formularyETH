@@ -18,7 +18,6 @@
 
 % Basic box
 % ----------------------------------------------------------------------
-\newif\iftest\testfalse
 \newtcolorbox{sectionbox}[1][]{
 		fonttitle=\bfseries,
 		title =#1,
@@ -37,7 +36,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
     bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 		%breakable,
 		%pad at break = 1mm
 }
@@ -57,7 +58,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 		%breakable
 }
 
@@ -76,7 +79,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 }
 
 \newtcolorbox{lemmabox}[1][]{
@@ -94,7 +99,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 		%breakable
 }
 
@@ -113,7 +120,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 		%breakable
 }
 
@@ -133,7 +142,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 		%breakable
 }
 
@@ -152,7 +163,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 		%breakable
 }
 
@@ -171,7 +184,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 		%breakable
 }
 
@@ -190,7 +205,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 		%breakable
 }
 
@@ -209,7 +226,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 }
 
 \newtcolorbox{propertybox}[1][]{
@@ -227,7 +246,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 }
 
 \newtcolorbox{proofbox}[1][]{
@@ -245,7 +266,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 		%breakable
 }
 
@@ -266,7 +289,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
     %\ifsinglecolumn
     %   leftright skip=0.02\textwidth,
     %\fi
@@ -289,7 +314,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
     %\ifsinglecolumn
     %   leftright skip=0.02\textwidth,
     %\fi
@@ -310,7 +337,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 		%breakable
 }
 
@@ -329,7 +358,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 		%breakable
 }
 
@@ -348,7 +379,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
     bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 		%breakable
 }
 
@@ -367,7 +400,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 		%breakable
 }
 
@@ -386,7 +421,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 		%breakable
 }
 
@@ -405,7 +442,9 @@
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
 		bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi
 		%breakable
 }
 
@@ -453,7 +492,9 @@ format=\arabic]{codebox}{s o o m}{
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
     bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax		%breakable,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi		%breakable,
 		%beforeafter skip = 0.4pt,		% skip before and after box
     }
 
@@ -480,6 +521,8 @@ format=\arabic]{codeboxRaw}{o o}{
 		left=0pt,
 		right=0pt,
 		bottom=3pt,
+    left=2pt,
+    right=2pt,
 		%breakable,
 		%beforeafter skip = 0.4pt,		% skip before and after box
     }
@@ -523,7 +566,9 @@ format=\arabic]{codeboxExample}{s o o m}{
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
     bottom=3pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax		%breakable,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi		%breakable,
 		%beforeafter skip = 0.4pt,		% skip before and after box
     }
 
@@ -567,6 +612,8 @@ format=\arabic]{codeboxExampleNl}{s o o m}{
 		left=0pt,
 		right=0pt,
 		bottom=3pt,
+    left=2pt,
+    right=2pt,
 		%breakable,
 		%beforeafter skip = 0.4pt,		% skip before and after box
     }
@@ -609,6 +656,8 @@ format=\arabic]{codeboxNl}{s o o m}{
 		left=0pt,
 		right=0pt,
 		bottom=3pt,
+    left=2pt,
+    right=2pt,
 		%breakable,
 		%beforeafter skip = 0.4pt,		% skip before and after box
     }
@@ -655,6 +704,8 @@ format=\arabic]{codeboxinput}{s o o m m}{
 		left=7pt,
 		right=3pt,
 		bottom=3pt,
+    left=2pt,
+    right=2pt,
 		%breakable,
 		%beforeafter skip = 0.4pt,		% skip before and after box
  		before skip = 0.5pt,
@@ -682,6 +733,8 @@ format=\arabic]{codeboxinput}{s o o m m}{
 		left=0pt,
 		right=0pt,
 		bottom=3pt,
+    left=2pt,
+    right=2pt,
 		%breakable,
 		%beforeafter skip = 0.4pt,		% skip before and after box
     }
@@ -713,7 +766,9 @@ format=\arabic]{mintlinebox}{s O{} m}{
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=0pt,						
 		bottom=2pt,
-    leftright skip=\ifsinglecolumn 0pt\relax\else 3pt\relax\fi\relax		%breakable,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifsinglecolumn 0pt\else 3pt\relax\fi		%breakable,
     minted options={
         %numbersep=1pt,
         autogobble,

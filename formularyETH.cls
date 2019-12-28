@@ -80,13 +80,13 @@
 \newcounter{numberOfColumns}
 \setcounter{numberOfColumns}{1}
 \newbool{multicols}
-\newbool{singlecolumn}
+\newif\ifsinglecolumn
 
-\DeclareVoidOption{oneColumn}{\setcounter{numberOfColumns}{1}}
-\DeclareVoidOption{twoColumns}{\setcounter{numberOfColumns}{2} \multicolstrue}
-\DeclareVoidOption{threeColumns}{\setcounter{numberOfColumns}{3} \multicolstrue}
-\DeclareVoidOption{fourColumns}{\setcounter{numberOfColumns}{4} \multicolstrue}
-\DeclareVoidOption{fiveColumns}{\setcounter{numberOfColumns}{5} \multicolstrue}
+\DeclareVoidOption{oneColumn}{\setcounter{numberOfColumns}{1} \singlecolumntrue}
+\DeclareVoidOption{twoColumns}{\setcounter{numberOfColumns}{2} \multicolstrue \singlecolumnfalse}
+\DeclareVoidOption{threeColumns}{\setcounter{numberOfColumns}{3} \multicolstrue\singlecolumnfalse}
+\DeclareVoidOption{fourColumns}{\setcounter{numberOfColumns}{4} \multicolstrue\singlecolumnfalse\singlecolumnfalse}
+\DeclareVoidOption{fiveColumns}{\setcounter{numberOfColumns}{5} \multicolstrue\singlecolumnfalse}
 % Paper Orientation
 % ----------------------------------------------------------------------
 \ifmulticols\singlecolumnfalse\else\singlecolumntrue\fi
