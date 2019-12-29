@@ -85,6 +85,8 @@
   \DeclareMathOperator*{\argmax}{arg\,max}    % argmax
   \DeclareMathOperator*{\argmin}{arg\,min}    % argmin
 	\DeclareMathOperator{\T}{\intercal}         % Transposed
+  \DeclareMathOperator{\conjTransp}{^{\mathsf{H}}} % Conjugate Transposed
+
 	\newcommand{\ie}{\emph{i.e.} }
 	\newcommand{\cf}{\emph{cf.} }
 	\newcommand{\into}{\hookrightarrow}
@@ -147,6 +149,8 @@
 % Linear Algebra
 % ==============================================================================
 % ------------------------------------------------------------------------------
+  \newcommand{\eigenval}{\lambdac}
+  \newcommand{\singval}{\sigmac}
 	\DeclareMathOperator{\linalgrank}{\mathfrak{rank}}
 	\DeclareMathOperator{\linalgimg}{\mathfrak{img}}
 	\DeclareMathOperator{\linalgrange}{\mathfrak{R}}
@@ -199,6 +203,7 @@
 	% vector operations
   \DeclarePairedDelimiter\norm{\lVert}{\rVert}                    % Norm
 	\DeclareMathOperator{\Sp}{Sp}																		% Spur (german for trace \tr)
+	\DeclareMathOperator{\trace}{Tr}																		% Spur (german for trace \tr)
   \DeclarePairedDelimiterX{\inprd}[2]{\langle}{\rangle}{#1, #2}    % *: uses \left...\right;
                                                                   % manual scaling can be provided by \inp[\big], \inp[\Big], \inp[\bigg]
 	                             																		 
