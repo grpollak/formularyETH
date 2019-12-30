@@ -17,7 +17,8 @@
 \usetikzlibrary{calc}
 \usetikzlibrary{hobby}
 \usetikzlibrary{chains}
-\usetikzlibrary{arrows.meta,
+\usetikzlibrary{arrows,
+                arrows.meta,
                 bending,
                 intersections,
                 quotes,
@@ -44,6 +45,17 @@
 % removes some stray whitespace that can occur in subscripts, exponents, etc.
 % see: https://de.sharelatex.com/blog/2012/06/12/mathtools-for-beautiful-math.html
 % ----------------------------------------------------------------------
+\NewDocumentCommand\DownArrow{O{2.0ex} O{black} O{0.6} g}{%
+  \tikz[baseline={(current bounding box.center)}]{
+    \draw [{Latex[length=1mm,width=3mm]}-, line width=0.5pt, #2] (0,0) --
+    node[inner sep=0,outer sep=0, fill=white, anchor=center, pos=#3] {#4} ++ (0,#1);
+  }
+}
+
+% ------------------------------------------------------------------------------
+% Arrows above text
+% ------------------------------------------------------------------------------
+
 \newcommand{\bda}[2]{
 	\underset{\mathclap{  
 	\begin{tikzpicture}
