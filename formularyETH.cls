@@ -38,9 +38,12 @@
     % s: star 
     % o: optional [] (-NoValue- marker if none is given)
     % O: As for o , but returns <default> if no value is given. Should be given as O{<default>}
-    % d: optional {}An optional argument which is delimited by <char1> and <char2>, given as follows: d<char1><char2>.
+    % d: optional del1 del2: An optional argument which is delimited by <char1> and <char2>, given as follows: d<char1><char2>.
     %    As with o , if no value is given the special marker -NoValue- is returned
-    %
+    % g: optional {} an optional argument which is delimited by {}
+    %    As with o , if no value is given the special marker -NoValue- is returned
+    % G: As for G , but returns <default> if no value is given. Should be given as G{<default>}
+
 %   \IfBooleanTF{#1}{if True}{if False}
 %   \IfNoValueTF {<argument>} {<true code>} {<false code>}
 %   \IfNoValueT {<argument>} {<true code>}
