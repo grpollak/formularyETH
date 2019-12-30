@@ -3,17 +3,21 @@
 formularyName=${1:-formulary}
 mkdir src
 mkdir figures
+mkdir macros
+mkdir colors
 
 # -n checks if argument is $1 non-empty
 while [ -n "$1" ]
 # while loop starts
 do
     case "$1" in
-    # -p option: add projectile project file ./projectile
-    -p) cp formularyETH/TEMPLATES/.projectile ./.projectile;;
-    # -m option: add math formulary: git@gitlab.vis.ethz.ch:formularies/math.git
+    # -pr option: add projectile project file ./projectile
+    -pr) cp formularyETH/TEMPLATES/.projectile ./.projectile;;
+    # -p option: add python formulary as submodule
+    -p) git submodule add git@gitlab.ethz.ch:formularies/python/python_submodule.git;;
+    # -m option: add math formulary as submodule
     -m) git submodule add git@gitlab.ethz.ch:formularies/math_submodule.git;;
-    # -c option: add c++ formulary: git@gitlab.vis.ethz.ch:formularies/cpp.git
+    # -c option: add c++ formulary as submodule
     -c) git submodule git@gitlab.ethz.ch:formularies/cpp_submodule.git;;
     # unrecognized optioni
     *) echo "Option $1 not recognized" ;;
@@ -21,7 +25,6 @@ do
     shift # Shift $1 to the next input argument
 done
 
-cp formularyETH/TEMPLATES/formulary_settingsTEMPLATE.sty ./formulary_settings.sty
 cp formularyETH/TEMPLATES/formularyTEMPLATE.tex ./formulary.tex
 cp formularyETH/TEMPLATES/formularyMacrosTEMPLATE.sty ./formularyMacros.sty
 cp formularyETH/TEMPLATES/README.org ./README.org
