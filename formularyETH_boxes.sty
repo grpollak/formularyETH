@@ -711,34 +711,6 @@ format=\arabic]{codeboxinput}{s o o m m}{
  		before skip = 0.5pt,
  		after skip = 0.5pt
     }
-% Side by Side
-% ------------------------------------------------------------------------------ 
-\newcounter{mcboxCounterSide}
-\newtcolorbox[use counter=mcboxCounterSide, number within=section, number format=\arabic]{codesidebox}[2][]{
-    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{\textit{#1}}{}}{}{ \textbf{:} \textit{#1}}\hfill\textit{#2},
-    coltitle=codeboxTitle,
-		toptitle=1pt,
-		bottomtitle=1pt,
-		colbacktitle=codeboxBackTitle,
-		colback=codebox,
-		colframe=codeboxFrame,
-    size=title,
-		after skip = 0.5pt,				          % skip before and after box
-		before skip = 0.5pt,
-		boxrule = 0.3mm,				            % frameborder width
-		arc = 0mm,						              % innder radius of frames (corners)
-		boxsep = 0mm,					              % Space between text and frame: left, right, top, bottom, and middle
-		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
-		top=3pt,						
-		left=0pt,
-		right=0pt,
-		bottom=3pt,
-    left=2pt,
-    right=2pt,
-		%breakable,
-		%beforeafter skip = 0.4pt,		% skip before and after box
-    }
-
 % Mintlinebox
 % ------------------------------------------------------------------------------ 
 \newcounter{mintlineboxCounter}
@@ -768,7 +740,6 @@ format=\arabic]{mintlinebox}{s O{} m}{
 		bottom=2pt,
     left=2pt,
     right=2pt,
-    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi		%breakable,
     minted options={
         %numbersep=1pt,
         autogobble,
@@ -776,7 +747,7 @@ format=\arabic]{mintlinebox}{s O{} m}{
         %framerule=0pt,
         %bgcolor=olive!10,
         %linenos=true,
-        breaklines,
+        breaklines=true,
         fontsize=\IfNoValueTF{#1}{\small}{\normalsize},
         mathescape,
         obeytabs=false,
@@ -785,7 +756,35 @@ format=\arabic]{mintlinebox}{s O{} m}{
         mathescape=true,
         codetagify=true,         % Highlites special code tags TODO, NOTE, BUG, ...
         highlightcolor=codeboxHighlight, % Can be used to highlight lines % with highlightlines={1, 3-5}
-        texcomments=true % Enables LaTeX code inside Comments
-    }
+        texcomments=true, % Enables LaTeX code inside Comments
+    },
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi		%breakable,
 		%beforeafter skip = 0.4pt,		% skip before and after box
 }
+% Side by Side
+% ------------------------------------------------------------------------------ 
+\newcounter{mcboxCounterSide}
+\newtcolorbox[use counter=mcboxCounterSide, number within=section, number format=\arabic]{codesidebox}[2][]{
+    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{\textit{#1}}{}}{}{ \textbf{:} \textit{#1}}\hfill\textit{#2},
+    coltitle=codeboxTitle,
+		toptitle=1pt,
+		bottomtitle=1pt,
+		colbacktitle=codeboxBackTitle,
+		colback=codebox,
+		colframe=codeboxFrame,
+    size=title,
+		after skip = 0.5pt,				          % skip before and after box
+		before skip = 0.5pt,
+		boxrule = 0.3mm,				            % frameborder width
+		arc = 0mm,						              % innder radius of frames (corners)
+		boxsep = 0mm,					              % Space between text and frame: left, right, top, bottom, and middle
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		left=0pt,
+		right=0pt,
+		bottom=3pt,
+    left=2pt,
+    right=2pt,
+		%breakable,
+		%beforeafter skip = 0.4pt,		% skip before and after box
+    }
