@@ -160,7 +160,7 @@
 	% Basic packages formularyETH packages
 	% load formularyETH packages
 	\RequirePackage{formularyETH/formularyETH}			% Basic style definitions
-	\RequirePackage{formularyETH/formularyETH_colors}	% Colors
+  \InputIfFileExists{formularyETH/colors.cfg}{}{\PackageError{formulary}{"formularyETH/colors.cfg" does not exist}{}} 
 	\RequirePackage{formularyETH/formularyETH_macros}	% Further macros
 	\RequirePackage{formularyETH/formularyETH_boxes}	% section boxes
 	\RequirePackage[utf8]{inputenc}	
