@@ -26,6 +26,11 @@
 % Chapters, Titles, Sections,... 
 % Note: scrartcl can lead to complications with titlesec  
 % ======================================================================
+\RequirePackage{chngcntr}
+% allows to use commands s.a.\
+% \counterwithin*{corrollary}{theorem} will make the corollary counter slave to theorem counters. 
+% \counterwithin{corrollary}{theorem} will also redefine \thecorollary as ‹theorem number›.‹corollary number›
+% instead of using \@addtoreset explicitly
 
 \RequirePackage{titlesec}
 % \titleformat{ command }
@@ -36,6 +41,8 @@
 % 				{before-code }[ after-code ] 
 
 	%\titleformat{\chapter}{\huge \bfseries}{\thechapter}{0em}{\huge \bfseries}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
 
 % \titlespacing*{ command }{ left }{ beforesep }{ aftersep }[ right ]
 \titlespacing{\section}{\sectionSpacingLeft}{\sectionSpacingTop}{\sectionSpacingBottom}[\sectionSpacingRight]
@@ -116,7 +123,7 @@
   {
     \color{subsubsection} \normalsize \bfseries
   }{
-    \color{attributes} \thesubsubsection.
+    \color{attributes} \thesubsection.\thesubsubsection.
   }{
     0em
   }{
@@ -129,7 +136,7 @@
   {
     \color{subsubsection} \normalsize \bfseries
   }{
-    \color{attributes} \thesubsubsection.
+    \color{attributes} \thesubsection.\thesubsubsection.
   }{
     0em
   }{
@@ -140,7 +147,81 @@
 \fi
 \titlespacing{\subsubsubsection}{\subSubSectionSpacingLeft}{\subSubSectionSpacingTop}{\subSubSectionSpacingBottom}[\subSubSectionSpacingRight]
 
+% Subsubsubsection
+% ------------------------------------------------------------------------------ 
+\titleclass{\subsubsubsection}{straight}[\subsubsection]
 
+\newcounter{subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsection.\thesubsubsection.\arabic{subsubsubsection}}
+\ifsinglecolumn 
+  \titleformat{\subsubsubsection}
+  {
+    \color{subsubsubsection} \normalsize \bfseries
+  }{
+    \color{attributes} \thesubsubsubsection.
+  }{
+    0em
+  }{
+    \color{subsubsubsection}
+  }
+  [
+  ]
+\else
+  \titleformat{\subsubsubsection}
+  {
+    \color{subsubsubsection} \normalsize \bfseries
+  }{
+    \color{attributes} \thesubsubsubsection.
+  }{
+    0em
+  }{
+    \color{subsubsubsection}
+  }
+  [
+  ]
+\fi
+\titlespacing{\subSubSubSection}{\subSubSubSectionSpacingLeft}{\subSubSubSectionSpacingTop}{\subSubSubSectionSpacingBottom}[\subsubsubsectionSpacingRight]
+
+% Paragraph
+% ------------------------------------------------------------------------------ 
+% \renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+\ifsinglecolumn 
+  \titleformat{\paragraph}
+  {
+    \color{paragraph} \normalsize \bfseries
+  }{
+    \color{attributes} %\theparagraph.
+  }{
+    0em
+  }{
+    \color{paragraph}
+  }
+  [
+  ]
+\else
+  \titleformat{\paragraph}
+  {
+    \color{paragraph} \normalsize \bfseries
+  }{
+    \color{attributes} %\theparagraph.
+  }{
+    0em
+  }{
+    \color{paragraph}
+  }
+  [
+  ]
+\fi
+\titlespacing{\paragraph}{\paragraphSpacingLeft}{\paragraphSpacingTop}{\paragraphSpacingBottom}[\paragraphSpacingRight]
+
+% ------------------------------------------------------------------------------
+% Redefine toc
+% ------------------------------------------------------------------------------
+\def\toclevel@subsubsubsection{4}
+\def\toclevel@paragraph{5}
+% \def\l@subsubsubsection{\@dottedtocline{4}{7em}{4em}}
+% \def\l@paragraph{\@dottedtocline{5}{10em}{5em}}
+% \def\l@subparagraph{\@dottedtocline{6}{14em}{6em}}
 % ------------------------------------------------------------------------------
 % maketitle command
 % ------------------------------------------------------------------------------

@@ -133,8 +133,8 @@
 		coltitle=black,
 		colback=examplebox,
 		colframe=exampleboxFrame,
-		after skip = 1pt,				% skip before and after box
-		before skip = 2pt,
+		after skip = 0.5pt,				% skip before and after box
+		before skip = 0.5pt,
 		boxrule = 0.3mm,				% linewidth
 		arc = 0mm,						% innder radius of frames (corners)
 		boxsep = 0mm,					% Space between text and frame
@@ -453,9 +453,9 @@
 % ==============================================================================
 % ------------------------------------------------------------------------------
 \newcounter{propertiesBoxCounter}
-\DeclareTColorBox[use counter=propertiesBoxCounter, number within=section, number format=\arabic]{propertiesbox}{O{} G{}}{
-		fonttitle=\bfseries,
-		title =#2,
+\DeclareTColorBox[use counter=propertiesBoxCounter, number within=section, number format=\arabic]{propertiesbox}{D<>{} O{} G{}}{
+		fonttitle=\small\bfseries,
+		title =#2\ifthenelse{\equal{#3}{}}{}{{ -- \normalsize#3}},
 		toptitle=1pt,
     attach title to upper,
     after title=\ifthenelse{\equal{#2}{}}{}{{:\ }},
@@ -479,8 +479,117 @@
 		%pad at break = 1mm
 }
 
+\newcounter{attributeBoxCounter}
+\DeclareTColorBox[use counter=attributeBoxCounter, number within=subsubsection, number format=\arabic]{attributebox}{O{} G{}}{
+		fonttitle=\bfseries,
+		title =#2,
+		toptitle=1pt,
+    attach title to upper,
+    after title=\ifthenelse{\equal{#2}{}}{}{{:\ }},
+    coltitle=black,
+		colback=defnbox,
+		colframe=attributeboxFrame,
+		before skip = 0.5pt,				% skip before and after box
+		after skip = 0.5pt,
+		boxrule = 0.3mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		bottom=3pt,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi,
+    #1
+		%breakable,
+		%pad at break = 1mm
+}
+
+\newcounter{methodBoxCounter}
+\DeclareTColorBox[use counter=methodBoxCounter, number within=subsubsection, number format=\arabic]{methodbox}{O{} G{}}{
+		fonttitle=\bfseries,
+		title =#2,
+		toptitle=1pt,
+    attach title to upper,
+    after title=\ifthenelse{\equal{#2}{}}{}{{:\ }},
+    coltitle=black,
+		colback=defnbox,
+		colframe=methodboxTitle,
+		before skip = 0.5pt,				% skip before and after box
+		after skip = 0.5pt,
+		boxrule = 0.3mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		bottom=3pt,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi,
+    #1
+		%breakable,
+		%pad at break = 1mm
+}
+
+\newcounter{methodsBoxCounter}
+\DeclareTColorBox[use counter=methodsBoxCounter, number within=subsubsection, number format=\arabic]{methodsbox}{O{} G{}}{
+		fonttitle=\bfseries,
+		title =#2,
+		toptitle=1pt,
+    attach title to upper,
+    after title=\ifthenelse{\equal{#2}{}}{}{{:\ }},
+		coltitle=black,
+		colback=brown!20!white,
+		colframe=sectionboxFrame,
+		%beforeafter skip = 0.4pt,		% skip before and after box
+ 		before skip = 0pt,
+ 		after skip = 0pt,				
+		boxrule = 0.0mm,				% linewidth
+		arc = 0.2mm,					% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+    bottom=3pt,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi,
+    #1
+		%breakable,
+		%pad at break = 1mm
+}
+
+% \newcounter{optionsBoxCounter}
+% \renewcommand{\theoptionsBoxCounter}{\arabic{subsubsection}}
+% \DeclareTColorBox[use counter=optionsBoxCounter]{optionsbox}{O{} G{}}{
+\DeclareTColorBox{optionsbox}{O{} G{}}{
+		fonttitle=\bfseries,
+		%title =\thetcbcounter. #2,
+		title =#2,
+    after title=\ifthenelse{\equal{#2}{}}{}{{:\ }},
+		toptitle=1pt,
+    attach title to upper,
+		coltitle=black,
+		colback=orange!10!white,
+		colframe=sectionboxFrame,
+		%beforeafter skip = 0.4pt,		% skip before and after box
+ 		before skip = 0.5pt,
+ 		after skip = 0.5pt,				
+		boxrule = 0.2mm,				% linewidth
+		arc = 0.2mm,					% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+    bottom=3pt,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi,
+    #1
+		%breakable,
+		%pad at break = 1mm
+}
+
 \newcounter{mcboxCounter}
-\DeclareTCBListing[use counter=mcboxCounter, number within=section, number format=\arabic]{codebox}{s o o m}{
+\DeclareTCBListing[use counter=mcboxCounter, number within=section, number format=\arabic]{codebox}{D<>{} G{} O{} m}{
     minted language=#4,
     listing engine=minted,
     listing only,
@@ -489,19 +598,19 @@
       linenos,
       breaklines,
       numbersep=3pt,
-      fontsize=\IfNoValueTF{#1}{\small}{\normalsize},
       mathescape,
       %obeytabs=false,
       tabsize=1,
       escapeinside=||,
-      mathescape=true
-      \IfNoValueTF{#3}{}{,#3}
+      mathescape=true,
+      #1
     },
 		%arc = 0mm,						              % innder radius of frames (corners)
     enhanced jigsaw,
 		%fonttitle=\bfseries,
-    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{\textit{#2}}{}}{}{ \textbf{:} \textit{#2}}\hfill
-    \textit{#4},
+		title =\ifthenelse{\equal{#3}{}}{}{{#3\hfill Listening \thetcbcounter}},
+    %after title=\ifthenelse{\equal{#2}{}}{}{{:\ }},
+		toptitle=1pt,
     coltitle=codeboxTitle,
 		toptitle=1pt,
 		bottomtitle=1pt,
@@ -519,9 +628,9 @@
     bottom=3pt,
     left=2pt,
     right=2pt,
-    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi		%breakable,
-		%beforeafter skip = 0.4pt,		% skip before and after box
-    }
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi,
+    #2
+  }
 
 \DeclareTColorBox[use counter=mcboxCounter, number within=section, number
 format=\arabic]{codeboxRaw}{o o}{
