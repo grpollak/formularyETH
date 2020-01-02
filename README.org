@@ -5,8 +5,9 @@
 2. git init
 3. git submodule add git@gitlab.ethz.ch:others/formularyETH.git
 4. chmod 0700 formularyETH/makeFormulary.sh
-5. formularyETH/makeFormulary.sh [-p -m -c] <Optional Name>
-Note: option -p creates a .projectile emacs project file
+5. formularyETH/makeFormulary.sh [-pr -p -m -c] <Optional Name>
+Note: option -pr creates a .projectile emacs project file
+Note: option -p adds python formulary as submodule
 Note: option -m adds math formulary as submodule
 Note: option -c adds cpp formulary as submodule
 
