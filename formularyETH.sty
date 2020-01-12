@@ -45,7 +45,9 @@
 \setcounter{tocdepth}{5}
 
 % \titlespacing*{ command }{ left }{ beforesep }{ aftersep }[ right ]
-\titlespacing{\section}{\sectionSpacingLeft}{\sectionSpacingTop}{\sectionSpacingBottom}[\sectionSpacingRight]
+
+% Section
+% ------------------------------------------------------------------------------ 
 \ifsinglecolumn 
     \titleformat{\section}
     {
@@ -68,13 +70,22 @@
     {
       \color{section} \LARGE 
     }
-    { \color{attributes} }{0em}
-    { \color{section}}
+    {
+      \color{attributes}
+    }
+    {
+      0em
+    }
+    {
+      \color{section}
+    }
     %[ \color{attributes}{\titleline[l]{ \titlerule[1pt]} } ]
     % [\color{attributes}{\vskip-\topskip\rule{0.4\linewidth}{2pt}}]
 \fi
-\titlespacing{\subsection}{\subSectionSpacingLeft}{\subSectionSpacingTop}{\subSectionSpacingBottom}[\subSectionSpacingRight]
+\titlespacing*{\section}{\sectionSpacingLeft}{\sectionSpacingTop}{\sectionSpacingBottom}[\sectionSpacingRight]
 
+% Subsection
+% ------------------------------------------------------------------------------ 
 \renewcommand{\thesubsection}{\arabic{subsection}}
 \ifsinglecolumn 
   \titleformat{\subsection}
@@ -113,9 +124,7 @@
     % }
   ]
 \fi
-\titlespacing{\subsubsection}{\subSubSectionSpacingLeft}{\subSubSectionSpacingTop}{\subSubSectionSpacingBottom}[\subSubSectionSpacingRight]
-
-  
+\titlespacing{\subsection}{\subSectionSpacingLeft}{\subSectionSpacingTop}{\subSectionSpacingBottom}[\subSectionSpacingRight]
 
 \renewcommand{\thesubsubsection}{\arabic{subsubsection}}
 \ifsinglecolumn 
@@ -145,8 +154,7 @@
   [
   ]
 \fi
-\titlespacing{\subsubsubsection}{\subSubSectionSpacingLeft}{\subSubSectionSpacingTop}{\subSubSectionSpacingBottom}[\subSubSectionSpacingRight]
-
+\titlespacing{\subsubsection}{\subSubSectionSpacingLeft}{\subSubSectionSpacingTop}{\subSubSectionSpacingBottom}[\subSubSectionSpacingRight]
 % Subsubsubsection
 % ------------------------------------------------------------------------------ 
 \titleclass{\subsubsubsection}{straight}[\subsubsection]
@@ -161,11 +169,8 @@
     \color{attributes} \thesubsubsubsection.
   }{
     0em
-  }{
-    \color{subsubsubsection}
-  }
-  [
-  ]
+  }{}
+  []
 \else
   \titleformat{\subsubsubsection}
   {
@@ -180,7 +185,7 @@
   [
   ]
 \fi
-\titlespacing{\subSubSubSection}{\subSubSubSectionSpacingLeft}{\subSubSubSectionSpacingTop}{\subSubSubSectionSpacingBottom}[\subsubsubsectionSpacingRight]
+\titlespacing{\subsubsubsection}{\subSubSubSectionSpacingLeft}{\subSubSubSectionSpacingTop}{\subSubSubSectionSpacingBottom}[\subSubSubSectionSpacingRight]
 
 % Paragraph
 % ------------------------------------------------------------------------------ 
