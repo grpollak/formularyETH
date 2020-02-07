@@ -91,6 +91,8 @@
 \DeclareVoidOption{threeColumns}{\setcounter{numberOfColumns}{3} \multicolstrue\singlecolumnfalse}
 \DeclareVoidOption{fourColumns}{\setcounter{numberOfColumns}{4} \multicolstrue\singlecolumnfalse\singlecolumnfalse}
 \DeclareVoidOption{fiveColumns}{\setcounter{numberOfColumns}{5} \multicolstrue\singlecolumnfalse}
+\DeclareVoidOption{sixColumns}{\setcounter{numberOfColumns}{6} \multicolstrue\singlecolumnfalse}
+\DeclareVoidOption{sevenColumns}{\setcounter{numberOfColumns}{7} \multicolstrue\singlecolumnfalse}
 % Paper Orientation
 % ----------------------------------------------------------------------
 \ifmulticols\singlecolumnfalse\else\singlecolumntrue\fi

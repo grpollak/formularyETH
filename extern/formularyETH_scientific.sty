@@ -85,7 +85,8 @@
   \DeclareMathOperator*{\argmax}{arg\,max}    % argmax
   \DeclareMathOperator*{\argmin}{arg\,min}    % argmin
 	\DeclareMathOperator{\T}{\intercal}         % Transposed
-  \DeclareMathOperator{\conjTransp}{^{\mathsf{H}}} % Conjugate Transposed
+  \DeclareMathOperator{\conjT}{^{\mathsf{H}}} % Conjugate Transposed
+	\DeclareMathOperator{\tr}{\texttt{tr}}         % Transposed
 
 	\newcommand{\ie}{\emph{i.e.} }
 	\newcommand{\cf}{\emph{cf.} }
@@ -283,6 +284,17 @@
   }{
     \ensuremath{\mathcal{\rd{O}}}
    }
+  }
+  \DeclareDocumentCommand{\smallO}{ s g }{
+    \IfValueTF{#2}{
+      \IfBooleanTF{#1}{
+        {\ensuremath{\rd{o}\left(#2\right)}}
+      }{
+        {\ensuremath{\rd{o}(#2)}}
+      }
+    }{
+      \ensuremath{\rd{o}}
+    }
   }
 % ======================================================================						
 % Transformations
