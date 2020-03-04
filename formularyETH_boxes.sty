@@ -589,26 +589,35 @@
 }
 
 \newcounter{mcboxCounter}
-\DeclareTCBListing[use counter=mcboxCounter, number within=section, number format=\arabic]{codebox}{D<>{} G{} O{} m}{
+\DeclareTCBListing[use counter=mcboxCounter, number within=section, number format=\arabic]{codebox}{s D<>{} O{} m G{}}{
     minted language=#4,
     listing engine=minted,
     listing only,
     minted options={
       autogobble,
-      linenos,
+      linenos=false,
       breaklines,
       numbersep=3pt,
-      mathescape,
       %obeytabs=false,
       tabsize=1,
-      escapeinside=||,
-      mathescape=true,
-      #1
+      #2
     },
 		%arc = 0mm,						              % innder radius of frames (corners)
     enhanced jigsaw,
 		%fonttitle=\bfseries,
-		title =\ifthenelse{\equal{#3}{}}{}{{#3\hfill Listening \thetcbcounter}},
+		title =\ifthenelse{\equal{#5}{}}{
+      \IfBooleanTF{#1}{
+        
+      }{
+        \hfill Listening \thetcbcounter
+      }
+    }{
+      \IfBooleanTF{#1}{
+        #5
+      }{
+        #5\hfill Listening \thetcbcounter
+      }
+    },
     %after title=\ifthenelse{\equal{#2}{}}{}{{:\ }},
 		toptitle=1pt,
     coltitle=codeboxTitle,
@@ -629,7 +638,7 @@
     left=2pt,
     right=2pt,
     leftright skip=\ifmulticols 0pt\else 3pt\relax\fi,
-    #2
+    #3
   }
 
 \DeclareTColorBox[use counter=mcboxCounter, number within=section, number
