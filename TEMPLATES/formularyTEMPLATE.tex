@@ -20,7 +20,10 @@
 
 % Document class
 % ------------------------------------------------------------------------------
-\documentclass[fourColumns]{formularyETH/formularyETH}
+\documentclass[
+  fourColumns,
+  landscape
+]{formularyETH/formularyETH}
 % formuaryETH packages
 % ------------------------------------------------------------------------------
 \usepackage{formularyETH/formularyETH_GeneralPackages}
@@ -33,10 +36,10 @@
 % -----------------------------math Formulary----------------------------------- 
 % if git@gitlab.vis.ethz.ch:formularies/math.git is used as submodule
 % ------------------------------------------------------------------------------
-% Uncomment next line to obtain fallback macros for math
-% \usepackage{math_submodule/formularyMacros} 
+% Uncomment next line to obtain fallback macros for submodule formulary
+% \usepackage{mysubmodule_submodule/formularyMacros} 
 % And add next line to formulary
-% \input{math_submodule/math.tex}
+% \input{mysubmodule_submodule/math.tex}
 % Other very usefull packages
 % ------------------------------------------------------------------------------
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
