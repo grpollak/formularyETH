@@ -1,7 +1,7 @@
 #!/bin/bash
 # Create Formulary Structure
 formularyName=${1:-formulary}
-dir_name=${basename "$PWD"}
+dir_name=$(basename "$PWD")
 
 mkdir src
 mkdir figures
