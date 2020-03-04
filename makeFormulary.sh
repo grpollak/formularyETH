@@ -19,6 +19,8 @@ do
     -m) git submodule add git@gitlab.ethz.ch:formularies/math_submodule.git;;
     # -c option: add c++ formulary as submodule
     -c) git submodule add git@gitlab.ethz.ch:formularies/cpp/cpp_submodule.git;;
+    # -g option: add git formulary as submodule
+    -g) git submodule add git@gitlab.ethz.ch:formularies/git/git_submodule.git;;
     # unrecognized optioni
     *) echo "Option $1 not recognized" ;;
     esac # Stop program
@@ -27,7 +29,7 @@ done
 
 cp formularyETH/TEMPLATES/formularyTEMPLATE.tex ./formulary.tex
 cp formularyETH/TEMPLATES/formularyMacrosTEMPLATE.sty ./formularyMacros.sty
-cp formularyETH/TEMPLATES/README.org ./README.org
+cp formularyETH/TEMPLATES/README.md ./README.md
 cp formularyETH/.gitignore ./.gitignore
 # Stream EDitor: in OSX -i expect some argument => empty ''
 # sed -i '' -e 's/placeholder/'"$formularyName"'/' README.org
