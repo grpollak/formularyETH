@@ -34,5 +34,5 @@ cp formularyETH/TEMPLATES/formularyMacrosTEMPLATE.sty ./formularyMacros.sty
 cp formularyETH/TEMPLATES/README.md ./README.md
 cp formularyETH/.gitignore ./.gitignore
 # Stream EDitor: in OSX -i expect some argument => empty ''
-sed -i 's/placeholder/"$dir_name"/g' README.md
+sed -i "s/placeholder/$dir_name/g" README.md
 echo Finished
