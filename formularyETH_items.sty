@@ -17,9 +17,9 @@
 \RequirePackage{pifont}
 \let\oldding\ding% Store old \ding in \oldding
 \renewcommand{\ding}[2][1]{\scalebox{#1}{\oldding{#2}}}% Scale \oldding via optional argument
-\newcommand{\advantage}{\setlength\itemindent{25pt}\item[\imp{\tc{Green}{Advantage}}:]\leavevmode}
+\newcommand{\advantage}{\setlength\itemindent{25pt}\item[\imp{\tc{OliveGreen}{Advantage}}:]\leavevmode}
 \newcommand{\drawback}{\setlength\itemindent{22pt}\item[\imp{\tc{Red}{Drawback}}:]\leavevmode}
-\newcommand{\advantagenosep}{\setlength\itemindent{5.5pt}{\setlength\itemindent{38pt}\item[\imp{\tc{Green}{Advantage}}:]\leavevmode}}
+\newcommand{\advantagenosep}{\setlength\itemindent{5.5pt}{\setlength\itemindent{38pt}\item[\imp{\tc{OliveGreen}{Advantage}}:]\leavevmode}}
 \newcommand{\drawbacknosep}{\setlength\itemindent{5.5pt}{\setlength\itemindent{35pt}\item[\imp{\tc{Red}{Drawback}}:]\leavevmode}}
 \newlist{alphalist}{enumerate}{1}
 \setlist[alphalist]{%
@@ -143,7 +143,7 @@
   label=\protect\circledItem{\textcolor{attributes}{\arabic*}},    
 	ref=\protect\circledItem{\textcolor{attributes}{\arabic*}},
   topsep=0pt,
-  leftmargin=9.5pt,
+  leftmargin=12.5pt,
   labelindent=\parindent,
   itemsep=0pt,
   nosep,

@@ -189,6 +189,28 @@
 		%breakable
 }
 
+
+\newtcolorbox{propositionbox}[1][]{
+		title =#1,
+		attach title to upper,
+		fonttitle=\bfseries,
+		coltitle=black,
+		colback=propositionboxback,
+		colframe=propositionboxFrame,
+		after skip = 1pt,				% skip before and after box
+		before skip = 2pt,
+		boxrule = 0.3mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		bottom=3pt,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi
+		%breakable
+}
+
 \newtcolorbox{rulebox}[1][]{
 		title =#1,
 		attach title to upper,
@@ -394,7 +416,6 @@
 		after skip = 1pt,				% skip before and after box
 		before skip = 1pt,
 		boxrule = 0.1mm,				% linewidth
-		arc = 0mm,						% innder radius of frames (corners)
 		boxsep = 0mm,					% Space between text and frame
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
@@ -445,6 +466,32 @@
     right=2pt,
     leftright skip=\ifmulticols 0pt\else 3pt\relax\fi
 		%breakable
+}
+
+
+\newtcolorbox{algorithmbox}[1][]{
+		fonttitle=\bfseries,
+		title =#1,
+		toptitle=1pt,
+		bottomtitle=2pt,
+		coltitle=algorithmboxTitle,
+		colbacktitle=algorithmboxTitleBack,
+		colback=algorithmboxBack,
+		colframe=algorithmboxFrame,
+		%beforeafter skip = 0.4pt,		% skip before and after box
+ 		before skip = 0.5pt,
+ 		after skip = 0.5pt,				
+		boxrule = 0.2mm,				% linewidth
+		arc = 0.0mm,					% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+    bottom=3pt,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi
+		%breakable,
+		%pad at break = 1mm
 }
 
 

@@ -18,7 +18,7 @@ do
     # -m option: add math formulary as submodule
     -m) git submodule add git@gitlab.ethz.ch:formularies/math_submodule.git;;
     # -c option: add c++ formulary as submodule
-    -c) git submodule git@gitlab.ethz.ch:formularies/cpp_submodule.git;;
+    -c) git submodule add git@gitlab.ethz.ch:formularies/cpp/cpp_submodule.git;;
     # unrecognized optioni
     *) echo "Option $1 not recognized" ;;
     esac # Stop program
