@@ -1,6 +1,8 @@
 #!/bin/bash
 # Create Formulary Structure
 formularyName=${1:-formulary}
+dir_name=${basename "$PWD"}
+
 mkdir src
 mkdir figures
 mkdir macros
@@ -32,5 +34,5 @@ cp formularyETH/TEMPLATES/formularyMacrosTEMPLATE.sty ./formularyMacros.sty
 cp formularyETH/TEMPLATES/README.md ./README.md
 cp formularyETH/.gitignore ./.gitignore
 # Stream EDitor: in OSX -i expect some argument => empty ''
-# sed -i '' -e 's/placeholder/'"$formularyName"'/' README.org
+sed -i 's/placeholder/"$dir_name"/g' README.md
 echo Finished
