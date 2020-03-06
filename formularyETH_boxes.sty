@@ -499,6 +499,34 @@
 % Minted/Coding Boxes
 % ==============================================================================
 % ------------------------------------------------------------------------------
+% TODO new box of type maybe... type or code definition or concept box
+
+\newcounter{methodBoxCounter}
+\DeclareTColorBox[use counter=methodBoxCounter, number within=subsubsection, number format=\arabic]{methodbox}{O{} G{}}{
+		fonttitle=\bfseries,
+		title =#2,
+		toptitle=1pt,
+    attach title to upper,
+    after title=\ifthenelse{\equal{#2}{}}{}{{:\ }},
+    coltitle=black,
+		colback=defnbox,
+		colframe=methodboxTitle,
+		before skip = 0.5pt,				% skip before and after box
+		after skip = 0.5pt,
+		boxrule = 0.3mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+		bottom=3pt,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi,
+    #1
+		%breakable,
+		%pad at break = 1mm
+}
+
 \newcounter{propertiesBoxCounter}
 \DeclareTColorBox[use counter=propertiesBoxCounter, number within=section, number format=\arabic]{propertiesbox}{D<>{} O{} G{}}{
 		fonttitle=\small\bfseries,
@@ -552,59 +580,6 @@
 		%pad at break = 1mm
 }
 
-\newcounter{methodBoxCounter}
-\DeclareTColorBox[use counter=methodBoxCounter, number within=subsubsection, number format=\arabic]{methodbox}{O{} G{}}{
-		fonttitle=\bfseries,
-		title =#2,
-		toptitle=1pt,
-    attach title to upper,
-    after title=\ifthenelse{\equal{#2}{}}{}{{:\ }},
-    coltitle=black,
-		colback=defnbox,
-		colframe=methodboxTitle,
-		before skip = 0.5pt,				% skip before and after box
-		after skip = 0.5pt,
-		boxrule = 0.3mm,				% linewidth
-		arc = 0mm,						% innder radius of frames (corners)
-		boxsep = 0mm,					% Space between text and frame
-		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
-		top=3pt,						
-		bottom=3pt,
-    left=2pt,
-    right=2pt,
-    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi,
-    #1
-		%breakable,
-		%pad at break = 1mm
-}
-
-\newcounter{methodsBoxCounter}
-\DeclareTColorBox[use counter=methodsBoxCounter, number within=subsubsection, number format=\arabic]{methodsbox}{O{} G{}}{
-		fonttitle=\bfseries,
-		title =#2,
-		toptitle=1pt,
-    attach title to upper,
-    after title=\ifthenelse{\equal{#2}{}}{}{{:\ }},
-		coltitle=black,
-		colback=brown!20!white,
-		colframe=sectionboxFrame,
-		%beforeafter skip = 0.4pt,		% skip before and after box
- 		before skip = 0pt,
- 		after skip = 0pt,				
-		boxrule = 0.0mm,				% linewidth
-		arc = 0.2mm,					% innder radius of frames (corners)
-		boxsep = 0mm,					% Space between text and frame
-		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
-		top=3pt,						
-    bottom=3pt,
-    left=2pt,
-    right=2pt,
-    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi,
-    #1
-		%breakable,
-		%pad at break = 1mm
-}
-
 % \newcounter{optionsBoxCounter}
 % \renewcommand{\theoptionsBoxCounter}{\arabic{subsubsection}}
 % \DeclareTColorBox[use counter=optionsBoxCounter]{optionsbox}{O{} G{}}{
@@ -634,7 +609,9 @@
 		%breakable,
 		%pad at break = 1mm
 }
-
+% ------------------------------------------------------------------------------
+% Codebox
+% ------------------------------------------------------------------------------
 \newcounter{mcboxCounter}
 \DeclareTCBListing[use counter=mcboxCounter, number within=section, number format=\arabic]{codebox}{s D<>{} O{} m G{}}{
     minted language=#4,
@@ -688,6 +665,63 @@
     #3
   }
 
+% ------------------------------------------------------------------------------
+% Codebox Example
+% ------------------------------------------------------------------------------
+\newcounter{mcboxExampleCounter}
+ \DeclareTCBListing[use counter=mcboxExampleCounter, number within=section, number format=\arabic]{codeboxexample}{s D<>{} O{} m G{}}{
+    minted language=#4,
+    listing engine=minted,
+    listing only,
+    minted options={
+      autogobble,
+      linenos=false,
+      breaklines,
+      numbersep=3pt,
+      %obeytabs=false,
+      tabsize=1,
+      #2
+    },
+		%arc = 0mm,						              % innder radius of frames (corners)
+    enhanced jigsaw,
+		%fonttitle=\bfseries,
+		title =\ifthenelse{\equal{#5}{}}{
+      \IfBooleanTF{#1}{
+        
+      }{
+        \hfill Listening \thetcbcounter
+      }
+    }{
+      \IfBooleanTF{#1}{
+        #5
+      }{
+        #5\hfill Listening \thetcbcounter
+      }
+    },
+    %after title=\ifthenelse{\equal{#2}{}}{}{{:\ }},
+		toptitle=1pt,
+    coltitle=codeboxExampleTitle,
+		toptitle=1pt,
+		bottomtitle=1pt,
+		colbacktitle=codeboxExampleBackTitle,
+		colback=codeboxExample,
+		colframe=codeboxExampleFrame,
+    size=title,
+		after skip = 0.5pt,				          % skip before and after box
+		before skip = 0.5pt,
+		boxrule = 0.3mm,				            % frameborder width
+		arc = 0mm,						              % innder radius of frames (corners)
+		boxsep = 0mm,					              % Space between text and frame: left, right, top, bottom, and middle
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+    bottom=3pt,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi,
+    #3
+  }
+ 
+
 \DeclareTColorBox[use counter=mcboxCounter, number within=section, number
 format=\arabic]{codeboxRaw}{o o}{
     title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{\textit{#1}}{}}{}{ \textbf{:} \textit{#1}}\hfill
@@ -717,50 +751,6 @@ format=\arabic]{codeboxRaw}{o o}{
 		%beforeafter skip = 0.4pt,		% skip before and after box
     }
 
-\newcounter{mcboxExampleCounter}
-\DeclareTCBListing[use counter=mcboxExampleCounter, number within=section, number
-format=\arabic]{codeboxExample}{s o o m}{
-    minted language=#4,
-    listing engine=minted,
-    listing only,
-    minted options={
-      autogobble,
-      linenos,
-      breaklines,
-      numbersep=3pt,
-      fontsize=\IfNoValueTF{#1}{\small}{\normalsize},
-      mathescape,
-      %obeytabs=false,
-      tabsize=1,
-      escapeinside=||,
-      mathescape=true
-      \IfNoValueTF{#3}{}{,#3}
-    },
-		%arc = 0mm,						              % innder radius of frames (corners)
-    enhanced jigsaw,
-		%fonttitle=\bfseries,
-    title = \textbf{Listening \thetcbcounter}\ifthenelse{\equal{#2}{}}{}{ \textbf{:} \textit{#2}}\hfill
-    \textit{#4},
-    coltitle=codeboxExampleTitle,
-		toptitle=1pt,
-		bottomtitle=1pt,
-		colbacktitle=codeboxExampleBackTitle,
-		colback=codeboxExample,
-		colframe=codeboxExampleFrame,
-    size=title,
-		after skip = 0.5pt,				          % skip before and after box
-		before skip = 0.5pt,
-		boxrule = 0.3mm,				            % frameborder width
-		arc = 0mm,						              % innder radius of frames (corners)
-		boxsep = 0mm,					              % Space between text and frame: left, right, top, bottom, and middle
-		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
-		top=3pt,						
-    bottom=3pt,
-    left=2pt,
-    right=2pt,
-    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi		%breakable,
-		%beforeafter skip = 0.4pt,		% skip before and after box
-    }
 
 \DeclareTCBListing[use counter=mcboxExampleCounter, number within=section, number
 format=\arabic]{codeboxExampleNl}{s o o m}{
@@ -818,7 +808,7 @@ format=\arabic]{codeboxNl}{s o o m}{
       linenos=false,
       breaklines,
       numbersep=3pt,
-      fontsize=\codeboxNlfontsize,
+      fontsize=\footnotesize,
       mathescape,
       %obeytabs=false,
       tabsize=1,
