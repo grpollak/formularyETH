@@ -917,10 +917,10 @@ format=\arabic]{codeboxinput}{s o o m m}{
     }
 
 % ------------------------------------------------------------------------------
-% Mintplainbox
+% plaincodebox
 % ------------------------------------------------------------------------------
-\newcounter{mintplainboxCounter}
-\DeclareTCBListing[use counter=mintplainboxCounter, number within=section, number format=\arabic]{codebox}{s D<>{} O{} m G{}}{
+\newcounter{plaincodeboxCounter}
+\DeclareTCBListing[use counter=plaincodeboxCounter, number within=section, number format=\arabic]{plaincodebox}{s D<>{} O{} m}{
     minted language=#4,
     listing engine=minted,
     listing only,
@@ -931,37 +931,25 @@ format=\arabic]{codeboxinput}{s o o m m}{
       numbersep=3pt,
       %obeytabs=false,
       tabsize=1,
+      escapeinside=||,
       #2
     },
 		%arc = 0mm,						              % innder radius of frames (corners)
     enhanced jigsaw,
 		%fonttitle=\bfseries,
-		% title =\ifthenelse{\equal{#5}{}}{
-    %   \IfBooleanTF{#1}{
-        
-    %   }{
-    %     \hfill Listening \thetcbcounter
-    %   }
-    % }{
-    %   \IfBooleanTF{#1}{
-    %     #5
-    %   }{
-    %     #5\hfill Listening \thetcbcounter
-    %   }
-    % },
     %after title=\ifthenelse{\equal{#2}{}}{}{{:\ }},
-    % coltitle=codeboxTitle,
+    coltitle=codeboxTitle,
 		toptitle=1pt,
 		bottomtitle=1pt,
-		% colbacktitle=codeboxBackTitle,
-		% colback=codebox,
-		% colframe=codeboxFrame,
+		colbacktitle=codeboxBackTitle,
+		colback=codebox,
+		colframe=codeboxFrame,
     size=title,
 		after skip = 0.5pt,				          % skip before and after box
 		before skip = 0.5pt,
-		boxrule = 0.3mm,				            % frameborder width
+		boxrule = 0mm,				            % frameborder width
 		arc = 0mm,						              % innder radius of frames (corners)
-		boxsep = 1mm,					              % Space between text and frame: left, right, top, bottom, and middle
+		boxsep = 0mm,					              % Space between text and frame: left, right, top, bottom, and middle
 		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
 		top=3pt,						
     bottom=3pt,
