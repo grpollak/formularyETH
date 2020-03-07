@@ -57,6 +57,15 @@
 				{\thmnumber{#2} \textcolor{Brown}{\thmnote{#3}}:
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
         }
+
+\newtheoremstyle{description}
+				{}{}
+				{}{}
+				{\bfseries}{}
+				{\parindent}
+				{\thmname{#1} \thmnumber{#2} \textcolor{Red}{\thmnote{#3}}:
+					%\keywordbf{\thmnote}]\label{def:\thmnote}
+					}
           
 \newtheoremstyle{theorem}
 				{}{}
@@ -214,6 +223,11 @@
 	%\theoremstyle{definition}
 	\newtheorem{defnc}{Definition}[section]
 	\crefname{defnc}{definition}{definitions}
+%	Description
+% ----------------------------------------------------------------------
+	%\theoremstyle{description}
+	\newtheorem{description}{Description}[section]
+	\crefname{description}{description}{descriptions}
 %	Lemma
 % ----------------------------------------------------------------------
 	\newtheorem{lemma}{Lemma}[section]
