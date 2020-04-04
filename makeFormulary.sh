@@ -16,7 +16,7 @@ do
     # -pr option: add projectile project file ./projectile
     -pr) cp formularyETH/TEMPLATES/.projectile ./.projectile;;
     # -p option: add python formulary as submodule
-    -p) git submodule add git@gitlab.ethz.ch:formularies/python/python_submodule.git;;
+    -py) git submodule add git@gitlab.ethz.ch:formularies/python/python_submodule.git;;
     # -m option: add math formulary as submodule
     -m) git submodule add git@gitlab.ethz.ch:formularies/math_submodule.git;;
     # -c option: add c++ formulary as submodule
@@ -25,6 +25,8 @@ do
     -g) git submodule add git@gitlab.ethz.ch:formularies/git/git_submodule.git;;
     # -b option: add bash formulary as submodule
     -b) git submodule add git@gitlab.ethz.ch:formularies/bash/bash_submodule.git;;
+    # -l option: add latex formulary as submodule
+    -l) git submodule add git@gitlab.ethz.ch:formularies/latex/latex_submodule.git;;
     # unrecognized optioni
     *) echo "Option $1 not recognized" ;;
     esac # Stop program
