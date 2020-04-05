@@ -58,17 +58,19 @@
 {\bfseries}     %       Thm head font
 {}            %       Punctuation after thm head
 { }             %       Space after thm head: \newline = linebreak
-{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{Red}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}}         % \keywordbf{\thmnote}]\label{def:\thmnote} 
+{\mbox{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{Red}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}}\ignorespaces}
+  % \keywordbf{\thmnote}]\label{def:\thmnote} 
 
 \newtheoremstyle{defnc}% name
 {}           %       Space above, empty = 'usual value'
 {}           %       Space below
 {}              %       Body font
 {}           %       Indent amount (empty = no indent, \parindent = para indent)
-{\bfseries}     %       Thm head font
+{\flushleft\bfseries}     %       Thm head font
 {}            %       Punctuation after thm head
 { }             %       Space after thm head: \newline = linebreak
-{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{Brown}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}}         % \keywordbf{\thmnote}]\label{def:\thmnote} 
+{\mbox{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{brown}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}}\ignorespaces}
+% \keywordbf{\thmnote}]\label{def:\thmnote} 
 
 % \keywordbf{\thmnote}]\label{def:\thmnote} 
 
@@ -307,6 +309,11 @@
 	%\newtheorem{eg}[thm]{Example}
 	%\newtheorem{ex}[thm]{Exercise}
 	%\newtheorem{rmk}[thm]{Remark}
-	
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formulary"
+%%% TeX-command-extra-options: "-shell-escape"
+%%% End:
 
 
