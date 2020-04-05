@@ -206,16 +206,16 @@
 % ======================================================================
 % Basic LaTeX Settings
 % ======================================================================
-  \setlength{\parindent}{0mm} % Suppress paragraph indentation
-	\hyphenpenalty=10000			  % Almost no word breaks.
-	\pretolerance=60
-	\tolerance=2000
-	\doublehyphendemerits=10000       % No consecutive line hyphens.
-	\brokenpenalty=10000              % No broken words across columns/pages.
-	\widowpenalty=9999                % Almost no widows at bottom of page.
-	\clubpenalty=9999                 % Almost no orphans at top of page.
-	\interdisplaylinepenalty=100
-	\interfootnotelinepenalty=9999    % Almost never break footnotes.
-	\interlinepenalty=10000
+  % \setlength{\parindent}{0mm} % Suppress paragraph indentation
+	% \hyphenpenalty=10000			  % Almost no word breaks.
+	% \pretolerance=60
+	% \tolerance=2000
+	% \doublehyphendemerits=10000       % No consecutive line hyphens.
+	% \brokenpenalty=10000              % No broken words across columns/pages.
+	% \widowpenalty=9999                % Almost no widows at bottom of page.
+	% \clubpenalty=9999                 % Almost no orphans at top of page.
+	% \interdisplaylinepenalty=100
+	% \interfootnotelinepenalty=9999    % Almost never break footnotes.
+	% \interlinepenalty=10000
 	%\binoppenalty=200
 	%\relpenalty=200
