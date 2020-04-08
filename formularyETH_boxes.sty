@@ -470,6 +470,7 @@
 		attach title to upper,
 		fonttitle=\bfseries,
 		title = #1,
+    after title=\ifthenelse{\equal{#1}{}}{}{{\ }},
 		coltitle=black,
 		colback=emphbox,
 		colframe=styleboxFrame,
@@ -631,8 +632,8 @@
 		toptitle=1pt,
     attach title to upper,
 		coltitle=black,
-		colback=orange!10!white,
-		colframe=sectionboxFrame,
+		colback=white,
+		colframe=optional,
 		%beforeafter skip = 0.4pt,		% skip before and after box
  		before skip = 0.5pt,
  		after skip = 0.5pt,				
@@ -650,10 +651,10 @@
 		%pad at break = 1mm
 }
 % ------------------------------------------------------------------------------
-% Codebox
+% codboxlisting
 % ------------------------------------------------------------------------------
 \newcounter{mcboxCounter}
-\DeclareTCBListing[use counter=mcboxCounter, number within=section, number format=\arabic]{codebox}{s D<>{} O{} m G{}}{
+\DeclareTCBListing[use counter=mcboxCounter, number within=section, number format=\arabic]{codeboxlisting}{s D<>{} O{} m G{}}{
     minted language=#4,
     listing engine=minted,
     listing only,
@@ -705,16 +706,45 @@
     #3
   }
 
+
+% ------------------------------------------------------------------------------
+% codebox
+% ------------------------------------------------------------------------------
+\newcounter{codeboxCounter}
+\DeclareTColorBox[use counter=codeboxCounter, number within=subsubsection, number format=\arabic]{codebox}{O{} G{}}{
+		fonttitle=\bfseries,
+		title =#2,
+		toptitle=1pt,
+    attach title to upper,
+    after title=\ifthenelse{\equal{#1}{}}{}{{\ }},
+		coltitle=black,
+		colback=codebox,
+		colframe=codeboxFrame,
+		before skip = 0.5pt,				% skip before and after box
+		after skip = 0.5pt,
+		boxrule = 0.3mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=1.5pt,						
+		bottom=1.5pt,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi,
+    #1
+		%breakable,
+		%pad at break = 1mm
+}
 % ------------------------------------------------------------------------------
 % Definition code box
 % ------------------------------------------------------------------------------
 \newcounter{defncboxCounter}
 \DeclareTColorBox[use counter=defncboxCounter, number within=subsubsection, number format=\arabic]{defncbox}{O{} G{}}{
 		fonttitle=\bfseries,
-		title =#2,
+		title=#2,
 		toptitle=1pt,
     attach title to upper,
-    after title=\ifthenelse{\equal{#2}{}}{}{{:\ }},
+    after title=\ifthenelse{\equal{#1}{}}{}{{:\ }},
 		coltitle=black,
 		colback=defncbox,
 		colframe=defncboxFrame,
@@ -1036,10 +1066,9 @@ format=\arabic]{codeboxinput}{s o o m m}{
 % Mintlinebox
 % ------------------------------------------------------------------------------
 \newcounter{mintlineboxCounter}
-\DeclareTCBListing[use counter=mintlineboxCounter, number within=section, number
-format=\arabic]{mintlinebox}{s O{} m}{
+\DeclareTCBListing[use counter=mintlineboxCounter, number within=section, number format=\arabic]{mintlinebox}{s D<>{} O{} m}{
     listing engine=minted,
-    minted language=#3,
+    minted language=#4,
     listing only,
     enhanced jigsaw,
 		%fonttitle=\bfseries,
@@ -1074,13 +1103,14 @@ format=\arabic]{mintlinebox}{s O{} m}{
         mathescape,
         obeytabs=false,
         tabsize=1,
-        escapeinside=||,
-        mathescape=true,
         codetagify=true,         % Highlites special code tags TODO, NOTE, BUG, ...
         highlightcolor=codeboxHighlight, % Can be used to highlight lines % with highlightlines={1, 3-5}
         texcomments=true, % Enables LaTeX code inside Comments
+        escapeinside=||,
+        #2
     },
-    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi		%breakable,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi,		%breakable,A
+    #3
 		%beforeafter skip = 0.4pt,		% skip before and after box
 }
 % Side by Side
