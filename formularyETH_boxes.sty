@@ -536,6 +536,34 @@
 }
 
 
+% Warning box
+% ==============================================================================
+\newcounter{warningBoxCounter}
+\DeclareTColorBox[use counter=methodBoxCounter, number within=subsubsection, number format=\arabic]{warningbox}{O{} G{}}{
+		fonttitle=\bfseries,
+		title =#2,
+		toptitle=1pt,
+    attach title to upper,
+    after title=\ifthenelse{\equal{#2}{}}{}{{:\ }},
+    coltitle=black,
+		colback=warningbox,
+		colframe=warningboxFrame,
+		before skip = 0.5pt,				% skip before and after box
+		after skip = 0.5pt,
+		boxrule = 0.2mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=2pt,						
+		bottom=2pt,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi,
+    #1
+		%breakable,
+		%pad at break = 1mm
+}
+
 % ==============================================================================
 % Minted/Coding Boxes
 % ==============================================================================
