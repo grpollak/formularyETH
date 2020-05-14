@@ -166,26 +166,6 @@
 }
 
 
-\newtcolorbox{examplebox}[1][]{
-		title =#1,
-		attach title to upper,
-		fonttitle=\bfseries,
-		coltitle=black,
-		colback=examplebox,
-		colframe=exampleboxFrame,
-		after skip = 0.5pt,				% skip before and after box
-		before skip = 0.5pt,
-		boxrule = 0.3mm,				% linewidth
-		arc = 0mm,						% innder radius of frames (corners)
-		boxsep = 0mm,					% Space between text and frame
-		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
-		top=3pt,						
-		bottom=3pt,
-    left=2pt,
-    right=2pt,
-    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi
-		%breakable
-}
 
 \newtcolorbox{princpbox}[1][]{
 		title =#1,
@@ -432,8 +412,30 @@
 		coltitle=black,
 		colback=corbox,
 		colframe=corboxFrame,
-		after skip = 1pt,				% skip before and after box
-		before skip = 1pt,
+		after skip = 0.5pt,				% skip before and after box
+		before skip = 0.5pt,
+		boxrule = 0.3mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,						
+    bottom=3pt,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi
+		%breakable
+}
+
+
+\newtcolorbox{examplebox}[1][]{
+		attach title to upper,
+		fonttitle=\bfseries,
+		title = #1,
+		coltitle=black,
+		colback=examplebox,
+		colframe=exampleboxFrame,
+		after skip = 0.5pt,				% skip before and after box
+		before skip = 0.5pt,
 		boxrule = 0.3mm,				% linewidth
 		arc = 0mm,						% innder radius of frames (corners)
 		boxsep = 0mm,					% Space between text and frame
@@ -651,7 +653,7 @@
 
 % \newcounter{optionsBoxCounter}
 % \renewcommand{\theoptionsBoxCounter}{\arabic{subsubsection}}
-% \DeclareTColorBox[use counter=optionsBoxCounter]{optionsbox}{O{} G{}}{
+% \DeclareTColorBoxeclareTColorBox[use counter=optionsBoxCounter]{optionsbox}{O{} G{}}{
 \DeclareTColorBox{optionsbox}{O{} G{}}{
 		fonttitle=\bfseries,
 		%title =\thetcbcounter. #2,
@@ -1168,3 +1170,7 @@ format=\arabic]{codeboxinput}{s o o m m}{
 		%breakable,
 		%beforeafter skip = 0.4pt,		% skip before and after box
     }
+
+
+
+ 

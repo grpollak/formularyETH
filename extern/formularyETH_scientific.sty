@@ -65,6 +65,7 @@
 	\DeclareMathOperator{\Rp}{\mathbb R_+}					% Reele Zahlen	                                   					
 	\DeclareMathOperator{\C}{\mathbb C}						% Komplexe Zahlen
 	\DeclareMathOperator{\K}{\mathbb K}						% Reele oder komplexe Zahlen
+	\DeclareMathOperator{\Q}{\mathbb Q}						% Reele oder komplexe Zahlen
 	\DeclareMathOperator{\Z}{\mathbb{Z}}
 	\DeclareMathOperator{\img}{i}							% Imaginary Unit
 	\newcommand{\error}{\textcolor{Red}{\epsilon}}							% Sign function
@@ -183,7 +184,7 @@
 	\renewcommand{\vec}[1]{\ensuremath{\boldsymbol #1 }}												% Vector bold and underlined
 	\newcommand{\vect}[1]{\ensuremath{\arraycolsep=0.3em \begin{pNiceMatrix} #1 \end{pNiceMatrix}}}				% Vector
 	\newcommand{\bvect}[1]{\ensuremath{\begin{bNiceMatrix} #1 \end{bNiceMatrix}}}				% Vector
-	\newcommand{\unitVector}{\ensuremath{\mathds{1}}}													% Unit Vector
+	\newcommand{\unitvector}{\ensuremath{\mathds{1}}}													% Unit Vector
 	\newcommand{\mvect}[1]{\ensuremath{\left.\begin{NiceMatrix} #1 \end{NiceMatrix}\right]}}					% Matrixvector
 	\newcommand{\tensor}[1]{\ensuremath{\underline{\underline{\boldsymbol #1}}}}						% Tensor
 	\DeclareMathOperator{\diag}{diag}																	% diagonal matrix
@@ -333,7 +334,7 @@
   }
 \DeclareDocumentCommand{\Prob}{ g }{
     \IfValueTF{#1}
-    {\textcolor{CarnationPink}{\mathbb{P}}\left[#1\right]}
+    {\textcolor{CarnationPink}{\mathbb{P}}\left(#1\right)}
     {\textcolor{CarnationPink}{\mathbb{P}}
   }
 }
@@ -461,12 +462,15 @@
 \newcommand{\meanvec}{\textcolor{Green}{\vec{\mu}}}
 \newcommand{\std}{\textcolor{Green}{\sigma}}
 \newcommand{\covMatrix}{\textcolor{Green}{\Sigma}}
-% Distibutions
-% ------------------------------------------------------------------------------ 
-
+% ------------------------------------------------------------------------------
+% Distributions
+% ------------------------------------------------------------------------------
 \newcommand{\Normaldist}{\textcolor{Purple}{\mathcal{N}}}
+\newcommand{\Binomialdist}{\textcolor{Purple}{\mathcal{B}}}
 \newcommand{\Gammadist}{\textcolor{Purple}{\Gamma}}
+\newcommand{\Geometricdist}{\textcolor{Purple}{\mathrm{Geom}}}
 \newcommand{\Unidist}{\textcolor{Purple}{\mathcal{U}}}
+\newcommand{\Poissondist}{\textcolor{Purple}{\mathrm{Pois}}}
 \newcommand{\Expdist}{\textcolor{Purple}{\exp}}
 \newcommand{\Bernoulidist}{\textcolor{Purple}{\mathrm{Bern}}}
 % Important Colors
