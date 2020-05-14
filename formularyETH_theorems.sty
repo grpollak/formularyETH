@@ -197,7 +197,7 @@
 				{}{}
 				{\bfseries}{}
 				{\parindent}
-				{\textbf{\thmname{#1} \thmnumber{#2} }\textcolor{Red}{\thmnote{#3}}:
+				{\textbf{\thmname{#1} \thmnumber{#2} }\textcolor{Black}{\thmnote{#3}}:
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
 				}
 % Note Proofs
@@ -251,54 +251,64 @@
 	\crefname{defnc}{definition}{definitions}
 %	Explanation 
 % ----------------------------------------------------------------------
-	%\theoremstyle{explantion}
+	\theoremstyle{explantion}
 	\newtheorem{explanation}{Explanation}[section]
 	\crefname{explanation}{explanation}{explanations}
 %	Description
 % ----------------------------------------------------------------------
-	%\theoremstyle{description}
+	\theoremstyle{description}
 	\newtheorem{desc}{Description}[section]
 	\crefname{desc}{description}{descriptions}
 %	Lemma
 % ----------------------------------------------------------------------
+	\theoremstyle{lemma}
 	\newtheorem{lemma}{Lemma}[section]
 	\crefname{lem}{lemma}{lemmata}
 %	Formula
 % ----------------------------------------------------------------------
+	\theoremstyle{formula}
 	\newtheorem{formula}{Formula}[section]
 	\crefname{formula}{formula}{formulas}
 %	Principle
 % ----------------------------------------------------------------------
+	\theoremstyle{princip}
 	\newtheorem{princip}{Principle}[section]
 	\crefname{princip}{principle}{principles}
 %	Proposition
 % ----------------------------------------------------------------------
+	\theoremstyle{proposition}
 	\newtheorem{proposition}{Proposition}[section]
 	\crefname{proposition}{proposition}{propositions}
 %	Example
 % ----------------------------------------------------------------------
+	\theoremstyle{example}
 	\newtheorem{example}{Example}[section]
 	\crefname{example}{example}{examples}
 %	Principle
 % ----------------------------------------------------------------------
+	\theoremstyle{post}
 	\newtheorem{post}{Postulate}[section]
 	\crefname{post}{postulate}{postulates}
 %	Corollary
 % ----------------------------------------------------------------------
+	\theoremstyle{cor}
 	\newtheorem{cor}{Corollary}[section]
 	\crefname{cor}{corollary}{corollaries}
 %	Law
 % ----------------------------------------------------------------------
+	\theoremstyle{law}
 	\newtheorem{law}{Law}[section]
 	\crefname{law}{law}{laws}
 %	Law
 % ----------------------------------------------------------------------
+	\theoremstyle{property}
 	\newtheorem{property}{Property}[section]
 	\crefname{property}{Property}{properties}
 % ----------------------------------------------------------------------
 %	Rule
 % Note: rule as command not possible as already used by LaTex
 % ----------------------------------------------------------------------
+	\theoremstyle{ruling}
 	\newtheorem{ruling}{Rule}[section]
  	\crefname{ruling}{rule}{rules}
 
