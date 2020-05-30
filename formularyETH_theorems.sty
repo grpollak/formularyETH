@@ -203,18 +203,17 @@
 % Note Proofs
 % need to be handeled differently because of the \qed
 \renewenvironment{proof}{\imp{Proof}}{\qed}
-%   \makeatletter
-%     \renewenvironment{proof}[1][\proofname]{\par
-%       \pushQED{\qed}%
-%       \normalfont \topsep6\p@\@plus6\p@\relax
-%       \trivlist
-%       \item\relax
-%       {\bfseries
-%       #1}
-%       }{%
-%       \popQED\endtrivlist\@endpefalse
-%     }
-%   \makeatother
+  \makeatletter
+    \renewenvironment{proof}[1][]{\par
+      \pushQED{\qed}%
+      \normalfont \topsep6\p@\@plus6\p@\relax
+      \trivlist
+      \item\relax
+      {\bfseries Proof #1:}
+      }{%
+      \popQED\endtrivlist\@endpefalse
+    }
+  \makeatother
 % %Or without any package
 % \DeclareRobustCommand{\qed}{%
 %  \ifmmode % if math mode, assume display: omit penalty etc.
@@ -244,6 +243,7 @@
 	\theoremstyle{defn}
 	\newtheorem{defn}{Definition}[section]
 	\crefname{defn}{definition}{definitions}
+  \crefformat{defn}{\textsuperscript{\scriptsize[def.\ #2#1#3]}}
 %	Code Definition
 % ----------------------------------------------------------------------
 	\theoremstyle{defnc}
