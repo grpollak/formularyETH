@@ -307,11 +307,6 @@
 % Probability
 % ==============================================================================
 % ------------------------------------------------------------------------------
-\DeclareDocumentCommand{\Var}{ g }{
-  \IfValueTF{#1}
-  {\mathrm{\textcolor{Green}{Var}}\left[#1\right]}
-  {\mathrm{\textcolor{Green}{Var}}}
-  }
 \DeclareDocumentCommand{\Corr}{ g }{
   \IfValueTF{#1}
   {\mathrm{\textcolor{Green}{Corr}}\left[#1\right]}
@@ -330,7 +325,7 @@
   }
 \DeclareDocumentCommand{\Var}{ g }{
   \IfValueTF{#1}
-  {\mathbb{\textcolor{Green}{V}}\left(#1\right)}
+  {\mathbb{\textcolor{Green}{V}}\left[#1\right]}
   {\mathbb{\textcolor{Green}{V}}}
   }
 \DeclareDocumentCommand{\Prob}{ g }{
