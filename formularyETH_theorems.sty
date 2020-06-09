@@ -200,27 +200,6 @@
 				{\textbf{\thmname{#1} \thmnumber{#2} }\textcolor{Black}{\thmnote{#3}}:
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
 				}
-% Note Proofs
-% need to be handeled differently because of the \qed
-\renewenvironment{proof}{\imp{Proof}}{\qed}
-  \makeatletter
-    \renewenvironment{proof}[1][]{\par
-      \pushQED{\qed}%
-      \normalfont \topsep6\p@\@plus6\p@\relax
-      \trivlist
-      \item\relax
-      {\bfseries Proof #1:}
-      }{%
-      \popQED\endtrivlist\@endpefalse
-    }
-  \makeatother
-% %Or without any package
-% \DeclareRobustCommand{\qed}{%
-%  \ifmmode % if math mode, assume display: omit penalty etc.
-%  \else \leavevmode\unskip\penalty9999 \hbox{}\nobreak%\hfill
-%  \fi
-%  \quad\hbox{\qedsymbol}}
-% ----------------------------------------------------------------------
 % ======================================================================
 % \newtheorem{name}{Printed output}[numberby]
 % \newtheorem{name}[counter]{Printed output} 
@@ -243,7 +222,9 @@
 	\theoremstyle{defn}
 	\newtheorem{defn}{Definition}[section]
 	\crefname{defn}{definition}{definitions}
-  \crefformat{defn}{\textsuperscript{\scriptsize[def.\ #2#1#3]}}
+  \crefformat{defn}{\textsuperscript{\scriptsize[def.~#2#1#3]}}
+  \crefmultiformat{defn}{\scriptsize\textsuperscript{[def's.~#2#1#3}}%
+  {\scriptsize\textsuperscript{, #2#1#3]}}{\scriptsize\textsuperscript{, #2#1#3}}{\scriptsize\textsuperscript{ #2#1#3]}}
 %	Code Definition
 % ----------------------------------------------------------------------
 	\theoremstyle{defnc}
@@ -311,14 +292,39 @@
 	\theoremstyle{ruling}
 	\newtheorem{ruling}{Rule}[section]
  	\crefname{ruling}{rule}{rules}
-
-
+%	Proof
+% ----------------------------------------------------------------------
+	% \newtheorem{proof}{Proof}[section]
+	% \crefname{proof}{proof}{proofs}
+  % \crefformat{proof}{\textsuperscript{\scriptsize[def.\ #2#1#3]}}
+% Note Proofs
+% need to be handeled differently because of the \qed
+% \renewenvironment{proof}{\imp{Proof}}{\qed}
+%   \makeatletter
+%     \renewenvironment{proof}[1][]{\par
+%       \pushQED{\qed}%
+%       \normalfont \topsep6\p@\@plus6\p@\relax
+%       \trivlist
+%       \item\relax
+%       {\bfseries Proof #1:}
+%       }{%
+%       \popQED\endtrivlist\@endpefalse
+%     }
+%   \makeatother
+% %Or without any package
+% \DeclareRobustCommand{\qed}{%
+%  \ifmmode % if math mode, assume display: omit penalty etc.
+%  \else \leavevmode\unskip\penalty9999 \hbox{}\nobreak%\hfill
+%  \fi
+%  \quad\hbox{\qedsymbol}}
+% ----------------------------------------------------------------------
 
 	%\newtheorem{conj}[thm]{Conjecture}
 	%\newtheorem{claim}[thm]{Claim}
 	%\newtheorem{eg}[thm]{Example}
 	%\newtheorem{ex}[thm]{Exercise}
 	%\newtheorem{rmk}[thm]{Remark}
+  
 
 %%% Local Variables:
 %%% mode: latex
