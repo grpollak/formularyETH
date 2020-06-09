@@ -146,6 +146,7 @@
 % Logic/Set Theory
 % ==============================================================================
 \renewcommand{\complement}{\mathrm{C}}
+\newcommand{\nullset}{\mathcal{N}}
 % ==============================================================================
 % Analysis
 % ==============================================================================
@@ -213,7 +214,6 @@
 	\DeclareMathOperator{\trace}{Tr}																		% Spur (german for trace \tr)
   \DeclarePairedDelimiterX{\inprd}[2]{\langle}{\rangle}{#1, #2}    % *: uses \left...\right;
                                                                   % manual scaling can be provided by \inp[\big], \inp[\Big], \inp[\bigg]
-	                             																		 
 % ======================================================================						
 % Analysis
 % ======================================================================						
@@ -249,8 +249,8 @@
     % Partial derivative
     % s: star for \flatfrac flat derivative
     % o: optional n for nth derivative
-    % m: mandatory (x in df/dx)
-    % g: optional (f in df/dx)
+    % m: mandatory (f in df/dx)
+    % g: optional (x in df/dx)
     % g: optional (y in d^2f/dxdy)
     % d: long-form d/dx(...)
     \IfBooleanTF{#1}
