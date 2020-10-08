@@ -148,6 +148,12 @@
 \renewcommand{\complement}{\mathrm{C}}
 \newcommand{\nullset}{\mathcal{N}}
 % ==============================================================================
+% Numerics
+% ==============================================================================
+% ------------------------------------------------------------------------------
+\DeclareMathOperator{\roundingfunction}{\mathrm rd}						% rounding function
+\DeclareMathOperator{\F}{\mathbb F}						% Floating point numbers
+% ==============================================================================
 % Analysis
 % ==============================================================================
 % ------------------------------------------------------------------------------
@@ -167,6 +173,9 @@
 
 % Vectors and Matrices
 % ======================================================================
+% Inner Product
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+% Matrices & Vector
 \makeatletter
 \renewcommand*\env@matrix[1][\arraystretch]{%
   \edef\arraystretch{#1}%
@@ -412,30 +421,44 @@
     \textcolor{CarnationPink}{\mathrm{p}}\left(#2|#3\right)
   }
 }
-
-\DeclareDocumentCommand{\CDF}{ o g }{
+\DeclareDocumentCommand{\distribution}{ o g }{
   \IfValueTF{#2}
   {
-    \IfValueTF{#1}{\textcolor{CarnationPink}{\mathbb{F}}_{#1}\left(#2\right)}
-    {\textcolor{CarnationPink}{\mathbb{F}}_{#1}}
+    \IfValueTF{#1}{\textcolor{Brown}{F}_{#1}\left(#2\right)}
+    {\textcolor{Brown}{F}_{#1}}
   }
   {
     \IfValueTF{#1}
     {
-      \textcolor{CarnationPink}{\mathbb{F}}_{#1}
+      \textcolor{Brown}{F}_{#1}
     }
-    {\textcolor{CarnationPink}{\mathbb{F}}}
+    {\textcolor{Brown}{F}}
+  }
+}
+
+\DeclareDocumentCommand{\CDF}{ o g }{
+  \IfValueTF{#2}
+  {
+    \IfValueTF{#1}{\textcolor{Brown}{F}_{#1}\left(#2\right)}
+    {\textcolor{Brown}{F}_{#1}}
+  }
+  {
+    \IfValueTF{#1}
+    {
+      \textcolor{Brown}{F}_{#1}
+    }
+    {\textcolor{Brown}{F}}
   }
 }
 \DeclareDocumentCommand{\pdf}{ s o g }{
   \IfValueTF{#3}
   {
-    \IfValueTF{#2}{\textcolor{CarnationPink}{\mathbb{\IfValueTF{#1}{p}{f}}}_{#2}\left(#3\right)}
-    {\textcolor{CarnationPink}{\mathbb{\IfValueTF{#1}{p}{f}}}_{#2}}
+    \IfValueTF{#2}{\textcolor{CarnationPink}{f}_{#2}\left(#3\right)}
+    {\textcolor{CarnationPink}{f}_{#2}}
   }
   {
-    \IfValueTF{#2}{\textcolor{CarnationPink}{\mathbb{\IfValueTF{#1}{p}{f}}}\left(#3\right)}
-    {\textcolor{CarnationPink}{\mathbb{\IfValueTF{#1}{p}{f}}}}
+    \IfValueTF{#2}{\textcolor{CarnationPink}{f}\left(#3\right)}
+    {\textcolor{CarnationPink}{f}}
   }
 }
 \DeclareDocumentCommand{\Expct}{ g }{

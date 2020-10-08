@@ -179,9 +179,8 @@
 				{}{}
 				{\bfseries}{}
 				{\parindent}
-				{\textbf{\thmname{#1} \thmnumber{#2} }\textcolor{Red}{\thmnote{#3}}:
+        {\textbf{\thmname{#1} \thmnumber{#2}}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{Red}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
-				}
 
 \newtheoremstyle{rule}
 				{}{}
