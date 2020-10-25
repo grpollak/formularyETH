@@ -72,7 +72,15 @@
 {\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{Brown}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
 % \keywordbf{\thmnote}]\label{def:\thmnote} 
 
-% \keywordbf{\thmnote}]\label{def:\thmnote} 
+\newtheoremstyle{algorithm}% name
+{}           %       Space above, empty = 'usual value'
+{}           %       Space below
+{}              %       Body font
+{\parindent}           %       Indent amount (empty = no indent, \parindent = para indent)
+{\bfseries}     %       Thm head font
+{}            %       Punctuation after thm head
+{ }             %       Space after thm head: \newline = linebreak
+{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{section}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
 
 \newtheoremstyle{desc}
 				{}{}
@@ -174,6 +182,7 @@
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
 				}
 
+        
 \newtheoremstyle{property}
 				{}{}
 				{}{}
@@ -229,6 +238,11 @@
 	\theoremstyle{defnc}
 	\newtheorem{defnc}{Definition}[section]
 	\crefname{defnc}{definition}{definitions}
+%	Algorithm
+% ----------------------------------------------------------------------
+	\theoremstyle{algorithm}
+	\newtheorem{algo}{Algorithm}[section]
+	\crefname{algorithm}{algorithm}{algorithms}
 %	Explanation 
 % ----------------------------------------------------------------------
 	\theoremstyle{explantion}
