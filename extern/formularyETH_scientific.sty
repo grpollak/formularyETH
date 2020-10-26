@@ -468,6 +468,17 @@
     {\textcolor{CarnationPink}{f}}
   }
 }
+\DeclareDocumentCommand{\rvlaw}{ s o g }{
+  \IfValueTF{#3}
+  {
+    \IfValueTF{#2}{\textcolor{CarnationPink}{\mathscr{L}}_{#2}\left(#3\right)}
+    {\textcolor{CarnationPink}{\mathscr{L}}_{#2}}
+  }
+  {
+    \IfValueTF{#2}{\textcolor{CarnationPink}{\mathscr{L}}\left(#3\right)}
+    {\textcolor{CarnationPink}{\mathscr{L}}}
+  }
+}
 \DeclareDocumentCommand{\Expct}{ g }{
   \IfValueTF{#1}
   {\mathbb{\textcolor{Green}{E}}\left[#1\right]}
