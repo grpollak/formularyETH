@@ -89,3 +89,10 @@
 \newcommand\Drawback{\imp{\tc{Red}{Drawback}}:}
 \newcommand{\proofref}[1]{\tc{black}{\normalfont{[Proof~\ref{#1}]}}}
 \newcommand{\Proofref}[1]{\tc{black}{\normalfont{[proof~\ref{#1}]}}}
+% Overset with possibility to specify vspace
+\makeatletter
+\newcommand{\oset}[3][0ex]{%
+  \mathrel{\mathop{#3}\limits^{
+    \vbox to#1{\kern-2\ex@
+    \hbox{$\scriptstyle#2$}\vss}}}}
+\makeatother
