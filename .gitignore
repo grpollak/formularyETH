@@ -99,6 +99,8 @@ tramp
 
 # AUCTeX auto folder
 /auto/
+.auctex-auto/
+extern/.auctex-auto/
 
 # cask packages
 .cask/
