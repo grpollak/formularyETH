@@ -65,6 +65,7 @@
 	\DeclareMathOperator{\Rp}{\mathbb R_+}					% Reele Zahlen	                                   					
 	\DeclareMathOperator{\C}{\mathbb C}						% Komplexe Zahlen
 	\DeclareMathOperator{\K}{\mathbb K}						% Reele oder komplexe Zahlen
+	\DeclareMathOperator{\Q}{\mathbb Q}						% Reele oder komplexe Zahlen
 	\DeclareMathOperator{\Z}{\mathbb{Z}}
 	\DeclareMathOperator{\img}{i}							% Imaginary Unit
 	\newcommand{\error}{\textcolor{Red}{\epsilon}}							% Sign function
@@ -145,11 +146,19 @@
 % Logic/Set Theory
 % ==============================================================================
 \renewcommand{\complement}{\mathrm{C}}
+\newcommand{\nullset}{\mathcal{N}}
+% ==============================================================================
+% Numerics
+% ==============================================================================
+% ------------------------------------------------------------------------------
+\DeclareMathOperator{\roundingfunction}{\mathrm rd}						% rounding function
+\DeclareMathOperator{\F}{\mathbb F}						% Floating point numbers
 % ==============================================================================
 % Analysis
 % ==============================================================================
 % ------------------------------------------------------------------------------
 	\DeclareMathOperator{\mathimg}{\mathfrak{img}}
+  \newcommand{\Polynomial}{\tc{Purple}{\mathcal{P}}}
 % ==============================================================================
 % Linear Algebra
 % ==============================================================================
@@ -165,6 +174,9 @@
 
 % Vectors and Matrices
 % ======================================================================
+% Inner Product
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+% Matrices & Vector
 \makeatletter
 \renewcommand*\env@matrix[1][\arraystretch]{%
   \edef\arraystretch{#1}%
@@ -183,7 +195,8 @@
 	\renewcommand{\vec}[1]{\ensuremath{\boldsymbol #1 }}												% Vector bold and underlined
 	\newcommand{\vect}[1]{\ensuremath{\arraycolsep=0.3em \begin{pNiceMatrix} #1 \end{pNiceMatrix}}}				% Vector
 	\newcommand{\bvect}[1]{\ensuremath{\begin{bNiceMatrix} #1 \end{bNiceMatrix}}}				% Vector
-	\newcommand{\unitVector}{\ensuremath{\mathds{1}}}													% Unit Vector
+	\newcommand{\unitvector}{\ensuremath{\mathds{1}}}													% Unit Vector
+	\newcommand{\evec}{\ensuremath{\vec{e}}}													% Unit Vector
 	\newcommand{\mvect}[1]{\ensuremath{\left.\begin{NiceMatrix} #1 \end{NiceMatrix}\right]}}					% Matrixvector
 	\newcommand{\tensor}[1]{\ensuremath{\underline{\underline{\boldsymbol #1}}}}						% Tensor
 	\DeclareMathOperator{\diag}{diag}																	% diagonal matrix
@@ -208,10 +221,9 @@
 	% vector operations
   \DeclarePairedDelimiter\norm{\lVert}{\rVert}                    % Norm
 	\DeclareMathOperator{\Sp}{Sp}																		% Spur (german for trace \tr)
-	\DeclareMathOperator{\trace}{Tr}																		% Spur (german for trace \tr)
+	\DeclareMathOperator{\trace}{tr}																		% Spur (german for trace \tr)
   \DeclarePairedDelimiterX{\inprd}[2]{\langle}{\rangle}{#1, #2}    % *: uses \left...\right;
                                                                   % manual scaling can be provided by \inp[\big], \inp[\Big], \inp[\bigg]
-	                             																		 
 % ======================================================================						
 % Analysis
 % ======================================================================						
@@ -247,8 +259,8 @@
     % Partial derivative
     % s: star for \flatfrac flat derivative
     % o: optional n for nth derivative
-    % m: mandatory (x in df/dx)
-    % g: optional (f in df/dx)
+    % m: mandatory (f in df/dx)
+    % g: optional (x in df/dx)
     % g: optional (y in d^2f/dxdy)
     % d: long-form d/dx(...)
     \IfBooleanTF{#1}
@@ -305,11 +317,12 @@
 % Probability
 % ==============================================================================
 % ------------------------------------------------------------------------------
-\DeclareDocumentCommand{\Var}{ g }{
-  \IfValueTF{#1}
-  {\mathrm{\textcolor{Green}{Var}}\left[#1\right]}
-  {\mathrm{\textcolor{Green}{Var}}}
-  }
+% Independenc _||_
+% ------------------------------------------------------------------------------ 
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+% Correlation
+% ------------------------------------------------------------------------------ 
 \DeclareDocumentCommand{\Corr}{ g }{
   \IfValueTF{#1}
   {\mathrm{\textcolor{Green}{Corr}}\left[#1\right]}
@@ -328,12 +341,12 @@
   }
 \DeclareDocumentCommand{\Var}{ g }{
   \IfValueTF{#1}
-  {\mathbb{\textcolor{Green}{V}}\left(#1\right)}
+  {\mathbb{\textcolor{Green}{V}}\left[#1\right]}
   {\mathbb{\textcolor{Green}{V}}}
   }
 \DeclareDocumentCommand{\Prob}{ g }{
     \IfValueTF{#1}
-    {\textcolor{CarnationPink}{\mathbb{P}}\left[#1\right]}
+    {\textcolor{CarnationPink}{\mathbb{P}}\left(#1\right)}
     {\textcolor{CarnationPink}{\mathbb{P}}
   }
 }
@@ -415,30 +428,55 @@
     \textcolor{CarnationPink}{\mathrm{p}}\left(#2|#3\right)
   }
 }
-
-\DeclareDocumentCommand{\CDF}{ o g }{
+\DeclareDocumentCommand{\distribution}{ o g }{
   \IfValueTF{#2}
   {
-    \IfValueTF{#1}{\textcolor{CarnationPink}{\mathbb{F}}_{#1}\left(#2\right)}
-    {\textcolor{CarnationPink}{\mathbb{F}}_{#1}}
+    \IfValueTF{#1}{\textcolor{Brown}{F}_{#1}\left(#2\right)}
+    {\textcolor{Brown}{F}_{#1}}
   }
   {
     \IfValueTF{#1}
     {
-      \textcolor{CarnationPink}{\mathbb{F}}_{#1}
+      \textcolor{Brown}{F}_{#1}
     }
-    {\textcolor{CarnationPink}{\mathbb{F}}}
+    {\textcolor{Brown}{F}}
+  }
+}
+
+\DeclareDocumentCommand{\CDF}{ o g }{
+  \IfValueTF{#2}
+  {
+    \IfValueTF{#1}{\textcolor{Brown}{F}_{#1}\left(#2\right)}
+    {\textcolor{Brown}{F}_{#1}}
+  }
+  {
+    \IfValueTF{#1}
+    {
+      \textcolor{Brown}{F}_{#1}
+    }
+    {\textcolor{Brown}{F}}
   }
 }
 \DeclareDocumentCommand{\pdf}{ s o g }{
   \IfValueTF{#3}
   {
-    \IfValueTF{#2}{\textcolor{CarnationPink}{\mathbb{\IfValueTF{#1}{p}{f}}}_{#2}\left(#3\right)}
-    {\textcolor{CarnationPink}{\mathbb{\IfValueTF{#1}{p}{f}}}_{#2}}
+    \IfValueTF{#2}{\textcolor{CarnationPink}{f}_{#2}\left(#3\right)}
+    {\textcolor{CarnationPink}{f}_{#2}}
   }
   {
-    \IfValueTF{#2}{\textcolor{CarnationPink}{\mathbb{\IfValueTF{#1}{p}{f}}}\left(#3\right)}
-    {\textcolor{CarnationPink}{\mathbb{\IfValueTF{#1}{p}{f}}}}
+    \IfValueTF{#2}{\textcolor{CarnationPink}{f}\left(#3\right)}
+    {\textcolor{CarnationPink}{f}}
+  }
+}
+\DeclareDocumentCommand{\rvlaw}{ s o g }{
+  \IfValueTF{#3}
+  {
+    \IfValueTF{#2}{\textcolor{CarnationPink}{\mathscr{L}}_{#2}\left(#3\right)}
+    {\textcolor{CarnationPink}{\mathscr{L}}_{#2}}
+  }
+  {
+    \IfValueTF{#2}{\textcolor{CarnationPink}{\mathscr{L}}\left(#3\right)}
+    {\textcolor{CarnationPink}{\mathscr{L}}}
   }
 }
 \DeclareDocumentCommand{\Expct}{ g }{
@@ -460,15 +498,26 @@
 \newcommand{\mean}{\textcolor{Green}{\mu}}
 \newcommand{\meanvec}{\textcolor{Green}{\vec{\mu}}}
 \newcommand{\std}{\textcolor{Green}{\sigma}}
-\newcommand{\covMatrix}{\textcolor{Green}{\Sigma}}
-% Distibutions
-% ------------------------------------------------------------------------------ 
-
+\newcommand{\covmatrix}{\textcolor{sigmac}{\Sigma}}
+% ------------------------------------------------------------------------------
+% Distributions
+% ------------------------------------------------------------------------------
 \newcommand{\Normaldist}{\textcolor{Purple}{\mathcal{N}}}
+\newcommand{\Binomialdist}{\textcolor{Purple}{\mathcal{B}}}
 \newcommand{\Gammadist}{\textcolor{Purple}{\Gamma}}
+\newcommand{\Geometricdist}{\textcolor{Purple}{\mathrm{Geom}}}
 \newcommand{\Unidist}{\textcolor{Purple}{\mathcal{U}}}
+\newcommand{\Poissondist}{\textcolor{Purple}{\mathrm{Pois}}}
 \newcommand{\Expdist}{\textcolor{Purple}{\exp}}
 \newcommand{\Bernoulidist}{\textcolor{Purple}{\mathrm{Bern}}}
+% ------------------------------------------------------------------------------
+% Optimization
+% ------------------------------------------------------------------------------
+\DeclareMathOperator{\Lagrange}{\tc{violet}{\mathscr{Lagrange}}}
+% ------------------------------------------------------------------------------
+% Machine Learning
+% ------------------------------------------------------------------------------
+\providecommand{\GP}{\mathcal{GP}}
 % Important Colors
 % ======================================================================
 % Math Coefficient colors

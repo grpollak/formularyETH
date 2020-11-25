@@ -12,6 +12,29 @@
 % allows \textlangle and \textrangle inside text
 \RequirePackage{textcomp}
 \RequirePackage{hyperref} 													% Clever references, also needed for \cref
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
 \RequirePackage{cleveref}
 \RequirePackage{formularyETH/formularyETH_theorems} 
 \RequirePackage{formularyETH/formularyETH_items}	% section boxes                                                	
+% ------------------------------------------------------------------------------
+% Fonts
+% ------------------------------------------------------------------------------
+% These two packages are needed for a centered tilde ~ inside minted envioments
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+% ------------------------------------------------------------------------------
+% Figures
+% ------------------------------------------------------------------------------
+\usepackage{wrapfig}
+\usepackage{cutwin}
+% In order to use inkscape figures with transparent fillings using alpha
+\usepackage{transparent}
+% ------------------------------------------------------------------------------
+% Tables
+% ------------------------------------------------------------------------------
+\usepackage{tabularx}

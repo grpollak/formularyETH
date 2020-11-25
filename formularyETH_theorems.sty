@@ -69,10 +69,18 @@
 {\flushleft\bfseries}     %       Thm head font
 {}            %       Punctuation after thm head
 { }             %       Space after thm head: \newline = linebreak
-{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{brown}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
+{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{Brown}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
 % \keywordbf{\thmnote}]\label{def:\thmnote} 
 
-% \keywordbf{\thmnote}]\label{def:\thmnote} 
+\newtheoremstyle{algorithm}% name
+{}           %       Space above, empty = 'usual value'
+{}           %       Space below
+{}              %       Body font
+{\parindent}           %       Indent amount (empty = no indent, \parindent = para indent)
+{\bfseries}     %       Thm head font
+{}            %       Punctuation after thm head
+{ }             %       Space after thm head: \newline = linebreak
+{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{section}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
 
 \newtheoremstyle{desc}
 				{}{}
@@ -174,14 +182,14 @@
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
 				}
 
+        
 \newtheoremstyle{property}
 				{}{}
 				{}{}
 				{\bfseries}{}
 				{\parindent}
-				{\textbf{\thmname{#1} \thmnumber{#2} }\textcolor{Red}{\thmnote{#3}}:
+        {\textbf{\thmname{#1} \thmnumber{#2}}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{Red}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
-				}
 
 \newtheoremstyle{rule}
 				{}{}
@@ -197,31 +205,9 @@
 				{}{}
 				{\bfseries}{}
 				{\parindent}
-				{\textbf{\thmname{#1} \thmnumber{#2} }\textcolor{Red}{\thmnote{#3}}:
+				{\textbf{\thmname{#1} \thmnumber{#2} }\textcolor{Black}{\thmnote{#3}}:
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
 				}
-% Note Proofs
-% need to be handeled differently because of the \qed
-\renewenvironment{proof}{\imp{Proof}}{\qed}
-%   \makeatletter
-%     \renewenvironment{proof}[1][\proofname]{\par
-%       \pushQED{\qed}%
-%       \normalfont \topsep6\p@\@plus6\p@\relax
-%       \trivlist
-%       \item\relax
-%       {\bfseries
-%       #1}
-%       }{%
-%       \popQED\endtrivlist\@endpefalse
-%     }
-%   \makeatother
-% %Or without any package
-% \DeclareRobustCommand{\qed}{%
-%  \ifmmode % if math mode, assume display: omit penalty etc.
-%  \else \leavevmode\unskip\penalty9999 \hbox{}\nobreak%\hfill
-%  \fi
-%  \quad\hbox{\qedsymbol}}
-% ----------------------------------------------------------------------
 % ======================================================================
 % \newtheorem{name}{Printed output}[numberby]
 % \newtheorem{name}[counter]{Printed output} 
@@ -244,71 +230,114 @@
 	\theoremstyle{defn}
 	\newtheorem{defn}{Definition}[section]
 	\crefname{defn}{definition}{definitions}
+  \crefformat{defn}{\textsuperscript{\scriptsize[def.~#2#1#3]}}
+  \crefmultiformat{defn}{\scriptsize\textsuperscript{[def's.~#2#1#3}}%
+  {\scriptsize\textsuperscript{, #2#1#3]}}{\scriptsize\textsuperscript{, #2#1#3}}{\scriptsize\textsuperscript{ #2#1#3]}}
 %	Code Definition
 % ----------------------------------------------------------------------
 	\theoremstyle{defnc}
 	\newtheorem{defnc}{Definition}[section]
 	\crefname{defnc}{definition}{definitions}
+%	Algorithm
+% ----------------------------------------------------------------------
+	\theoremstyle{algorithm}
+	\newtheorem{algo}{Algorithm}[section]
+	\crefname{algo}{algorithm}{algorithms}
 %	Explanation 
 % ----------------------------------------------------------------------
-	%\theoremstyle{explantion}
+	\theoremstyle{explantion}
 	\newtheorem{explanation}{Explanation}[section]
 	\crefname{explanation}{explanation}{explanations}
 %	Description
 % ----------------------------------------------------------------------
-	%\theoremstyle{description}
+	\theoremstyle{description}
 	\newtheorem{desc}{Description}[section]
 	\crefname{desc}{description}{descriptions}
 %	Lemma
 % ----------------------------------------------------------------------
+	\theoremstyle{lemma}
 	\newtheorem{lemma}{Lemma}[section]
 	\crefname{lem}{lemma}{lemmata}
 %	Formula
 % ----------------------------------------------------------------------
+	\theoremstyle{formula}
 	\newtheorem{formula}{Formula}[section]
 	\crefname{formula}{formula}{formulas}
 %	Principle
 % ----------------------------------------------------------------------
+	\theoremstyle{princip}
 	\newtheorem{princip}{Principle}[section]
 	\crefname{princip}{principle}{principles}
 %	Proposition
 % ----------------------------------------------------------------------
+	\theoremstyle{proposition}
 	\newtheorem{proposition}{Proposition}[section]
 	\crefname{proposition}{proposition}{propositions}
 %	Example
 % ----------------------------------------------------------------------
+	\theoremstyle{example}
 	\newtheorem{example}{Example}[section]
 	\crefname{example}{example}{examples}
 %	Principle
 % ----------------------------------------------------------------------
+	\theoremstyle{post}
 	\newtheorem{post}{Postulate}[section]
 	\crefname{post}{postulate}{postulates}
 %	Corollary
 % ----------------------------------------------------------------------
+	\theoremstyle{cor}
 	\newtheorem{cor}{Corollary}[section]
 	\crefname{cor}{corollary}{corollaries}
 %	Law
 % ----------------------------------------------------------------------
+	\theoremstyle{law}
 	\newtheorem{law}{Law}[section]
 	\crefname{law}{law}{laws}
 %	Law
 % ----------------------------------------------------------------------
+	\theoremstyle{property}
 	\newtheorem{property}{Property}[section]
 	\crefname{property}{Property}{properties}
 % ----------------------------------------------------------------------
 %	Rule
 % Note: rule as command not possible as already used by LaTex
 % ----------------------------------------------------------------------
+	\theoremstyle{ruling}
 	\newtheorem{ruling}{Rule}[section]
  	\crefname{ruling}{rule}{rules}
-
-
+%	Proof
+% ----------------------------------------------------------------------
+	% \newtheorem{proof}{Proof}[section]
+	% \crefname{proof}{proof}{proofs}
+  % \crefformat{proof}{\textsuperscript{\scriptsize[def.\ #2#1#3]}}
+% Note Proofs
+% need to be handeled differently because of the \qed
+% \renewenvironment{proof}{\imp{Proof}}{\qed}
+%   \makeatletter
+%     \renewenvironment{proof}[1][]{\par
+%       \pushQED{\qed}%
+%       \normalfont \topsep6\p@\@plus6\p@\relax
+%       \trivlist
+%       \item\relax
+%       {\bfseries Proof #1:}
+%       }{%
+%       \popQED\endtrivlist\@endpefalse
+%     }
+%   \makeatother
+% %Or without any package
+% \DeclareRobustCommand{\qed}{%
+%  \ifmmode % if math mode, assume display: omit penalty etc.
+%  \else \leavevmode\unskip\penalty9999 \hbox{}\nobreak%\hfill
+%  \fi
+%  \quad\hbox{\qedsymbol}}
+% ----------------------------------------------------------------------
 
 	%\newtheorem{conj}[thm]{Conjecture}
 	%\newtheorem{claim}[thm]{Claim}
 	%\newtheorem{eg}[thm]{Example}
 	%\newtheorem{ex}[thm]{Exercise}
 	%\newtheorem{rmk}[thm]{Remark}
+  
 
 %%% Local Variables:
 %%% mode: latex

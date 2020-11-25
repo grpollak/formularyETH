@@ -89,6 +89,33 @@
 					%noitemsep,
 					}
 
+% ------------------------------------------------------------------------------
+% List without bullet points
+% ------------------------------------------------------------------------------
+\newlist{itemizenosepn}{enumerate}{4}
+\setlist[itemizenosepn]{
+					label= {},
+					ref=(\textnormal{\textcolor{item}{\textbullet}}
+          font=\normalfont,
+					topsep=0pt,
+          leftmargin=2pt,
+          nosep,
+					itemsep=0.2em,
+					%noitemsep,
+					}
+\setlist[itemizenosepn, 2]{
+					label= {},
+          font=\normalfont,
+					topsep=0pt,
+          leftmargin=6.5pt,
+          nosep,
+					itemsep=0.2em,
+					%noitemsep,
+					}
+          
+% ------------------------------------------------------------------------------
+% Roman List
+% ------------------------------------------------------------------------------
 \newlist{romanlist}{enumerate}{1}
 \setlist[romanlist]{%
   label=\textcolor{item}{\textbf{\Roman*}}),    
