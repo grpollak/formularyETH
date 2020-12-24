@@ -90,6 +90,7 @@
 \DeclareVoidOption{twoColumns}{\setcounter{numberOfColumns}{2} \multicolstrue \singlecolumnfalse}
 \DeclareVoidOption{threeColumns}{\setcounter{numberOfColumns}{3} \multicolstrue\singlecolumnfalse}
 \DeclareVoidOption{fourColumns}{\setcounter{numberOfColumns}{4} \multicolstrue\singlecolumnfalse\singlecolumnfalse}
+\formulary@fourColumns
 \DeclareVoidOption{fiveColumns}{\setcounter{numberOfColumns}{5} \multicolstrue\singlecolumnfalse}
 \DeclareVoidOption{sixColumns}{\setcounter{numberOfColumns}{6} \multicolstrue\singlecolumnfalse}
 \DeclareVoidOption{sevenColumns}{\setcounter{numberOfColumns}{7} \multicolstrue\singlecolumnfalse}

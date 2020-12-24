@@ -69,7 +69,11 @@
 	\DeclareMathOperator{\Z}{\mathbb{Z}}
 	\DeclareMathOperator{\img}{i}							% Imaginary Unit
 	\newcommand{\error}{\textcolor{Red}{\epsilon}}							% Sign function
-	\newcommand{\sign}[1]{\text{sign}(#1)}							% Sign function
+  \DeclareDocumentCommand{\sign}{g}{
+    \IfValueTF{#1}
+    {\mathrm{sign}(#1)}
+    {\mathrm{sign}}
+  }
   \DeclareDocumentCommand{\domain}{g}{
     \IfValueTF{#1}
     {
@@ -313,6 +317,11 @@
 % ======================================================================
 	\DeclareMathOperator{\LT}{\mathscr{\textcolor{Fuchsia}{L}}} % Laplace Transform		
 	\DeclareMathOperator{\FT}{\mathscr{F}} % Fourrier Transform		
+% ==============================================================================
+% Logic
+% ==============================================================================
+\newcommand\ltrue{\mathrm{true}}
+\newcommand\lfalse{\mathrm{false}}
 % ==============================================================================
 % Probability
 % ==============================================================================
