@@ -151,9 +151,7 @@
 				{}{}
 				{\bfseries}{}
 				{\parindent}
-				{\textbf{\thmname{#1} \thmnumber{#2}}\textcolor{Red}{\thmnote{#3}}:
-					%\keywordbf{\thmnote}]\label{def:\thmnote}
-				}
+				{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{section}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
 
 \newtheoremstyle{example}
 				{}{}
