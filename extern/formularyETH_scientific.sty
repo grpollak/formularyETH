@@ -201,7 +201,7 @@
   \newcommand\origvec{}                                                        % Save the original \vec command.
   \let\origvec=\vec
   % allow optional array stretch command
-	\renewcommand{\vec}[1]{\ensuremath{\boldsymbol #1 }}												% Vector bold and underlined
+	\renewcommand{\vec}[1]{\ensuremath{\boldsymbol{\mathbf{#1}}}} % Vector bold and underlined
 	\newcommand{\vect}[1]{\ensuremath{\arraycolsep=0.3em \begin{pNiceMatrix} #1 \end{pNiceMatrix}}}				% Vector
 	\newcommand{\bvect}[1]{\ensuremath{\begin{bNiceMatrix} #1 \end{bNiceMatrix}}}				% Vector
 	\newcommand{\unitvector}{\ensuremath{\mathds{1}}}													% Unit Vector
