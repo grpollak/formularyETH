@@ -147,6 +147,7 @@
 
         
 \newtheoremstyle{proposition}
+<<<<<<< HEAD
 			{}           %       Space above, empty = 'usual value'
 			{}           %       Space below
 			{}              %       Body font
@@ -155,6 +156,13 @@
 			{}            %       Punctuation after thm head
 			{ }             %       Space after thm head: \newline = linebreak
 			{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{Red}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
+=======
+				{}{}
+				{}{}
+				{\bfseries}{}
+				{\parindent}
+				{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{section}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
+>>>>>>> ab0b306e04dba0404a0b60d656eae702f534299a
 
 \newtheoremstyle{example}
 				{}{}
