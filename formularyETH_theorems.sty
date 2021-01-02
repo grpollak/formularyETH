@@ -288,7 +288,10 @@
 % ----------------------------------------------------------------------
 	\theoremstyle{cor}
 	\newtheorem{cor}{Corollary}[section]
-	\crefname{cor}{corollary}{corollaries}
+	% \crefname{cor}{corollary}{corollaries}
+	\crefformat{cor}{\textsuperscript{\scriptsize[cor.~#2#1#3]}}
+	\crefmultiformat{cor}{\scriptsize\textsuperscript{[cor's.~#2#1#3}}%
+	{\scriptsize\textsuperscript{, #2#1#3]}}{\scriptsize\textsuperscript{, #2#1#3}}{\scriptsize\textsuperscript{ #2#1#3]}}
 %	Law
 % ----------------------------------------------------------------------
 	\theoremstyle{law}
