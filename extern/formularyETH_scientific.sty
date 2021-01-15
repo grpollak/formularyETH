@@ -69,7 +69,11 @@
 	\DeclareMathOperator{\Z}{\mathbb{Z}}
 	\DeclareMathOperator{\img}{i}							% Imaginary Unit
 	\newcommand{\error}{\textcolor{Red}{\epsilon}}							% Sign function
-	\newcommand{\sign}[1]{\text{sign}(#1)}							% Sign function
+  \DeclareDocumentCommand{\sign}{g}{
+    \IfValueTF{#1}
+    {\mathrm{sign}(#1)}
+    {\mathrm{sign}}
+  }
   \DeclareDocumentCommand{\domain}{g}{
     \IfValueTF{#1}
     {
@@ -159,12 +163,21 @@
 % ------------------------------------------------------------------------------
 	\DeclareMathOperator{\mathimg}{\mathfrak{img}}
   \newcommand{\Polynomial}{\tc{Purple}{\mathcal{P}}}
+
+% ==============================================================================
+% Spaces that can be used for all sorts of things
+% ==============================================================================
+\DeclareMathOperator{\Hsp}{\mathcal{H}}
 % ==============================================================================
 % Linear Algebra
 % ==============================================================================
 % ------------------------------------------------------------------------------
-  \newcommand{\eigenval}{\lambdac}
-  \newcommand{\singval}{\sigmac}
+\newcommand{\spectrum}{\mathrm{spectrum}}
+\newcommand{\eigenval}{\lambdac}
+\newcommand{\singularvalue}{\sigmac}
+\newcommand{\spectralradius}{\ensuremath{\rhoc}}
+
+	\DeclareMathOperator{\linmap}{\ensuremath{\varphic}}
 	\DeclareMathOperator{\linalgrank}{\mathfrak{rank}}
 	\DeclareMathOperator{\linalgimg}{\mathfrak{img}}
 	\DeclareMathOperator{\linalgrange}{\mathfrak{R}}
@@ -192,7 +205,7 @@
   \newcommand\origvec{}                                                        % Save the original \vec command.
   \let\origvec=\vec
   % allow optional array stretch command
-	\renewcommand{\vec}[1]{\ensuremath{\boldsymbol #1 }}												% Vector bold and underlined
+	\renewcommand{\vec}[1]{\ensuremath{\boldsymbol{\mathbf{#1}}}} % Vector bold and underlined
 	\newcommand{\vect}[1]{\ensuremath{\arraycolsep=0.3em \begin{pNiceMatrix} #1 \end{pNiceMatrix}}}				% Vector
 	\newcommand{\bvect}[1]{\ensuremath{\begin{bNiceMatrix} #1 \end{bNiceMatrix}}}				% Vector
 	\newcommand{\unitvector}{\ensuremath{\mathds{1}}}													% Unit Vector
@@ -313,6 +326,11 @@
 % ======================================================================
 	\DeclareMathOperator{\LT}{\mathscr{\textcolor{Fuchsia}{L}}} % Laplace Transform		
 	\DeclareMathOperator{\FT}{\mathscr{F}} % Fourrier Transform		
+% ==============================================================================
+% Logic
+% ==============================================================================
+\newcommand\ltrue{\mathrm{true}}
+\newcommand\lfalse{\mathrm{false}}
 % ==============================================================================
 % Probability
 % ==============================================================================
@@ -499,6 +517,12 @@
 \newcommand{\meanvec}{\textcolor{Green}{\vec{\mu}}}
 \newcommand{\std}{\textcolor{Green}{\sigma}}
 \newcommand{\covmatrix}{\textcolor{sigmac}{\Sigma}}
+% ==============================================================================
+% statisitcs
+% ==============================================================================
+% Tests
+% ------------------------------------------------------------------------------
+\newcommand{\pvalue}{\tc{Fuchsia}{p}}
 % ------------------------------------------------------------------------------
 % Distributions
 % ------------------------------------------------------------------------------

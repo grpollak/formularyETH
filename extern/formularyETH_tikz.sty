@@ -23,21 +23,45 @@
                 intersections,
                 quotes,
                 shapes.geometric}
-
-% ======================================================================
+% ==============================================================================
 % PGFPlot
-% 
+% ==============================================================================
+\RequirePackage{pgfplots}
 % ======================================================================
-\usepackage{pgfplots}
-% ======================================================================
-% Styles
-% 
-% ======================================================================
-\pgfplotsset{soliddot/.style={color=blue,only marks,mark=*}} 
+\pgfplotsset{every axis/.append style={
+    compat=1.8,
+    % xlabel={x label},
+    % ylabel={y label},
+    % TICKS
+    xtick style={draw=none},
+    % xtick pos=left,
+    ticklabel style = {font=\huge},
+    % GRIDS
+    xmajorgrids,
+    x grid style={white},
+    ymajorgrids,
+    y grid style={white},
+    % AXIS
+    % x axis line style={draw=none},
+    % axis lines=middle,
+    % axis y line=left,
+    % axis line style={-latex, very thick, draw opacity=0.2, gray},
+    axis background/.style={fill=seabornplot},
+    % legend pos=north west,
+    legend style={
+      fill=seabornplot, draw=black,
+      font=\Large,
+      % yshift=-1.5ex
+    },
+}}
+
+\pgfplotsset{soliddot/.style={color=blue,only marks,mark=*}}
 \pgfplotsset{transpdot/.style={color=blue,fill=white,only marks,mark=*}}
-% ======================================================================
-% Commands
-% 
+
+
+% ==============================================================================
+% MACROS
+% ==============================================================================
 % ======================================================================
 % Arrows
 % ----------------------------------------------------------------------
@@ -492,3 +516,34 @@
           \n1= {veclen(\x1,\y1)*sin(0.5*(#4-#3))/sin(0.5*(180-#4+#3))}
       in arc [start angle={#3-90}, end angle={#4+90}, radius=\n1]%
    }
+% ==============================================================================
+% Neural Networks
+% ==============================================================================
+% \tikzset{
+%   font={\Huge}
+% }
+\tikzset{%
+  input/.style={
+    circle,
+    draw=black,
+    thick,
+    fill=seaborn1,
+  },
+  hidden/.style={
+    circle,
+    draw=black,
+    thick,
+    fill=seaborn2,
+  },
+  output/.style={
+    circle,
+    draw=black,
+    thick,
+    fill=seaborn3,
+  },
+  main edge/.style={
+    thick,
+    draw=black,
+    -latex
+  },
+}
