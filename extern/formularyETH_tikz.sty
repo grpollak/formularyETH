@@ -57,6 +57,8 @@
     y grid style={white},
     % AXIS
     % x axis line style={draw=none},
+    % xtick={-4,0,4},
+    % xticklabels={$label1$,label2, label3},
     % axis lines=middle,
     % axis y line=left,
     % axis line style={-latex, very thick, draw opacity=0.2, gray},
@@ -217,6 +219,7 @@
             \node[shape=circle,draw=section,inner sep=1pt,semithick] (char) {#1};}}
 % Underlining
 % ======================================================================
+% [type]
 \newcommand{\tul}[2][1]{%
     \IfEqCase{#1}{
       {1}{
