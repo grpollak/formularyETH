@@ -190,3 +190,56 @@
 % http://mirror.ox.ac.uk/sites/ctan.org/macros/latex/contrib/moreenum/moreenum-doc.pdf
 % \newcommand*{\pro@con}[1]{%
 %   \ifcase#1\or\advantage\or\drawback \else\@ctrerr\fi}
+\newlist{proslistraw}{enumerate}{4}
+\setlist[proslistraw]{
+					label=\textcolor{Green}{\textbullet},
+					ref=(\textnormal{\textcolor{Green}{\textbullet}}
+          font=\normalfont,
+					topsep=0pt,
+          leftmargin=10pt,
+          labelindent=\parindent,
+					itemsep=0pt,
+          nosep,
+					%noitemsep,
+					}
+\setlist[proslistraw, 2]{
+					label=\textcolor{Green}{\ding[0.85]{117}},
+          font=\normalfont,
+					topsep=0pt,
+          leftmargin=15pt,
+          labelindent=\parindent,
+					itemsep=0pt,
+          nosep,
+					%noitemsep,
+					}
+\newlist{conslistraw}{enumerate}{4}
+\setlist[conslistraw]{
+					label=\textcolor{Red}{\textbullet},
+					ref=(\textnormal{\textcolor{Red}{\textbullet}}
+          font=\normalfont,
+					topsep=0pt,
+          leftmargin=10pt,
+          labelindent=\parindent,
+					itemsep=0pt,
+          nosep,
+					%noitemsep,
+					}
+\setlist[conslistraw, 2]{
+					label=\textcolor{Red}{\ding[0.85]{117}},
+          font=\normalfont,
+					topsep=0pt,
+          leftmargin=15pt,
+          labelindent=\parindent,
+					itemsep=0pt,
+          nosep,
+					%noitemsep,
+					}
+
+\newenvironment{proslist}[1][Pros]{%
+  {\color{Green}\renewcommand{\ULthickness}{0.8pt}\uline{\textcolor{black}{\textbf{#1}}}}
+  \begin{proslistraw}}
+{\end{proslistraw}}
+\newenvironment{conslist}[1][Cons]{%
+  {\color{Red}\renewcommand{\ULthickness}{0.8pt}\uline{\textcolor{black}{\textbf{#1}}}}
+  \begin{proslistraw}}
+{\end{proslistraw}}
