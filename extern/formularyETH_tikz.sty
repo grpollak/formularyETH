@@ -540,23 +540,24 @@
 %   font={\Huge}
 % }
 \tikzset{%
-  input/.style={
+  nn node style/.style={
     circle,
-    draw=black,
-    thick,
+    very thick
+  },
+  input/.style={
+    nn node style,
     fill=seaborn1!75,
+    draw=seaborn1,
   },
   hidden/.style={
-    circle,
-    draw=black,
-    thick,
+    nn node style,
     fill=seaborn2!60,
+    draw=seaborn2,
   },
   output/.style={
-    circle,
-    draw=black,
-    thick,
+    nn node style,
     fill=seaborn3!75,
+    draw=seaborn3,
   },
   main edge/.style={
     thick,
