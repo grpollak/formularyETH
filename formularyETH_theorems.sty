@@ -7,7 +7,7 @@
 % Theorems, Proofs, definitions, ...
 % Note: Order matters!
 % ======================================================================
-\RequirePackage{amsthm}	
+\RequirePackage{amsthm}
 % ======================================================================
 % Notes:
 % Definition \newtheorem{name}[sharedCounter]{Heading Text}[parentCounter]
@@ -311,7 +311,9 @@
  	\crefname{ruling}{rule}{rules}
 %	Proof
 % ----------------------------------------------------------------------
-	% \newtheorem{proof}{Proof}[section]
+\let\proof\relax
+\let\endproof\relax
+	\newtheorem{proof}{Proof}[section]
 	% \crefname{proof}{proof}{proofs}
   % \crefformat{proof}{\textsuperscript{\scriptsize[def.\ #2#1#3]}}
 % Note Proofs
