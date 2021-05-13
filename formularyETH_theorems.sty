@@ -165,6 +165,15 @@
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
 				}
 
+\newtheoremstyle{implementation}
+				{}{}
+				{}{}
+				{\bfseries}{}
+				{\parindent}
+				{\color{black}\textbf{\thmname{#1} \thmnumber{#2} }\thmnote{\color{black}#3}:
+					%\keywordbf{\thmnote}]\label{def:\thmnote}
+				}
+
 \newtheoremstyle{post}
 				{}{}
 				{}{}
@@ -281,6 +290,11 @@
 	\theoremstyle{example}
 	\newtheorem{example}{Example}[section]
 	\crefname{example}{example}{examples}
+%	Implementation
+% ----------------------------------------------------------------------
+	\theoremstyle{implementation}
+	\newtheorem{implementation}{Implementation}[section]
+	\crefname{implementation}{implementation}{implementation}
 %	Principle
 % ----------------------------------------------------------------------
 	\theoremstyle{post}
