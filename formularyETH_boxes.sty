@@ -469,6 +469,28 @@
 		%breakable
 }
 
+
+\newtcolorbox{implementationbox}[1][]{
+		attach title to upper,
+		fonttitle=\bfseries,
+		title = #1,
+		coltitle=black,
+		colback=implementationbox,
+		colframe=implementationFrame,
+		after skip = 0.5pt,				% skip before and after box
+		before skip = 0.5pt,
+		boxrule = 0.3mm,				% linewidth
+		arc = 0mm,						% innder radius of frames (corners)
+		boxsep = 0mm,					% Space between text and frame
+		% Sets the left,right,... space between all text parts and frame (additional to boxsep)
+		top=3pt,
+    bottom=3pt,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi
+		%breakable
+}
+
 \newtcolorbox{propbox}[1][]{
 		attach title to upper,
 		fonttitle=\bfseries,
