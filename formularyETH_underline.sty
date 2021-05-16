@@ -15,6 +15,8 @@
 
 % Definitions
 % ----------------------------------------------------------------------
+% Usage: \uline{color}{Text}
+% \newcommand\uline[2]{\color{#1}\underline{{\color{black}#2}}\color{black}}
 % TODO improve within math mode: https://tex.stackexchange.com/questions/133243/controling-underline-depth-in-math-mode/133247#133247
 \newcommand{\ul}[2][ulc1]{{\color{#1}\renewcommand{\ULthickness}{0.6pt}\uline{\textcolor{black}{#2}}}}
 

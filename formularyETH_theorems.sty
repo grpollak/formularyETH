@@ -58,7 +58,7 @@
 {\bfseries}     %       Thm head font
 {}            %       Punctuation after thm head
 { }             %       Space after thm head: \newline = linebreak
-{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{Red}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
+{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{{#3}}{}}{: }{ }\textcolor{Red}{\thmnote{{#3}}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
   % \keywordbf{\thmnote}]\label{def:\thmnote} 
 
 \newtheoremstyle{defnc}% name
