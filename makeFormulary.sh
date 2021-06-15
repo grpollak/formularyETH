@@ -20,6 +20,8 @@ do
     # -m option: add math formulary as submodule
     -m) git submodule add git@gitlab.ethz.ch:formularies/math_submodule.git;;
     # -c option: add c++ formulary as submodule
+    -ml) git submodule add git@gitlab.ethz.ch:formularies/machine-learning/ml_submodule.git
+    # -ml option: add machine learning formulary as submodule
     -c) git submodule add git@gitlab.ethz.ch:formularies/cpp/cpp_submodule.git;;
     # -g option: add git formulary as submodule
     -g) git submodule add git@gitlab.ethz.ch:formularies/git/git_submodule.git;;
