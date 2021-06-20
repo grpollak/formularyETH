@@ -7,7 +7,7 @@
 % Theorems, Proofs, definitions, ...
 % Note: Order matters!
 % ======================================================================
-\RequirePackage{amsthm}	
+\RequirePackage{amsthm}
 % ======================================================================
 % Notes:
 % Definition \newtheorem{name}[sharedCounter]{Heading Text}[parentCounter]
@@ -147,13 +147,14 @@
 
         
 \newtheoremstyle{proposition}
-				{}{}
-				{}{}
-				{\bfseries}{}
-				{\parindent}
-				{\textbf{\thmname{#1} \thmnumber{#2}}\textcolor{Red}{\thmnote{#3}}:
-					%\keywordbf{\thmnote}]\label{def:\thmnote}
-				}
+			{}           %       Space above, empty = 'usual value'
+			{}           %       Space below
+			{}              %       Body font
+			{\parindent}           %       Indent amount (empty = no indent, \parindent = para indent)
+			{\bfseries}     %       Thm head font
+			{}            %       Punctuation after thm head
+			{ }             %       Space after thm head: \newline = linebreak
+			{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{Red}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
 
 \newtheoremstyle{example}
 				{}{}
@@ -188,7 +189,7 @@
 				{}{}
 				{\bfseries}{}
 				{\parindent}
-        {\textbf{\thmname{#1} \thmnumber{#2}}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{Red}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
+        {\textbf{\thmname{#1} \thmnumber{#2}}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{Black}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
 
 \newtheoremstyle{rule}
@@ -314,7 +315,10 @@
  	\crefname{ruling}{rule}{rules}
 %	Proof
 % ----------------------------------------------------------------------
-	% \newtheorem{proof}{Proof}[section]
+% undefines proof environment
+\let\proof\relax
+\let\endproof\relax
+	\newtheorem{proof}{Proof}[section]
 	% \crefname{proof}{proof}{proofs}
   % \crefformat{proof}{\textsuperscript{\scriptsize[def.\ #2#1#3]}}
 % Note Proofs

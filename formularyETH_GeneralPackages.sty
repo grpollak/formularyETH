@@ -3,8 +3,6 @@
 % ======================================================================
 % Packages
 % ======================================================================
-% TODO notes
-\RequirePackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 % Displaying shortcut keys
 \RequirePackage{menukeys}    
  % x/y fashion table headers
@@ -19,8 +17,11 @@
     urlcolor={blue!80!black}
 }
 \RequirePackage{cleveref}
-\RequirePackage{formularyETH/formularyETH_theorems} 
-\RequirePackage{formularyETH/formularyETH_items}	% section boxes                                                	
+% ------------------------------------------------------------------------------
+% import allows relative subsub imports
+% ------------------------------------------------------------------------------
+% \usepackage{import}
+\usepackage{moresize}
 % ------------------------------------------------------------------------------
 % Fonts
 % ------------------------------------------------------------------------------
@@ -30,6 +31,8 @@
 % ------------------------------------------------------------------------------
 % Figures
 % ------------------------------------------------------------------------------
+% For tikz resize
+\RequirePackage{environ}
 \usepackage{wrapfig}
 \usepackage{cutwin}
 % In order to use inkscape figures with transparent fillings using alpha
