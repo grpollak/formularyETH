@@ -1,5 +1,20 @@
 * FormularyETH
-	This is my LaTeX template for writing formularies
+	This is my LaTeX template that I use for writing cheat sheets and summaries.
+	If you make use of this template please include the copyright file. 
+	Feel free to star my project if you like it.
+	Currently it is used as submodule but I am planning on creating a proper package.
+** Copyright
+		Copyright (c) 2017 [Georg R. Pollak]  
+
+		Permission is hereby granted, free of charge, to any person obtaining a copy
+		of this software and associated documentation files (the "Software"), to deal
+		in the Software without restriction, including without limitation the rights
+		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+		copies of the Software, and to permit persons to whom the Software is
+		furnished to do so, subject to the following conditions:
+
+		The above copyright notice, the creator of the formuary package G.R. Pollak
+		and this permission notice shall be included in all copies or substantial portions of the Software.
 ** Creating a new formulary
 1. mkdir formularyFolder
 2. git init
@@ -12,6 +27,7 @@
 - Note: option -c adds cpp formulary as submodule  
 - Note: option -g adds git formulary as submodule  
 - Note: option -b adds bash formulary as submodule  
+- Note: option -ml adds machine learning formulary as submodule  
 - Note: option -l adds latex formulary as submodule  
 
 ** Requirements
@@ -59,18 +75,6 @@
 	The main box is usually the sectionbox.   
     Inside the boxes usually theorems (theorem), definitions (defn), lemmas (lemma), proof (proof)
 	are used.
-** Copyright
-		Copyright (c) 2017 [Georg R. Pollak]  
-
-		Permission is hereby granted, free of charge, to any person obtaining a copy
-		of this software and associated documentation files (the "Software"), to deal
-		in the Software without restriction, including without limitation the rights
-		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-		copies of the Software, and to permit persons to whom the Software is
-		furnished to do so, subject to the following conditions:
-
-		The above copyright notice, the creator of the formuary package G.R. Pollak
-		and this permission notice shall be included in all copies or substantial portions of the Software.
 * Sidenote: SSH Keygen
 #+BEGIN_SRC bash
 cd ~/.ssh
