@@ -231,9 +231,11 @@
 	\theoremstyle{defn}
 	\newtheorem{defn}{Definition}[section]
 	\crefname{defn}{definition}{definitions}
-  \crefformat{defn}{\textsuperscript{\scriptsize[def.~#2#1#3]}}
-  \crefmultiformat{defn}{\scriptsize\textsuperscript{[def's.~#2#1#3}}%
-  {\scriptsize\textsuperscript{, #2#1#3]}}{\scriptsize\textsuperscript{, #2#1#3}}{\scriptsize\textsuperscript{ #2#1#3]}}
+	\crefformat{defn}{\textsuperscript{\scriptsize[def.~#2#1#3]}}
+	\crefmultiformat{defn}{\scriptsize\textsuperscript{[def's.~#2#1#3}}%
+	{\scriptsize\textsuperscript{, #2#1#3]}}
+	{\scriptsize\textsuperscript{, #2#1#3}}
+	{\scriptsize\textsuperscript{ #2#1#3]}}
 %	Code Definition
 % ----------------------------------------------------------------------
 	\theoremstyle{defnc}
@@ -288,10 +290,12 @@
 % ----------------------------------------------------------------------
 	\theoremstyle{cor}
 	\newtheorem{cor}{Corollary}[section]
-	% \crefname{cor}{corollary}{corollaries}
+	\crefname{cor}{corollary}{corollaries}
 	\crefformat{cor}{\textsuperscript{\scriptsize[cor.~#2#1#3]}}
 	\crefmultiformat{cor}{\scriptsize\textsuperscript{[cor's.~#2#1#3}}%
-	{\scriptsize\textsuperscript{, #2#1#3]}}{\scriptsize\textsuperscript{, #2#1#3}}{\scriptsize\textsuperscript{ #2#1#3]}}
+	{\scriptsize\textsuperscript{, #2#1#3]}}
+	{\scriptsize\textsuperscript{, #2#1#3}}
+	{\scriptsize\textsuperscript{ #2#1#3]}}
 %	Law
 % ----------------------------------------------------------------------
 	\theoremstyle{law}
@@ -314,7 +318,18 @@
 % undefines proof environment
 \let\proof\relax
 \let\endproof\relax
-	\newtheorem{proof}{Proof}[section]
+\newtheoremstyle{proof}% name
+{}           %       Space above, empty = 'usual value'
+{}           %       Space below
+{}              %       Body font
+{\parindent}           %       Indent amount (empty = no indent, \parindent = para indent)
+{}     %       Thm head font
+{}            %       Punctuation after thm head
+{ }             %       Space after thm head: \newline = linebreak
+{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{#3}{}}{: }{ }\thmnote{#3}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
+  % \keywordbf{\thmnote}]\label{def:\thmnote}
+\theoremstyle{proof}
+\newtheorem{proof}{Proof}[section]
 	% \crefname{proof}{proof}{proofs}
   % \crefformat{proof}{\textsuperscript{\scriptsize[def.\ #2#1#3]}}
 % Note Proofs

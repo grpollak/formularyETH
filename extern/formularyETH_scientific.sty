@@ -45,6 +45,7 @@
 % to use make nice matrices with different dots using capital version e.g. \Vdots
 \RequirePackage{nicematrix}
 % scale down subscripts in probabilities
+\RequirePackage{stackengine}
 \RequirePackage{scalerel}
 \mathchardef\Re="023C
 \mathchardef\Im="023D
@@ -85,7 +86,7 @@
   }
 	\newcommand{\codomain}[1]{\texttt{codom}(#1)}
 	\newcommand{\support}[1]{\texttt{supp}(#1)}
-  \newcommand{\functionClass}{\mathcal{C}}							% Quadrature rule sign
+  \newcommand{\sm}{\mathcal{C}}							% Quadrature rule sign
 	\DeclareMathOperator{\curvec}{\mathcal{C}}							% Curley Curve C 					
   \DeclareMathOperator*{\argmax}{arg\,max}    % argmax
   \DeclareMathOperator*{\argmin}{arg\,min}    % argmin
@@ -96,9 +97,15 @@
 	\newcommand{\ie}{\emph{i.e.} }
 	\newcommand{\cf}{\emph{cf.} }
 	\newcommand{\into}{\hookrightarrow}
+% Uniform Convergence double arrow
+\stackMath
+\newcommand\frightarrow{\scalebox{1}[.3]{$\rule[.45ex]{2ex}{1.5pt}%
+  \kern-.2ex{\blacktriangleright}$}}
+\newcommand\darrow[1][]{\mathrel{\stackon[1pt]{\stackanchor[1pt]{\frightarrow}{\frightarrow}}{\scriptstyle#1}}}
+% Dirac Delta
 	\newcommand{\dirac}{\slashed{\partial}}
 	%\newcommand{\eqs}[2][=]{\stackrel{#2}{#1}}
-  \NewDocumentCommand{\inkscape}{ O{100pt} O{1\linewidth} m }{
+\NewDocumentCommand{\inkscape}{ O{100pt} O{1\linewidth} m }{
     \def\svgwidth{#1}\resizebox{#2}{!}{\input{#3}}
   }
   \DeclareDocumentCommand{\eqs}{s o g}{
@@ -368,6 +375,8 @@
     {\textcolor{CarnationPink}{\mathbb{P}}
   }
 }
+\providecommand{\Qprob}{\textcolor{Purple}{Q}}
+\providecommand{\qprob}{\textcolor{Purple}{q}}
 
 \DeclareDocumentCommand{\probf}{ s g g }{
   \IfNoValueTF{#2}
@@ -529,6 +538,7 @@
 \newcommand{\Normaldist}{\textcolor{Purple}{\mathcal{N}}}
 \newcommand{\Binomialdist}{\textcolor{Purple}{\mathcal{B}}}
 \newcommand{\Gammadist}{\textcolor{Purple}{\Gamma}}
+\newcommand{\Chisquaredist}{\textcolor{Purple}{\chi}}
 \newcommand{\Geometricdist}{\textcolor{Purple}{\mathrm{Geom}}}
 \newcommand{\Unidist}{\textcolor{Purple}{\mathcal{U}}}
 \newcommand{\Poissondist}{\textcolor{Purple}{\mathrm{Pois}}}
