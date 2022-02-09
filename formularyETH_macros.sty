@@ -30,6 +30,9 @@
 \newcommand{\keyword}[1]{#1\index{#1}}
 % Easy centering
 \newcommand{\ctr}[1]{\makebox[\linewidth]{#1}}
+% cancel with different colors
+\newcommand\ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}
+
 % Include Inkscape Pictures
 % new version moved to scientific package, does not work here
 % find out why?
