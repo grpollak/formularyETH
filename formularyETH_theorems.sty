@@ -310,6 +310,14 @@
 %	Rule
 % Note: rule as command not possible as already used by LaTex
 % ----------------------------------------------------------------------
+%	Libraries
+% ----------------------------------------------------------------------
+	\theoremstyle{defn}
+	\newtheorem{library}{Libary}[section]
+	\crefname{library}{libary}{libaries}
+	\crefformat{library}{\textsuperscript{\scriptsize[def.~#2#1#3]}}
+	\crefmultiformat{library}{\scriptsize\textsuperscript{[def's.~#2#1#3}}%
+	{\scriptsize\textsuperscript{, #2#1#3]}}{\scriptsize\textsuperscript{, #2#1#3}}{\scriptsize\textsuperscript{ #2#1#3]}}
 	\theoremstyle{ruling}
 	\newtheorem{ruling}{Rule}[section]
  	\crefname{ruling}{rule}{rules}
