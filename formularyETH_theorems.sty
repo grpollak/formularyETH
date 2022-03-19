@@ -335,18 +335,39 @@
 % ----------------------------------------------------------------------
 %	Rule
 % Note: rule as command not possible as already used by LaTex
+	\theoremstyle{ruling}
+	\newtheorem{ruling}{Rule}[section]
+ 	\crefname{ruling}{rule}{rules}
+% ==============================================================================
+% Coding Theorems
+% ==============================================================================
 % ----------------------------------------------------------------------
 %	Libraries
 % ----------------------------------------------------------------------
 	\theoremstyle{defn}
 	\newtheorem{library}{Libary}[section]
-	\crefname{library}{libary}{libaries}
+	\crefname{library}{library}{libaries}
 	\crefformat{library}{\textsuperscript{\scriptsize[def.~#2#1#3]}}
 	\crefmultiformat{library}{\scriptsize\textsuperscript{[def's.~#2#1#3}}%
 	{\scriptsize\textsuperscript{, #2#1#3]}}{\scriptsize\textsuperscript{, #2#1#3}}{\scriptsize\textsuperscript{ #2#1#3]}}
-	\theoremstyle{ruling}
-	\newtheorem{ruling}{Rule}[section]
- 	\crefname{ruling}{rule}{rules}
+% ----------------------------------------------------------------------
+%	Function
+% ----------------------------------------------------------------------
+	\theoremstyle{defn}
+	\newtheorem{function}{Function}[section]
+	\crefname{function}{function}{functions}
+	\crefformat{function}{\textsuperscript{\scriptsize[def.~#2#1#3]}}
+	\crefmultiformat{function}{\scriptsize\textsuperscript{[def's.~#2#1#3}}%
+	{\scriptsize\textsuperscript{, #2#1#3]}}{\scriptsize\textsuperscript{, #2#1#3}}{\scriptsize\textsuperscript{ #2#1#3]}}
+% ----------------------------------------------------------------------
+%	Type
+% ----------------------------------------------------------------------
+	\theoremstyle{defn}
+	\newtheorem{type}{Type}[section]
+	\crefname{type}{type}{Types}
+	\crefformat{type}{\textsuperscript{\scriptsize[def.~#2#1#3]}}
+	\crefmultiformat{type}{\scriptsize\textsuperscript{[def's.~#2#1#3}}%
+	{\scriptsize\textsuperscript{, #2#1#3]}}{\scriptsize\textsuperscript{, #2#1#3}}{\scriptsize\textsuperscript{ #2#1#3]}}
 %	Option
 % ----------------------------------------------------------------------
 	\theoremstyle{option}
