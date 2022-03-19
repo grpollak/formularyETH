@@ -104,26 +104,6 @@
 }
 
 
-\newtcolorbox{librarybox}[1][]{
-    attach title to upper,
-    fonttitle=\bfseries,
-    title =#1,
-    coltitle=black,
-    colback=defnbox,
-    colframe=defnboxFrame,
-    before skip = 0.5pt,                % skip before and after box
-    after skip = 0.5pt,
-    boxrule = 0.3mm,                % linewidth
-    arc = 0mm,                      % innder radius of frames (corners)
-    boxsep = 0mm,                   % Space between text and frame
-    % Sets the left,right,... space between all text parts and frame (additional to boxsep)
-    top=3pt,
-    bottom=3pt,
-    left=2pt,
-    right=2pt,
-    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi
-}
-
 \newtcolorbox{explanationbox}[1][]{
         attach title to upper,
         fonttitle=\bfseries,
@@ -1213,3 +1193,63 @@ format=\arabic]{codeboxinput}{s o o m m}{
         %breakable,
         %beforeafter skip = 0.4pt,      % skip before and after box
     }
+% ==============================================================================
+% Coding Boxes
+% ==============================================================================
+\newtcolorbox{librarybox}[1][]{
+    attach title to upper,
+    fonttitle=\bfseries,
+    title =#1,
+    coltitle=black,
+    colback=defnbox,
+    colframe=defnboxFrame,
+    before skip = 0.5pt,                % skip before and after box
+    after skip = 0.5pt,
+    boxrule = 0.3mm,                % linewidth
+    arc = 0mm,                      % innder radius of frames (corners)
+    boxsep = 0mm,                   % Space between text and frame
+    % Sets the left,right,... space between all text parts and frame (additional to boxsep)
+    top=3pt,
+    bottom=3pt,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi
+}
+\newtcolorbox{functionbox}[1][]{
+    attach title to upper,
+    fonttitle=\bfseries,
+    title =#1,
+    coltitle=black,
+    colback=defnbox,
+    colframe=defnboxFrame,
+    before skip = 0.5pt,                % skip before and after box
+    after skip = 0.5pt,
+    boxrule = 0.3mm,                % linewidth
+    arc = 0mm,                      % innder radius of frames (corners)
+    boxsep = 0mm,                   % Space between text and frame
+    % Sets the left,right,... space between all text parts and frame (additional to boxsep)
+    top=3pt,
+    bottom=3pt,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi
+}
+\newtcolorbox{typebox}[1][]{
+    attach title to upper,
+    fonttitle=\bfseries,
+    title =#1,
+    coltitle=black,
+    colback=defnbox,
+    colframe=defnboxFrame,
+    before skip = 0.5pt,                % skip before and after box
+    after skip = 0.5pt,
+    boxrule = 0.3mm,                % linewidth
+    arc = 0mm,                      % innder radius of frames (corners)
+    boxsep = 0mm,                   % Space between text and frame
+    % Sets the left,right,... space between all text parts and frame (additional to boxsep)
+    top=3pt,
+    bottom=3pt,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi
+}
