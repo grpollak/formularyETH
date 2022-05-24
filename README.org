@@ -27,7 +27,8 @@
 - Note: option -c adds cpp formulary as submodule  
 - Note: option -g adds git formulary as submodule  
 - Note: option -b adds bash formulary as submodule  
-- Note: option -ml adds machine learning formulary as submodule  
+- Note: option -ml adds machine learning formulary as submodule
+- Note: option -dl adds deep learning formulary as submodule
 - Note: option -l adds latex formulary as submodule  
 
 ** Requirements
