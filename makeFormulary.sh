@@ -22,6 +22,8 @@ do
     # -c option: add c++ formulary as submodule
     -ml) git submodule add git@gitlab.ethz.ch:formularies/machine-learning/ml_submodule.git;;
     # -ml option: add machine learning formulary as submodule
+    -dl) git submodule add git@gitlab.ethz.ch:formularies/deep-learning/dl_submodule.git;;
+    # -dl option: add deep learning formulary as submodule
     -c) git submodule add git@gitlab.ethz.ch:formularies/cpp/cpp_submodule.git;;
     # -g option: add git formulary as submodule
     -g) git submodule add git@gitlab.ethz.ch:formularies/git/git_submodule.git;;
