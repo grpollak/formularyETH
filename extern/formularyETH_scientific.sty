@@ -107,52 +107,52 @@
 	%\newcommand{\eqs}[2][=]{\stackrel{#2}{#1}}
 \NewDocumentCommand{\inkscape}{ O{100pt} O{1\linewidth} m }{
     \def\svgwidth{#1}\resizebox{#2}{!}{\input{#3}}
-  }
-  \DeclareDocumentCommand{\eqs}{s o g}{
-    \IfBooleanTF{#1}
+}
+\DeclareDocumentCommand{\eqs}{s o g}{
+  \IfBooleanTF{#1}
+  {
+    \IfNoValueTF{#2}
     {
-      \IfNoValueTF{#2}
+      \IfNoValueTF{#3}
       {
-        \IfNoValueTF{#3}
-        {
-          =
-        }
-        {
-          \stackrel{\mathclap{#3}}{=}
-        }
-      }{
-        \IfNoValueTF{#3}
-        {
-          \stackrel[\mathclap{#2}]{=}
-        }
-        {
-          \stackrel[\mathclap{#2}]{\mathclap{#3}}{=}
-        }
+        =
+      }
+      {
+        \stackrel{\mathclap{#3}}{=}
       }
     }{
-      \IfNoValueTF{#2}
+      \IfNoValueTF{#3}
       {
-        \IfNoValueTF{#3}
-        {
-          =
-        }
-        {
-          \stackrel{#3}{=}
-        }
-      }{
-        \IfNoValueTF{#3}
-        {
-          \stackrel[#2]{=}
-        }
-        {
-          \stackrel[#2]{#3}{=}
-        }
+        \stackrel[\mathclap{#2}]{=}
+      }
+      {
+        \stackrel[\mathclap{#2}]{\mathclap{#3}}{=}
+      }
+    }
+  }{
+    \IfNoValueTF{#2}
+    {
+      \IfNoValueTF{#3}
+      {
+        =
+      }
+      {
+        \stackrel{#3}{=}
+      }
+    }{
+      \IfNoValueTF{#3}
+      {
+        \stackrel[#2]{=}
+      }
+      {
+        \stackrel[#2]{#3}{=}
       }
     }
   }
-  \DeclarePairedDelimiter\abs{\lvert}{\rvert} % abs val
-  \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil} % abs val
-  \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} % abs val
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil} % abs val
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 % ==============================================================================
 % Logic/Set Theory
 % ==============================================================================
