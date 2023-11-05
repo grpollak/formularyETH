@@ -33,14 +33,15 @@
 % instead of using \@addtoreset explicitly
 
 \RequirePackage{titlesec}
+\RequirePackage{titletoc}
 % \titleformat{ command }
-% 				[ shape ]
-% 				{ format }
-% 				{ Numberering/Label }
+%         [ shape ]
+%         { format }
+%         { Numberering/Label }
 %         { sep to the left/from label }
-% 				{before-code }[ after-code ] 
+%         {before-code }[ after-code ]
 
-	%\titleformat{\chapter}{\huge \bfseries}{\thechapter}{0em}{\huge \bfseries}
+  %\titleformat{\chapter}{\huge \bfseries}{\thechapter}{0em}{\huge \bfseries}
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
 
@@ -157,8 +158,8 @@
 \titlespacing{\subsubsection}{\subSubSectionSpacingLeft}{\subSubSectionSpacingTop}{\subSubSectionSpacingBottom}[\subSubSectionSpacingRight]
 % Subsubsubsection
 % ------------------------------------------------------------------------------ 
-\titleclass{\subsubsubsection}{straight}[\subsubsection]
 
+\titleclass{\subsubsubsection}{straight}[\subsubsection]
 \newcounter{subsubsubsection}[subsubsection]
 \renewcommand\thesubsubsubsection{\thesubsection.\thesubsubsection.\arabic{subsubsubsection}}
 \ifsinglecolumn 
@@ -218,6 +219,9 @@
   ]
 \fi
 \titlespacing{\paragraph}{\paragraphSpacingLeft}{\paragraphSpacingTop}{\paragraphSpacingBottom}[\paragraphSpacingRight]
+\titlecontents{subsubsubsection}[8em]{}{
+  \contentslabel[\thecontentslabel]{3em}
+}{\hspace*{-5.3em}}{\titlerule*[.7pc]{.}\contentspage}
 
 % ------------------------------------------------------------------------------
 % Redefine toc
@@ -248,11 +252,8 @@
   \par
   \vskip 1.5em}
 
-  % Not working yet
-  % ------------------------------------------------------------------------------ 
-  % \newcommand{\thesubsubsubsection}{\Roman{subsubsection}}
-	% \titleformat{\subsubsubsection}
-	% 			{ \color{subsubsection} \normalsize \bfseries }
-	% 			{ \color{attributes} \thesubsubsubsection )}{0em}
-	% 			{ \color{subsubsection}}
-	% 			[]
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-command-extra-options: "-shell-escape"
+%%% TeX-master: "../formulary"
+%%% End:
