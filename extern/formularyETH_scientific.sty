@@ -107,52 +107,52 @@
 	%\newcommand{\eqs}[2][=]{\stackrel{#2}{#1}}
 \NewDocumentCommand{\inkscape}{ O{100pt} O{1\linewidth} m }{
     \def\svgwidth{#1}\resizebox{#2}{!}{\input{#3}}
-  }
-  \DeclareDocumentCommand{\eqs}{s o g}{
-    \IfBooleanTF{#1}
+}
+\DeclareDocumentCommand{\eqs}{s o g}{
+  \IfBooleanTF{#1}
+  {
+    \IfNoValueTF{#2}
     {
-      \IfNoValueTF{#2}
+      \IfNoValueTF{#3}
       {
-        \IfNoValueTF{#3}
-        {
-          =
-        }
-        {
-          \stackrel{\mathclap{#3}}{=}
-        }
-      }{
-        \IfNoValueTF{#3}
-        {
-          \stackrel[\mathclap{#2}]{=}
-        }
-        {
-          \stackrel[\mathclap{#2}]{\mathclap{#3}}{=}
-        }
+        =
+      }
+      {
+        \stackrel{\mathclap{#3}}{=}
       }
     }{
-      \IfNoValueTF{#2}
+      \IfNoValueTF{#3}
       {
-        \IfNoValueTF{#3}
-        {
-          =
-        }
-        {
-          \stackrel{#3}{=}
-        }
-      }{
-        \IfNoValueTF{#3}
-        {
-          \stackrel[#2]{=}
-        }
-        {
-          \stackrel[#2]{#3}{=}
-        }
+        \stackrel[\mathclap{#2}]{=}
+      }
+      {
+        \stackrel[\mathclap{#2}]{\mathclap{#3}}{=}
+      }
+    }
+  }{
+    \IfNoValueTF{#2}
+    {
+      \IfNoValueTF{#3}
+      {
+        =
+      }
+      {
+        \stackrel{#3}{=}
+      }
+    }{
+      \IfNoValueTF{#3}
+      {
+        \stackrel[#2]{=}
+      }
+      {
+        \stackrel[#2]{#3}{=}
       }
     }
   }
-  \DeclarePairedDelimiter\abs{\lvert}{\rvert} % abs val
-  \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil} % abs val
-  \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} % abs val
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil} % abs val
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 % ==============================================================================
 % Logic/Set Theory
 % ==============================================================================
@@ -172,9 +172,20 @@
   \newcommand{\Polynomial}{\tc{Purple}{\mathcal{P}}}
 
 % ==============================================================================
-% Spaces that can be used for all sorts of things
+% SPACES that can be used for all sorts of things
 % ==============================================================================
 \DeclareMathOperator{\Hsp}{\mathcal{H}}
+\providecommand{\Xsp}{\mathcal{X}}							% MeasurementSPace
+\providecommand{\Ysp}{\mathcal{Y}}							% MeasurementSPace
+\providecommand{\Zsp}{\mathcal{Z}}							% MeasurementSPace
+\providecommand{\Ssp}{\mathcal{S}}							% MeasurementSPace
+\providecommand{\Psp}{\mathcal{S}}							% Partition Space
+\providecommand{\Fsp}{\mathcal{F}}							% MeasurementSPace
+\providecommand{\Tsp}{\mathcal{T}}							% MeasurementSPace
+\providecommand{\Osp}{\mathcal{O}}             % i.e. Observation Space for HMM
+\providecommand{\Dsp}{\mathcal{D}}             % i.e. Data Space
+\providecommand{\Ksp}{\mathcal{K}}             % Complete data space
+\providecommand{\csp}{\mathfrak{c}}            % I.e. Hypothesis
 % ==============================================================================
 % Linear Algebra
 % ==============================================================================
@@ -192,8 +203,25 @@
 	\DeclareMathOperator{\linalgspan}{span}
 	\DeclareMathOperator{\linalgbasis}{\textcolor{Fuchsia}{\mathfrak{B}}}					
 
+% Graphs and Matrices
+% ======================================================================
+\newcommand{\Graph}{\mathcal{G}}
+\newcommand{\Vertices}{\mathcal{V}}
+\newcommand{\Edges}{\mathcal{E}}
+\newcommand{\edge}{e}
+\newcommand{\vertix}{v}
+\newcommand{\vertixu}{\mathcal{u}}
 % Vectors and Matrices
 % ======================================================================
+\providecommand{\sigmacvec}{\vec{\sigmac}}
+\providecommand{\Sigmacvec}{\vec{\Sigmac}}
+\providecommand{\hvec}{\vec{h}}
+\providecommand{\Hvec}{\vec{H}}
+\providecommand{\Qvec}{\vec{Q}}
+\providecommand{\etacvec}{\vec{\etac}}
+\providecommand{\lambdacvec}{\vec{\lambdac}}
+\providecommand{\Lambdacvec}{\vec{\Lambdac}}
+\providecommand{\yhat}{\hat{y}}
 % Inner Product
 \DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
 % Matrices & Vector
@@ -339,8 +367,22 @@
 \newcommand\ltrue{\mathrm{true}}
 \newcommand\lfalse{\mathrm{false}}
 % ==============================================================================
-% Probability
+% Probability Theory
 % ==============================================================================
+\providecommand{\samplespace}{\Omega}
+\providecommand{\event}{A}
+\providecommand{\eventA}{\tc{mc4}{A}}
+\providecommand{\eventB}{\tc{mc3}{B}}
+\providecommand{\Asp}{\mathcal{A}}
+\providecommand{\Bsp}{\mathcal{B}}
+\providecommand{\Csp}{\mathcal{C}}
+\providecommand{\Esp}{\mathcal{E}}
+\providecommand{\Borelsa}{\mathcal{B}}
+\providecommand{\powerset}{\mathcal{P}}
+\providecommand{\familyofallevents}{\mathcal{A}}
+\providecommand{\measure}{\muc}
+\providecommand{\Filtration}{\mathbb{F}}
+
 % ------------------------------------------------------------------------------
 % Independenc _||_
 % ------------------------------------------------------------------------------ 
@@ -625,6 +667,8 @@
 \newcommand{\epsilonc}[1][\epsilon]{\ensuremath{\textcolor{epsilonc}{#1}}}
 \newcommand{\sigmac}[1][\sigma]{\ensuremath{\textcolor{sigmac}{#1}}}
 \newcommand{\Sigmac}[1][\Sigma]{\ensuremath{\textcolor{sigmac}{#1}}}
+\newcommand{\omegac}[1][\sigma]{\ensuremath{\textcolor{omegac}{#1}}}
+\newcommand{\Omegac}[1][\Sigma]{\ensuremath{\textcolor{omegac}{#1}}}
 % Standard Coefficients Colored
 % ======================================================================
 \newcommand{\mca}[1][a]{\mc[1]{#1}}

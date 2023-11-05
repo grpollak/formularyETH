@@ -7,8 +7,6 @@
 
 % Underline text
 % ----------------------------------------------------------------------
-% Usage: \uline{color}{Text}
-\def\uline#1#2{\color{#1}\underline{{\color{black}#2}}\color{black}}
 % Get Roman Numbers I, II, III, IV,...
 \newcommand{\romanNumber}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
 % Get forumlary fitting item headers 
@@ -72,7 +70,9 @@
 }
 \newcommand{\nalign}{\\[-1\jot]} 							% Shorter new line align spacing 			
 \newcommand{\blackrb}[1]{\textcolor{black}{(}#1\textcolor{black}{)}}     % Black round brackets
+\newcommand{\blackab}[1]{\textcolor{black}{[}#1\textcolor{black}{]}}     % Black round brackets
 \newcommand{\rb}[2][attributes]{\textcolor{#1}{(}#2\textcolor{#1}{)}}
+\newcommand{\abracket}[2][attributes]{\textcolor{#1}{[}#2\textcolor{#1}{]}}
 % Black round brackets
 \newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
 \newcommand\mytlabel[4][]{%
@@ -93,6 +93,8 @@
 \newcommand{\proofref}[1]{\tc{black}{\normalfont{[proof~\ref{#1}]}}}
 \newcommand{\proofrefs}[1]{\tc{black}{\normalfont{[proof~#1]}}}
 \newcommand{\Proofref}[1]{\tc{black}{\normalfont{[Proof~\ref{#1}]}}}
+\newcommand{\implementationref}[1]{\tc{black}{\normalfont{[\cref{#1}]}}}
+\newcommand{\Implementationref}[1]{\tc{black}{\normalfont{[\Cref{#1}]}}}
 \newcommand{\exampleref}[1]{\tc{black}{\normalfont{[\cref{#1}]}}}
 \newcommand{\Exampleref}[1]{\tc{black}{\normalfont{[\Cref{#1}]}}}
 \newcommand{\corref}[1]{\tc{black}{\normalfont{[corollary~\ref{#1}]}}}

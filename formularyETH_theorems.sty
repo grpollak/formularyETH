@@ -58,7 +58,7 @@
 {\bfseries}     %       Thm head font
 {}            %       Punctuation after thm head
 { }             %       Space after thm head: \newline = linebreak
-{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{Red}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
+{\thmname{#1} \thmnumber{#2}\ifthenelse{\equal{{#3}}{}}{: }{ }\textcolor{Red}{\thmnote{{#3}}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
   % \keywordbf{\thmnote}]\label{def:\thmnote} 
 
 \newtheoremstyle{defnc}% name
@@ -165,6 +165,15 @@
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
 				}
 
+\newtheoremstyle{implementation}
+				{}{}
+				{}{}
+				{\bfseries}{}
+				{\parindent}
+				{\color{black}\textbf{\thmname{#1} \thmnumber{#2} }\thmnote{\color{black}#3}:
+					%\keywordbf{\thmnote}]\label{def:\thmnote}
+				}
+
 \newtheoremstyle{post}
 				{}{}
 				{}{}
@@ -209,6 +218,18 @@
 				{\textbf{\thmname{#1} \thmnumber{#2} }\textcolor{Black}{\thmnote{#3}}:
 					%\keywordbf{\thmnote}]\label{def:\thmnote}
 				}
+
+\newtheoremstyle{option}% name
+{}           %       Space above, empty = 'usual value'
+{}           %       Space below
+{}              %       Body font
+{\parindent}           %       Indent amount (empty = no indent, \parindent = para indent)
+{}     %       Thm head font
+{}            %       Punctuation after thm head
+{ }             %       Space after thm head: \newline = linebreak
+{{\small\thmnumber{#2}}\ifthenelse{\equal{#3}{}}{: }{ }\textcolor{black}{\thmnote{#3}}\ifthenelse{\equal{#3}{}}{}{{:\ }}\ignorespaces}
+  % \keywordbf{\thmnote}]\label{def:\thmnote}
+
 % ======================================================================
 % \newtheorem{name}{Printed output}[numberby]
 % \newtheorem{name}[counter]{Printed output} 
@@ -281,6 +302,11 @@
 	\theoremstyle{example}
 	\newtheorem{example}{Example}[section]
 	\crefname{example}{example}{examples}
+%	Implementation
+% ----------------------------------------------------------------------
+	\theoremstyle{implementation}
+	\newtheorem{implementation}{Implementation}[section]
+	\crefname{implementation}{implementation}{implementation}
 %	Principle
 % ----------------------------------------------------------------------
 	\theoremstyle{post}
@@ -309,10 +335,47 @@
 % ----------------------------------------------------------------------
 %	Rule
 % Note: rule as command not possible as already used by LaTex
-% ----------------------------------------------------------------------
 	\theoremstyle{ruling}
 	\newtheorem{ruling}{Rule}[section]
  	\crefname{ruling}{rule}{rules}
+% ==============================================================================
+% Coding Theorems
+% ==============================================================================
+% ----------------------------------------------------------------------
+%	Libraries
+% ----------------------------------------------------------------------
+	\theoremstyle{defn}
+	\newtheorem{library}{Libary}[section]
+	\crefname{library}{library}{libaries}
+	\crefformat{library}{\textsuperscript{\scriptsize[def.~#2#1#3]}}
+	\crefmultiformat{library}{\scriptsize\textsuperscript{[def's.~#2#1#3}}%
+	{\scriptsize\textsuperscript{, #2#1#3]}}{\scriptsize\textsuperscript{, #2#1#3}}{\scriptsize\textsuperscript{ #2#1#3]}}
+% ----------------------------------------------------------------------
+%	Function
+% ----------------------------------------------------------------------
+	\theoremstyle{defn}
+	\newtheorem{function}{Function}[section]
+	\crefname{function}{function}{functions}
+	\crefformat{function}{\textsuperscript{\scriptsize[def.~#2#1#3]}}
+	\crefmultiformat{function}{\scriptsize\textsuperscript{[def's.~#2#1#3}}%
+	{\scriptsize\textsuperscript{, #2#1#3]}}{\scriptsize\textsuperscript{, #2#1#3}}{\scriptsize\textsuperscript{ #2#1#3]}}
+% ----------------------------------------------------------------------
+%	Type
+% ----------------------------------------------------------------------
+	\theoremstyle{defn}
+	\newtheorem{type}{Type}[section]
+	\crefname{type}{type}{Types}
+	\crefformat{type}{\textsuperscript{\scriptsize[def.~#2#1#3]}}
+	\crefmultiformat{type}{\scriptsize\textsuperscript{[def's.~#2#1#3}}%
+	{\scriptsize\textsuperscript{, #2#1#3]}}{\scriptsize\textsuperscript{, #2#1#3}}{\scriptsize\textsuperscript{ #2#1#3]}}
+%	Option
+% ----------------------------------------------------------------------
+	\theoremstyle{option}
+	\newtheorem{option}{Option}[section]
+	\crefname{option}{option}{options}
+	\crefformat{option}{\textsuperscript{\scriptsize[opt.~#2#1#3]}}
+	\crefmultiformat{option}{\scriptsize\textsuperscript{[opt's.~#2#1#3}}%
+	{\scriptsize\textsuperscript{, #2#1#3]}}{\scriptsize\textsuperscript{, #2#1#3}}{\scriptsize\textsuperscript{ #2#1#3]}}
 %	Proof
 % ----------------------------------------------------------------------
 % undefines proof environment
