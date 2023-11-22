@@ -764,29 +764,47 @@
 % codebox
 % ------------------------------------------------------------------------------
 \newcounter{codeboxCounter}
-\DeclareTColorBox[use counter=codeboxCounter, number within=subsubsection, number format=\arabic]{codebox}{O{} G{}}{
-    fonttitle=\bfseries,
+\DeclareTCBListing[use counter=codeboxCounter, number within=subsubsection, number format=\arabic]{codebox}{D<>{} O{} m}{
+    minted language=#3,
     title=#2,
+    listing engine=minted,
+    listing only,
+    minted options={
+      autogobble,
+      linenos=false,
+      breaklines,
+      numbersep=3pt,
+      %obeytabs=false,
+      tabsize=1,
+      escapeinside=||,
+      #1,
+    },
+    %arc = 0mm,                                       % innder radius of frames (corners)
+    enhanced jigsaw,
+    %fonttitle=\bfseries,
+    after title=\ifthenelse{\equal{#2}{}}{}{{:\ }},
+    coltitle=codeboxTitle,
     toptitle=1pt,
-    attach title to upper,
-    after title=\ifthenelse{\equal{#1}{}}{}{{\ }},
-        coltitle=black,
-        colback=codebox,
-        colframe=codeboxFrame,
-        before skip = 0.5pt,                % skip before and after box
-        after skip = 0.5pt,
-        boxrule = 0.3mm,                % linewidth
-        arc = 0mm,                      % innder radius of frames (corners)
-        boxsep = 0mm,                   % Space between text and frame
-        % Sets the left,right,... space between all text parts and frame (additional to boxsep)
-        top=1.5pt,
-        bottom=1.5pt,
+    bottomtitle=1pt,
+    colbacktitle=codeboxBackTitle,
+    colback=codebox,
+    colframe=codeboxFrame,
     left=2pt,
     right=2pt,
     leftright skip=\ifmulticols 0pt\else 3pt\relax\fi,
     #1
-        %breakable,
-        %pad at break = 1mm
+    size=title,
+    after skip = 0.5pt,                           % skip before and after box
+    before skip = 0.5pt,
+    boxrule = 0.3mm,                          % frameborder width
+    arc = 0mm,                                    % innder radius of frames (corners)
+    boxsep = 0mm,                                 % Space between text and frame: left, right, top, bottom, and middle
+    % Sets the left,right,... space between all text parts and frame (additional to boxsep)
+    top=0pt,
+    bottom=0pt,
+    left=2pt,
+    right=2pt,
+    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi,
 }
 % ------------------------------------------------------------------------------
 % Definition code box
