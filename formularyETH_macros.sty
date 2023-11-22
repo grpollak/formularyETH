@@ -28,6 +28,9 @@
 \newcommand{\keyword}[1]{#1\index{#1}}
 % Easy centering
 \newcommand{\ctr}[1]{\makebox[\linewidth]{#1}}
+% cancel with different colors
+\newcommand\ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}
+
 % Include Inkscape Pictures
 % new version moved to scientific package, does not work here
 % find out why?
@@ -67,6 +70,7 @@
 }
 \newcommand{\nalign}{\\[-1\jot]} 							% Shorter new line align spacing 			
 \newcommand{\blackrb}[1]{\textcolor{black}{(}#1\textcolor{black}{)}}     % Black round brackets
+\newcommand{\blackab}[1]{\textcolor{black}{[}#1\textcolor{black}{]}}     % Black round brackets
 \newcommand{\rb}[2][attributes]{\textcolor{#1}{(}#2\textcolor{#1}{)}}
 \newcommand{\abracket}[2][attributes]{\textcolor{#1}{[}#2\textcolor{#1}{]}}
 % Black round brackets

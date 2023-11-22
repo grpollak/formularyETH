@@ -789,10 +789,22 @@
     colbacktitle=codeboxBackTitle,
     colback=codebox,
     colframe=codeboxFrame,
-    left=2pt,
-    right=2pt,
-    leftright skip=\ifmulticols 0pt\else 3pt\relax\fi,
-    #1
+    fonttitle=\bfseries,
+    title=#2,
+    toptitle=1pt,
+    attach title to upper,
+    after title=\ifthenelse{\equal{#1}{}}{}{{\ }},
+        coltitle=black,
+        colback=codebox,
+        colframe=codeboxFrame,
+        before skip = 0.5pt,                % skip before and after box
+        after skip = 0.5pt,
+        boxrule = 0.3mm,                % linewidth
+        arc = 0mm,                      % innder radius of frames (corners)
+        boxsep = 0mm,                   % Space between text and frame
+        % Sets the left,right,... space between all text parts and frame (additional to boxsep)
+        top=1.5pt,
+        bottom=1.5pt,
     size=title,
     after skip = 0.5pt,                           % skip before and after box
     before skip = 0.5pt,
